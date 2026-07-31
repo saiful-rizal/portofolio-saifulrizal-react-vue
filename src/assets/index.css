@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    font-family:"Poppins",sans-serif;
+    background:#0b0b10;
+}
+
+.noise{
+    background-image:
+        radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+    background-size:6px 6px;
+}
+
+img{
+    filter:grayscale(100%) contrast(110%);
+}
+
+h1{
+    text-shadow:
+    0 0 40px rgba(255,255,255,.15);
+}
