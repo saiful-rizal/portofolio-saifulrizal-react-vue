@@ -1,0 +1,356 @@
+<script setup>
+import { ref, computed } from "vue";
+
+const emit = defineEmits(["navigate"]);
+const props = defineProps({ active: { type: String, default: "about" } });
+
+const year = ref("2026");
+const years = ["2026", "2025", "2024"];
+
+const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des", "Jan"];
+const dayLabels = ["Sen", "", "Rab", "", "Jum", "", ""];
+
+const WEEKS = 53;
+const LEVELS = ["lv0", "lv1", "lv2", "lv3", "lv4"];
+
+function levelFor(w, d) {
+  // Bagian kiri-tengah (Jan-Sep): aktivitas tinggi seperti di gambar
+  // Bagian kanan (Okt-Jan): kosong / gelap
+  if (w >= 39) return 0;
+  if (w >= 36) return d % 3 === 0 ? 1 : 0;
+  const seed = (w * 7 + d * 13 + w * d) % 10;
+  if (w < 8) return seed < 5 ? 4 : seed < 7 ? 3 : 2;
+  if (w < 22) return seed < 6 ? 4 : seed < 8 ? 3 : 1;
+  if (w < 32) return seed < 5 ? 4 : seed < 7 ? 2 : 1;
+  return seed < 4 ? 3 : seed < 6 ? 2 : 1;
+}
+
+const grid = computed(() => {
+  const cols = [];
+  for (let w = 0; w < WEEKS; w++) {
+    const days = [];
+    for (let d = 0; d < 7; d++) days.push(levelFor(w, d));
+    cols.push(days);
+  }
+  return cols;
+});
+
+const go = (tab) => emit("navigate", tab);
+</script>
+
+<template>
+  <div class="profile-page">
+    <div class="profile-card">
+      <span class="pcorner tl" />
+      <span class="pcorner tr" />
+      <span class="pcorner bl" />
+      <span class="pcorner br" />
+
+      <!-- FOTO -->
+      <div class="p-photo-wrap">
+        <img
+          class="p-photo"
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop"
+          alt="Foto profil"
+        />
+      </div>
+
+      <!-- NAMA -->
+      <h1 class="p-name">Yanuar Ardhika Rahmadhani Ubaidillah, S.Tr.Kom.</h1>
+
+      <!-- BIO -->
+      <p class="p-bio">
+        Software Engineer dan lulusan Sarjana Terapan (S.Tr.Kom.) Teknik Informatika Politeknik
+        Negeri Jember dengan spesialisasi pengembangan web dan mobile (Next.js, Laravel, Flutter).
+        Memiliki rekam jejak dalam merancang serta membangun aplikasi end-to-end yang skalabel,
+        efisien, dan ramah pengguna — mulai dari sistem informasi instansi, proyek riset terdanai
+        PKM, hingga pengalaman industri. Berorientasi pada clean code, pemecahan masalah nyata,
+        dan siap memberikan kontribusi optimal dalam pengembangan produk digital.
+      </p>
+
+      <!-- CTA -->
+      <button class="p-hire" @click="go('contact')">
+        <svg viewBox="0 0 24 24" class="p-hire-icon">
+          <path
+            d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 7L4 7v11h16V7l-8 5Z"
+            fill="currentColor"
+          />
+        </svg>
+        Hubungi Saya / Hire Me
+      </button>
+
+      <!-- GITHUB -->
+      <div class="p-git-head">
+        <div class="p-git-left">
+          <span class="p-git-title">Kontribusi GitHub</span>
+          <select v-model="year" class="p-year" aria-label="Pilih tahun">
+            <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
+          </select>
+        </div>
+        <span class="p-git-total">9430 kontribusi</span>
+      </div>
+
+      <div class="p-git-scroll">
+        <div class="p-git">
+          <div class="p-git-months">
+            <span v-for="m in months" :key="m">{{ m }}</span>
+          </div>
+          <div class="p-git-body">
+            <div class="p-git-days">
+              <span v-for="(d, i) in dayLabels" :key="i">{{ d }}</span>
+            </div>
+            <div class="p-git-grid">
+              <div v-for="(week, wi) in grid" :key="wi" class="p-week">
+                <span
+                  v-for="(lv, di) in week"
+                  :key="di"
+                  class="p-cell"
+                  :class="LEVELS[lv]"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="p-git-legend">
+            <span>Jarang</span>
+            <span class="p-cell lv0 sm" />
+            <span class="p-cell lv1 sm" />
+            <span class="p-cell lv2 sm" />
+            <span class="p-cell lv3 sm" />
+            <span class="p-cell lv4 sm" />
+            <span>Sering</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PENGALAMAN -->
+      <h2 class="p-sec">Pengalaman Kerja</h2>
+
+      <div class="p-exp">
+        <div class="p-exp-logo">wesclio<span class="sup">®</span></div>
+        <div class="p-exp-body">
+          <h3 class="p-exp-title">Full-Stack Web Developer</h3>
+          <p class="p-exp-sub">PT. Wesdic Indonesia Neotech - Yogyakarta, Indonesia</p>
+          <p class="p-exp-desc">
+            Magang sebagai Full-Stack Web Developer di perusahaan yang bergerak dibidang
+            Teknologi Informasi dengan layanan perencanaan, pembuatan, pengembangan,
+            perbaikan serta perawatan infrastruktur IT.
+          </p>
+          <p class="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
+          <ul class="p-exp-list">
+            <li>Mengembangkan dan memelihara proyek aplikasi web yang ada di perusahaan</li>
+            <li>Berpartisipasi dalam code review dan agile development</li>
+            <li>Mengoptimalkan sistem kinerja proyek pada perusahaan</li>
+          </ul>
+          <div class="p-tags">
+            <span>React</span><span>Next.js</span><span>TypeScript</span><span>Laravel</span><span>MySQL</span><span>Tailwind CSS</span>
+          </div>
+          <div class="p-exp-foot">
+            <span class="p-date">Agustus 2025 - Desember 2025</span>
+            <span class="p-badge">Magang / Internship</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOSMED -->
+      <div class="p-socials">
+        <a href="#" aria-label="Instagram" class="p-soc">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2Zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4Zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.4a1.4 1.4 0 1 0 0-2.9 1.4 1.4 0 0 0 0 2.9Z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="GitHub" class="p-soc">
+          <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 6.8 9.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.4 4.7-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="p-soc">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8.09h4.56V23H.22V8.09Zm7.44 0h4.37v2.04h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 7v8.24h-4.55v-7.3c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V23H7.66V8.09Z" fill="currentColor"/></svg>
+        </a>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="p-foot">
+        <span class="p-foot-l"><span class="dim">Status:</span> Lulusan Teknik Informatika</span>
+        <span class="p-foot-r"><span class="dim">Peran:</span> Software Engineer</span>
+      </div>
+      <p class="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="p-nav" aria-label="Navigasi utama">
+      <button class="p-nav-item" :class="{ active: active === 'home' }" @click="go('home')" aria-label="Beranda">
+        <svg viewBox="0 0 24 24"><path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5L12 3Z" fill="currentColor"/></svg>
+      </button>
+      <button class="p-nav-item wide" :class="{ active: active === 'about' }" @click="go('about')">
+        <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0v1H5v-1Z" fill="currentColor"/></svg>
+        <span>Tentang</span>
+      </button>
+      <button class="p-nav-item" :class="{ active: active === 'project' }" @click="go('project')" aria-label="Project">
+        <svg viewBox="0 0 24 24"><path d="M4 5h6l2 2h8v11H4V5Zm0 5h16v2H4v-2Z" fill="currentColor"/></svg>
+      </button>
+      <button class="p-nav-item" :class="{ active: active === 'achievement' }" @click="go('achievement')" aria-label="Achievement">
+        <svg viewBox="0 0 24 24"><path d="M6 3h12v5a6 6 0 0 1-4 5.65V16h3v2H7v-2h3v-2.35A6 6 0 0 1 6 8V3Zm-2 2H2v2a4 4 0 0 0 4 4V9H4V5Zm16 0h-2v4h-2v2a4 4 0 0 0 4-4V5ZM9 20h6v2H9v-2Z" fill="currentColor"/></svg>
+      </button>
+      <button class="p-nav-item" :class="{ active: active === 'certification' }" @click="go('certification')" aria-label="Certification">
+        <svg viewBox="0 0 24 24"><path d="M4 4h7v16H4V4Zm11 0h5v16h-5V4ZM12 4v16" stroke="currentColor" stroke-width="1.8" fill="none"/></svg>
+      </button>
+    </nav>
+  </div>
+</template>
+
+<style>
+.profile-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background: #090909;
+  color: #e8e8e8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 14px 110px;
+  box-sizing: border-box;
+}
+.profile-card {
+  position: relative;
+  width: min(94vw, 740px);
+  background-color: #141414;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 16px;
+  padding: 34px 30px 22px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.pcorner { position: absolute; width: 16px; height: 16px; opacity: 0.85; }
+.pcorner::before, .pcorner::after { content: ""; position: absolute; background: #fff; }
+.pcorner::before { width: 100%; height: 2px; }
+.pcorner.tl::before, .pcorner.tr::before { top: 0; }
+.pcorner.bl::before, .pcorner.br::before { bottom: 0; }
+.pcorner::after { width: 2px; height: 100%; }
+.pcorner.tl::after, .pcorner.bl::after { left: 0; }
+.pcorner.tr::after, .pcorner.br::after { right: 0; }
+.pcorner.tl { top: 10px; left: 10px; }
+.pcorner.tr { top: 10px; right: 10px; }
+.pcorner.bl { bottom: 10px; left: 10px; }
+.pcorner.br { bottom: 10px; right: 10px; }
+
+.p-photo-wrap { display: flex; justify-content: center; margin-bottom: 18px; }
+.p-photo {
+  width: 148px; height: 148px; border-radius: 50%;
+  object-fit: cover; filter: grayscale(35%) contrast(1.05);
+  background: #333; display: block;
+}
+.p-name { font-size: 21px; font-weight: 800; color: #fff; margin: 0 0 14px; line-height: 1.35; }
+.p-bio { font-size: 11.5px; line-height: 1.8; color: #a8a8a8; max-width: 560px; margin: 0 auto 20px; }
+.p-hire {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: #111; border: none; border-radius: 999px;
+  font-family: inherit; font-size: 11.5px; font-weight: 700;
+  padding: 10px 22px; cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.p-hire:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,255,255,0.18); }
+.p-hire-icon { width: 15px; height: 15px; }
+
+.p-git-head { display: flex; align-items: center; justify-content: space-between; margin: 30px 0 10px; gap: 10px; }
+.p-git-left { display: flex; align-items: center; gap: 8px; }
+.p-git-title { font-size: 11.5px; font-weight: 700; color: #fff; }
+.p-year {
+  background: #222; color: #fff; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px; font-family: inherit; font-size: 10.5px; padding: 2px 6px;
+}
+.p-git-total { font-size: 10.5px; color: #8a8a8a; }
+.p-git-scroll { overflow-x: auto; padding-bottom: 4px; }
+.p-git { min-width: 620px; text-align: left; }
+.p-git-months { display: grid; grid-template-columns: 34px repeat(53, 1fr); font-size: 8.5px; color: #777; margin-bottom: 4px; }
+.p-git-months span:first-child { grid-column: 2; }
+.p-git-months span { overflow: visible; white-space: nowrap; }
+.p-git-body { display: grid; grid-template-columns: 34px 1fr; gap: 4px; }
+.p-git-days { display: grid; grid-template-rows: repeat(7, 11px); gap: 3px; font-size: 8.5px; color: #777; align-items: center; }
+.p-git-grid { display: grid; grid-template-columns: repeat(53, 1fr); gap: 3px; }
+.p-week { display: grid; grid-template-rows: repeat(7, 11px); gap: 3px; }
+.p-cell { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.p-cell.lv0 { background: #1c2836; }
+.p-cell.lv1 { background: #3c4f66; }
+.p-cell.lv2 { background: #6d8299; }
+.p-cell.lv3 { background: #c3cfdb; }
+.p-cell.lv4 { background: #ffffff; }
+.p-cell.sm { width: 10px; height: 10px; }
+.p-git-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 9px; color: #777; margin-top: 8px; }
+
+.p-sec { text-align: left; font-size: 13px; font-weight: 800; color: #fff; margin: 24px 0 12px; }
+.p-exp {
+  display: flex; gap: 14px; text-align: left;
+  background: #0d0d0d; border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px; padding: 16px;
+}
+.p-exp-logo {
+  flex-shrink: 0; width: 64px; height: 64px; border-radius: 10px;
+  background: #1e1e1e; border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; color: #fff;
+}
+.p-exp-logo .sup { font-size: 8px; vertical-align: super; }
+.p-exp-body { flex: 1; min-width: 0; }
+.p-exp-title { font-size: 13.5px; font-weight: 800; color: #fff; margin: 0 0 3px; }
+.p-exp-sub { font-size: 10.5px; color: #cfcfcf; margin: 0 0 8px; }
+.p-exp-desc { font-size: 10.5px; line-height: 1.65; color: #9a9a9a; margin: 0 0 12px; }
+.p-exp-resp { font-size: 10px; font-weight: 800; color: #d8d8d8; margin: 0 0 6px; letter-spacing: 0.3px; }
+.p-exp-list { margin: 0 0 12px; padding: 0; list-style: none; font-size: 10.5px; color: #9a9a9a; line-height: 1.7; }
+.p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.p-tags span {
+  font-size: 9px; color: #d5d5d5; border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 5px; padding: 3px 8px; background: rgba(255,255,255,0.03);
+}
+.p-exp-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.p-date { font-size: 10px; color: #8a8a8a; }
+.p-badge {
+  font-size: 10px; color: #e6e6e6; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px; padding: 4px 10px; background: #1c1c1c;
+}
+
+.p-socials { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
+.p-soc {
+  width: 44px; height: 44px; border-radius: 9px;
+  border: 1px solid rgba(255,255,255,0.28);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; transition: background 0.2s ease, transform 0.2s ease;
+}
+.p-soc:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.p-soc svg { width: 19px; height: 19px; }
+
+.p-foot { display: flex; justify-content: space-between; gap: 10px; margin-top: 26px; font-size: 10px; color: #fff; font-weight: 700; flex-wrap: wrap; }
+.p-foot .dim { color: #666; font-weight: 400; }
+.p-copy { font-size: 10px; color: #555; margin: 8px 0 0; }
+
+.p-nav {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(22,22,22,0.92); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px; padding: 6px; z-index: 60;
+  backdrop-filter: blur(12px);
+}
+.p-nav-item {
+  border: none; background: transparent; color: #cfcfcf; cursor: pointer;
+  min-width: 44px; min-height: 44px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: inherit; font-size: 11px; font-weight: 700;
+  padding: 8px 10px; transition: background 0.2s ease, color 0.2s ease;
+}
+.p-nav-item svg { width: 17px; height: 17px; }
+.p-nav-item.wide { padding: 8px 16px; }
+.p-nav-item.active { background: #333; color: #fff; }
+.p-nav-item:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+@media (max-width: 560px) {
+  .profile-card { padding: 26px 16px 18px; }
+  .p-name { font-size: 16px; }
+  .p-bio { font-size: 10.5px; }
+  .p-exp { flex-direction: column; }
+  .p-foot { justify-content: center; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+</style>
