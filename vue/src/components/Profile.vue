@@ -269,7 +269,7 @@ const go = (tab) => emit("navigate", tab);
   background:rgba(255,255,255,.17); display: block;
 }
 .p-name { font-size: 21px; font-weight: 800; color: #f5f5f5; margin: 0 0 14px; line-height: 1.35; }
-.p-bio { font-size: 11.5px; line-height: 1.8; color: #9b9b9b; max-width: 560px; margin: 0 auto 20px; }
+.p-bio { font-size: 11.5px; line-height: 1.8; color: #9b9b9b; max-width: 800px; margin: 0 auto 20px; }
 .p-hire {
   display: inline-flex; align-items: center; gap: 8px;
   background: #f5f5f5; color: #1b1c1b; border: none; border-radius: 999px;

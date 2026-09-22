@@ -130,7 +130,7 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
         }
         .p-bio {
           font-size: 11.5px; line-height: 1.85; color: #9b9b9b;
-          max-width: 560px; margin: 0 auto 22px;
+          max-width: 800px; margin: 0 auto 22px;
         }
 
         .p-hire {
