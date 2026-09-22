@@ -3,6 +3,8 @@ import Profile from "./Profile.jsx";
 import Project from "./Project.jsx";
 import Achievement from "./Achievement.jsx";
 import Certification from "./Certification.jsx";
+import Dashboard from "./Dashboard.jsx";
+import portfolio from "./data/portfolio.json";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
@@ -65,6 +67,25 @@ export default function App() {
           background: #090909;
           font-family: Arial, Helvetica, sans-serif;
         }
+
+        .admin-fab {
+          position: fixed;
+          right: 16px;
+          bottom: 76px;
+          z-index: 70;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(34, 35, 34, 0.9);
+          border: 1px solid rgba(255, 255, 255, 0.22);
+          color: #f5f5f5;
+          cursor: pointer;
+        }
+        .admin-fab svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .admin-fab:hover { background: rgba(255, 255, 255, 0.14); }
 
         #root {
           width: 100%;
@@ -1700,6 +1721,8 @@ export default function App() {
         <Achievement active={activeTab} onNavigate={navigate} />
       ) : activeTab === "certification" ? (
         <Certification active={activeTab} onNavigate={navigate} />
+      ) : activeTab === "dashboard" ? (
+        <Dashboard onNavigate={navigate} />
       ) : (
       <main className="portfolio">
 
@@ -1741,11 +1764,11 @@ export default function App() {
         <section className="main">
 
           <div className="hello">
-            HELLO
+            {portfolio.profile.hello}
           </div>
 
           <div className="category">
-            JUNIOR DEVELOPER
+            {portfolio.profile.title}
           </div>
 
 
@@ -1754,7 +1777,7 @@ export default function App() {
             <div className="line" />
 
             <h1 className="title">
-              SAIFUL RIZAL
+              {portfolio.profile.shortName}
             </h1>
 
             <div className="line" />
@@ -2049,6 +2072,19 @@ export default function App() {
         <div className="mark two" />
 
       </main>
+      )}
+      {activeTab !== "dashboard" && (
+        <button
+          className="admin-fab"
+          onClick={() => navigate("dashboard")}
+          aria-label="Buka Dashboard"
+          title="Dashboard"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M12 8.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z" />
+            <path d="M19.4 13.5c.05-.5.05-1 .05-1.5s0-1-.05-1.5l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-2.6-1.5L14 2h-4l-.5 2.6a7.6 7.6 0 0 0-2.6 1.5l-2.3-1-2 3.4 2 1.5c-.05.5-.05 1-.05 1.5s0 1 .05 1.5l-2 1.5 2 3.4 2.3-1a7.6 7.6 0 0 0 2.6 1.5L10 22h4l.5-2.6a7.6 7.6 0 0 0 2.6-1.5l2.3 1 2-3.4-2-1.5Z" />
+          </svg>
+        </button>
       )}
     </>
   );

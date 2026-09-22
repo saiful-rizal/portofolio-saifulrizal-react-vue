@@ -1,20 +1,12 @@
 <script setup>
+import portfolio from "../data/portfolio.json";
+
 const emit = defineEmits(["navigate"]);
 defineProps({ active: { type: String, default: "achievement" } });
 
-const stats = [
-  { n: "8+", l: "Penghargaan" },
-  { n: "3", l: "Pendanaan Riset" },
-  { n: "5", l: "Kompetisi" },
-];
+const stats = portfolio.achievements.stats;
 
-const items = [
-  { year: "2025", title: "Lolos Pendanaan PKM", org: "Kemendikbudristek", desc: "Proposal riset aplikasi survei lapangan didanai penuh; lolos seleksi nasional dan monev.", tag: "Riset" },
-  { year: "2024", title: "Juara 1 Hackathon", org: "Hackathon Nasional", desc: "Bangun AI helpdesk kampus dalam 48 jam: RAG + ticketing, dinobatkan solusi terbaik.", tag: "Kompetisi" },
-  { year: "2024", title: "Best Intern", org: "PT. Wesdic Indonesia Neotech", desc: "Magang Full-Stack terbaik: ship 3 modul produksi dan pangkas waktu muat 40%.", tag: "Industri" },
-  { year: "2023", title: "Finalis GEMASTIK", org: "Kompetisi Mahasiswa Nasional", desc: "Finalis divisi pengembangan perangkat lunak dengan SIAKAD mini.", tag: "Kompetisi" },
-  { year: "2023", title: "Asisten Riset", org: "Politeknik Negeri Jember", desc: "Asisten riset dosen: bangun instrumen survei digital untuk 500+ responden.", tag: "Akademik" },
-];
+const items = portfolio.achievements.items;
 
 const go = (tab) => emit("navigate", tab);
 </script>

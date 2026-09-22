@@ -4,6 +4,8 @@ import Profile from "./components/Profile.vue";
 import Project from "./components/Project.vue";
 import Achievement from "./components/Achievement.vue";
 import Certification from "./components/Certification.vue";
+import Dashboard from "./components/Dashboard.vue";
+import portfolio from "./data/portfolio.json";
 
 const activeTab = ref("home");
 const navigate = (tab) => {
@@ -69,6 +71,10 @@ const timerStyle = computed(() => ({
     :active="activeTab"
     @navigate="navigate"
   />
+  <Dashboard
+    v-else-if="activeTab === 'dashboard'"
+    @navigate="navigate"
+  />
   <main v-else class="portfolio">
     <!-- BACKGROUND -->
     <div class="grain" />
@@ -87,12 +93,12 @@ const timerStyle = computed(() => ({
 
     <!-- HERO -->
     <section class="main">
-      <div class="hello">HELLO</div>
-      <div class="category">JUNIOR DEVELOPER</div>
+      <div class="hello">{{ portfolio.profile.hello }}</div>
+      <div class="category">{{ portfolio.profile.title }}</div>
 
       <div class="title-row">
         <div class="line" />
-        <h1 class="title">SAIFUL RIZAL</h1>
+        <h1 class="title">{{ portfolio.profile.shortName }}</h1>
         <div class="line" />
       </div>
 
@@ -174,6 +180,19 @@ const timerStyle = computed(() => ({
     <div class="mark one" />
     <div class="mark two" />
   </main>
+
+  <button
+    v-if="activeTab !== 'dashboard'"
+    class="admin-fab"
+    @click="navigate('dashboard')"
+    aria-label="Buka Dashboard"
+    title="Dashboard"
+  >
+    <svg viewBox="0 0 24 24">
+      <path d="M12 8.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5Z" />
+      <path d="M19.4 13.5c.05-.5.05-1 .05-1.5s0-1-.05-1.5l2-1.5-2-3.4-2.3 1a7.6 7.6 0 0 0-2.6-1.5L14 2h-4l-.5 2.6a7.6 7.6 0 0 0-2.6 1.5l-2.3-1-2 3.4 2 1.5c-.05.5-.05 1-.05 1.5s0 1 .05 1.5l-2 1.5 2 3.4 2.3-1a7.6 7.6 0 0 0 2.6 1.5L10 22h4l.5-2.6a7.6 7.6 0 0 0 2.6-1.5l2.3 1 2-3.4-2-1.5Z" />
+    </svg>
+  </button>
 </template>
 
 <style>
@@ -649,6 +668,30 @@ html {
 .mark::after { width: 1px; height: 100%; left: 50%; top: 0; }
 .mark.one { left: 4%; bottom: 4%; }
 .mark.two { right: 4%; bottom: 4%; }
+
+/* =====================================================
+   ADMIN FAB
+===================================================== */
+.admin-fab {
+  position: fixed;
+  right: 16px;
+  bottom: 76px;
+  z-index: 70;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 35, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f5f5f5;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.admin-fab svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.admin-fab:hover { transform: translateY(-3px) scale(1.05); background: rgba(255, 255, 255, 0.14); }
 
 /* =====================================================
    TABLET

@@ -1,17 +1,9 @@
 import { useMemo, useState } from "react";
+import portfolio from "./data/portfolio.json";
 
 const FILTERS = ["Semua", "Cloud", "Web", "Mobile"];
 
-const CERTS = [
-  { init: "AWS", title: "Cloud Practitioner", issuer: "Amazon Web Services", year: "2025", id: "AWS-9K42-X1", cat: "Cloud", grad: "linear-gradient(135deg,#353633,#222322)" },
-  { init: "FE", title: "Front-End Expert", issuer: "Dicoding Indonesia", year: "2024", id: "DCD-FE-2204", cat: "Web", grad: "linear-gradient(135deg,#303130,#1b1c1b)" },
-  { init: "FL", title: "Flutter Developer", issuer: "Google / Udemy", year: "2024", id: "FLT-88Q2-MB", cat: "Mobile", grad: "linear-gradient(135deg,#333433,#1b1c1b)" },
-  { init: "LV", title: "Laravel Backend Pro", issuer: "BuildWithAngga", year: "2023", id: "BWA-LV-1031", cat: "Web", grad: "linear-gradient(135deg,#2f3030,#181918)" },
-  { init: "AZ", title: "Azure Fundamentals AZ-900", issuer: "Microsoft", year: "2025", id: "MS-AZ-7734", cat: "Cloud", grad: "linear-gradient(135deg,#2e2f2e,#1b1c1b)" },
-  { init: "GC", title: "Cloud Digital Leader", issuer: "Google Cloud", year: "2025", id: "GCP-CDL-5520", cat: "Cloud", grad: "linear-gradient(135deg,#353633,#1b1c1b)" },
-  { init: "RW", title: "Responsive Web Design", issuer: "freeCodeCamp", year: "2023", id: "FCC-RWD-9918", cat: "Web", grad: "linear-gradient(135deg,#2b2c2b,#181918)" },
-  { init: "AD", title: "Android Pemula", issuer: "Dicoding Indonesia", year: "2023", id: "DCD-AND-3307", cat: "Mobile", grad: "linear-gradient(135deg,#33352f,#222322)" },
-];
+const CERTS = portfolio.certifications;
 
 export default function Certification({ active = "certification", onNavigate = () => {} }) {
   const [filter, setFilter] = useState("Semua");

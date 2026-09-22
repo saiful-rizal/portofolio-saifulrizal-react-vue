@@ -1,0 +1,249 @@
+{
+  "profile": {
+    "name": "Yanuar Ardhika Rahmadhani Ubaidillah, S.Tr.Kom.",
+    "shortName": "SAIFUL RIZAL",
+    "role": "Software Engineer",
+    "title": "JUNIOR DEVELOPER",
+    "hello": "HELLO",
+    "bio": "Software Engineer dan lulusan Sarjana Terapan (S.Tr.Kom.) Teknik Informatika Politeknik Negeri Jember dengan spesialisasi pengembangan web dan mobile (Next.js, Laravel, Flutter). Memiliki rekam jejak dalam merancang serta membangun aplikasi end-to-end yang skalabel, efisien, dan ramah pengguna — mulai dari sistem informasi instansi, proyek riset terdanai PKM, hingga pengalaman industri. Berorientasi pada clean code, pemecahan masalah nyata, dan siap memberikan kontribusi optimal dalam pengembangan produk digital.",
+    "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop",
+    "status": "Lulusan Teknik Informatika",
+    "githubTotal": 9430,
+    "githubYear": "2026",
+    "socials": {
+      "instagram": "#",
+      "github": "#",
+      "linkedin": "#"
+    }
+  },
+  "experiences": [
+    {
+      "logo": "wesclio",
+      "title": "Full-Stack Web Developer",
+      "company": "PT. Wesdic Indonesia Neotech - Yogyakarta, Indonesia",
+      "desc": "Magang sebagai Full-Stack Web Developer di perusahaan yang bergerak dibidang Teknologi Informasi dengan layanan perencanaan, pembuatan, pengembangan, perbaikan serta perawatan infrastruktur IT.",
+      "resp": [
+        "Mengembangkan dan memelihara proyek aplikasi web yang ada di perusahaan",
+        "Berpartisipasi dalam code review dan agile development",
+        "Mengoptimalkan sistem kinerja proyek pada perusahaan"
+      ],
+      "tags": ["React", "Next.js", "TypeScript", "Laravel", "MySQL", "Tailwind CSS"],
+      "date": "Agustus 2025 - Desember 2025",
+      "badge": "Magang / Internship"
+    },
+    {
+      "logo": "SR",
+      "title": "Frontend Web Developer",
+      "company": "Freelance - Remote, Indonesia",
+      "desc": "Mengerjakan proyek website untuk UMKM dan instansi: company profile, landing page, dan dashboard admin dengan fokus kecepatan serta SEO.",
+      "resp": [
+        "Membangun UI responsif dari desain Figma ke kode produksi",
+        "Integrasi REST API dan optimasi Core Web Vitals",
+        "Maintenance serta dokumentasi tiap rilis proyek"
+      ],
+      "tags": ["Vue", "React", "Flutter", "Firebase", "Figma"],
+      "date": "Januari 2024 - Sekarang",
+      "badge": "Freelance"
+    }
+  ],
+  "projects": [
+    {
+      "title": "SIAKAD Instansi",
+      "desc": "Sistem informasi akademik end-to-end: KRS, nilai, presensi QR, dan panel admin role-based.",
+      "tags": ["Next.js", "Laravel", "MySQL"],
+      "cat": "Web",
+      "year": "2025",
+      "status": "Live",
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)",
+      "icon": "M4 5h16v14H4z M4 9h16"
+    },
+    {
+      "title": "PKM Riset App",
+      "desc": "Aplikasi riset terdanai PKM: survei lapangan offline-first dengan sinkronisasi otomatis.",
+      "tags": ["Flutter", "Firebase"],
+      "cat": "Mobile",
+      "year": "2024",
+      "status": "Source",
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)",
+      "icon": "M9 2h6v20H9z M12 18h.01"
+    },
+    {
+      "title": "AI Helpdesk Chatbot",
+      "desc": "Chatbot layanan kampus dengan RAG: jawab FAQ, buat tiket, dan eskalasi ke staf.",
+      "tags": ["Python", "OpenAI", "Next.js"],
+      "cat": "AI",
+      "year": "2025",
+      "status": "Demo",
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)",
+      "icon": "M12 3a7 7 0 0 1 7 7c0 2-1 3.6-2.5 4.7V17H7.5v-2.3C6 13.6 5 12 5 10a7 7 0 0 1 7-7z M9 21h6"
+    },
+    {
+      "title": "E-Commerce Headless",
+      "desc": "Toko online headless: katalog cepat, checkout midtrans, dan dashboard penjualan.",
+      "tags": ["Next.js", "Tailwind"],
+      "cat": "Web",
+      "year": "2024",
+      "status": "Live",
+      "grad": "linear-gradient(135deg,#353633,#222322)",
+      "icon": "M3 7h13v10H3z M3 7l2-3h9l2 3 M7 12h6"
+    },
+    {
+      "title": "Absensi QR Mobile",
+      "desc": "Presensi karyawan via QR + geofence dengan rekap otomatis dan ekspor Excel.",
+      "tags": ["Flutter", "Laravel"],
+      "cat": "Mobile",
+      "year": "2025",
+      "status": "Source",
+      "grad": "linear-gradient(135deg,#2f3030,#181918)",
+      "icon": "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h2v2h2v2h-2v2h-2z"
+    },
+    {
+      "title": "Analitik Dashboard",
+      "desc": "Dashboard KPI real-time: chart interaktif, filter tanggal, dan ekspor CSV.",
+      "tags": ["React", "TypeScript"],
+      "cat": "Web",
+      "year": "2023",
+      "status": "Demo",
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
+      "icon": "M4 20V10 M10 20V4 M16 20v-8 M20 20H4"
+    },
+    {
+      "title": "Kasir POS Web",
+      "desc": "Point of sales untuk UMKM: kelola stok, struk thermal, dan laporan harian.",
+      "tags": ["Vue", "Laravel"],
+      "cat": "Web",
+      "year": "2024",
+      "status": "Live",
+      "grad": "linear-gradient(135deg,#33352f,#1b1c1b)",
+      "icon": "M4 4h16v12H4z M8 20h8 M12 16v4 M7 9h4 M7 12h7"
+    },
+    {
+      "title": "Absensi Wajah AI",
+      "desc": "Presensi berbasis pengenalan wajah on-device dengan anti-spoofing sederhana.",
+      "tags": ["Python", "Flutter"],
+      "cat": "AI",
+      "year": "2025",
+      "status": "Demo",
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)",
+      "icon": "M12 3a7 7 0 0 1 7 7v5l-2 2H7l-2-2v-5a7 7 0 0 1 7-7z M9 12h.01 M15 12h.01 M9 16h6"
+    }
+  ],
+  "achievements": {
+    "stats": [
+      { "n": "8+", "l": "Penghargaan" },
+      { "n": "3", "l": "Pendanaan Riset" },
+      { "n": "5", "l": "Kompetisi" }
+    ],
+    "items": [
+      {
+        "year": "2025",
+        "title": "Lolos Pendanaan PKM",
+        "org": "Kemendikbudristek",
+        "desc": "Proposal riset aplikasi survei lapangan didanai penuh; lolos seleksi nasional dan monev.",
+        "tag": "Riset"
+      },
+      {
+        "year": "2024",
+        "title": "Juara 1 Hackathon",
+        "org": "Hackathon Nasional",
+        "desc": "Bangun AI helpdesk kampus dalam 48 jam: RAG + ticketing, dinobatkan solusi terbaik.",
+        "tag": "Kompetisi"
+      },
+      {
+        "year": "2024",
+        "title": "Best Intern",
+        "org": "PT. Wesdic Indonesia Neotech",
+        "desc": "Magang Full-Stack terbaik: ship 3 modul produksi dan pangkas waktu muat 40%.",
+        "tag": "Industri"
+      },
+      {
+        "year": "2023",
+        "title": "Finalis GEMASTIK",
+        "org": "Kompetisi Mahasiswa Nasional",
+        "desc": "Finalis divisi pengembangan perangkat lunak dengan SIAKAD mini.",
+        "tag": "Kompetisi"
+      },
+      {
+        "year": "2023",
+        "title": "Asisten Riset",
+        "org": "Politeknik Negeri Jember",
+        "desc": "Asisten riset dosen: bangun instrumen survei digital untuk 500+ responden.",
+        "tag": "Akademik"
+      }
+    ]
+  },
+  "certifications": [
+    {
+      "init": "AWS",
+      "title": "Cloud Practitioner",
+      "issuer": "Amazon Web Services",
+      "year": "2025",
+      "id": "AWS-9K42-X1",
+      "cat": "Cloud",
+      "grad": "linear-gradient(135deg,#353633,#222322)"
+    },
+    {
+      "init": "FE",
+      "title": "Front-End Expert",
+      "issuer": "Dicoding Indonesia",
+      "year": "2024",
+      "id": "DCD-FE-2204",
+      "cat": "Web",
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+    },
+    {
+      "init": "FL",
+      "title": "Flutter Developer",
+      "issuer": "Google / Udemy",
+      "year": "2024",
+      "id": "FLT-88Q2-MB",
+      "cat": "Mobile",
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+    },
+    {
+      "init": "LV",
+      "title": "Laravel Backend Pro",
+      "issuer": "BuildWithAngga",
+      "year": "2023",
+      "id": "BWA-LV-1031",
+      "cat": "Web",
+      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+    },
+    {
+      "init": "AZ",
+      "title": "Azure Fundamentals AZ-900",
+      "issuer": "Microsoft",
+      "year": "2025",
+      "id": "MS-AZ-7734",
+      "cat": "Cloud",
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+    },
+    {
+      "init": "GC",
+      "title": "Cloud Digital Leader",
+      "issuer": "Google Cloud",
+      "year": "2025",
+      "id": "GCP-CDL-5520",
+      "cat": "Cloud",
+      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
+    },
+    {
+      "init": "RW",
+      "title": "Responsive Web Design",
+      "issuer": "freeCodeCamp",
+      "year": "2023",
+      "id": "FCC-RWD-9918",
+      "cat": "Web",
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+    },
+    {
+      "init": "AD",
+      "title": "Android Pemula",
+      "issuer": "Dicoding Indonesia",
+      "year": "2023",
+      "id": "DCD-AND-3307",
+      "cat": "Mobile",
+      "grad": "linear-gradient(135deg,#33352f,#222322)"
+    }
+  ]
+}

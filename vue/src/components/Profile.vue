@@ -1,8 +1,12 @@
 <script setup>
 import { ref, computed } from "vue";
 
+import portfolio from "../data/portfolio.json";
+
 const emit = defineEmits(["navigate"]);
 const props = defineProps({ active: { type: String, default: "about" } });
+const experiences = portfolio.experiences;
+const profile = portfolio.profile;
 
 const year = ref("2026");
 const years = ["2026", "2025", "2024"];
@@ -50,23 +54,16 @@ const go = (tab) => emit("navigate", tab);
       <div class="p-photo-wrap">
         <img
           class="p-photo"
-          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop"
+          :src="profile.photo"
           alt="Foto profil"
         />
       </div>
 
       <!-- NAMA -->
-      <h1 class="p-name">Yanuar Ardhika Rahmadhani Ubaidillah, S.Tr.Kom.</h1>
+      <h1 class="p-name">{{ profile.name }}</h1>
 
       <!-- BIO -->
-      <p class="p-bio">
-        Software Engineer dan lulusan Sarjana Terapan (S.Tr.Kom.) Teknik Informatika Politeknik
-        Negeri Jember dengan spesialisasi pengembangan web dan mobile (Next.js, Laravel, Flutter).
-        Memiliki rekam jejak dalam merancang serta membangun aplikasi end-to-end yang skalabel,
-        efisien, dan ramah pengguna — mulai dari sistem informasi instansi, proyek riset terdanai
-        PKM, hingga pengalaman industri. Berorientasi pada clean code, pemecahan masalah nyata,
-        dan siap memberikan kontribusi optimal dalam pengembangan produk digital.
-      </p>
+      <p class="p-bio">{{ profile.bio }}</p>
 
       <!-- CTA -->
       <button class="p-hire" @click="go('contact')">
@@ -87,7 +84,7 @@ const go = (tab) => emit("navigate", tab);
             <option v-for="y in years" :key="y" :value="y">{{ y }}</option>
           </select>
         </div>
-        <span class="p-git-total">9430 kontribusi</span>
+        <span class="p-git-total">{{ profile.githubTotal }} kontribusi</span>
       </div>
 
       <div class="p-git-scroll">
@@ -126,77 +123,46 @@ const go = (tab) => emit("navigate", tab);
       <h2 class="p-sec">Pengalaman Kerja</h2>
 
       <div class="p-exp-grid">
-      <div class="p-exp">
-        <div class="p-exp-logo">wesclio<span class="sup">®</span></div>
-        <div class="p-exp-body">
-          <h3 class="p-exp-title">Full-Stack Web Developer</h3>
-          <p class="p-exp-sub">PT. Wesdic Indonesia Neotech - Yogyakarta, Indonesia</p>
-          <p class="p-exp-desc">
-            Magang sebagai Full-Stack Web Developer di perusahaan yang bergerak dibidang
-            Teknologi Informasi dengan layanan perencanaan, pembuatan, pengembangan,
-            perbaikan serta perawatan infrastruktur IT.
-          </p>
-          <p class="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
-          <ul class="p-exp-list">
-            <li>Mengembangkan dan memelihara proyek aplikasi web yang ada di perusahaan</li>
-            <li>Berpartisipasi dalam code review dan agile development</li>
-            <li>Mengoptimalkan sistem kinerja proyek pada perusahaan</li>
-          </ul>
-          <div class="p-tags">
-            <span>React</span><span>Next.js</span><span>TypeScript</span><span>Laravel</span><span>MySQL</span><span>Tailwind CSS</span>
-          </div>
-          <div class="p-exp-foot">
-            <span class="p-date">Agustus 2025 - Desember 2025</span>
-            <span class="p-badge">Magang / Internship</span>
+        <div v-for="job in experiences" :key="job.title" class="p-exp">
+          <div class="p-exp-logo">{{ job.logo }}<span class="sup">®</span></div>
+          <div class="p-exp-body">
+            <h3 class="p-exp-title">{{ job.title }}</h3>
+            <p class="p-exp-sub">{{ job.company }}</p>
+            <p class="p-exp-desc">{{ job.desc }}</p>
+            <p class="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
+            <ul class="p-exp-list">
+              <li v-for="r in job.resp" :key="r">{{ r }}</li>
+            </ul>
+            <div class="p-tags">
+              <span v-for="t in job.tags" :key="t">{{ t }}</span>
+            </div>
+            <div class="p-exp-foot">
+              <span class="p-date">{{ job.date }}</span>
+              <span class="p-badge">{{ job.badge }}</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="p-exp">
-        <div class="p-exp-logo">SR<span class="sup">®</span></div>
-        <div class="p-exp-body">
-          <h3 class="p-exp-title">Frontend Web Developer</h3>
-          <p class="p-exp-sub">Freelance - Remote, Indonesia</p>
-          <p class="p-exp-desc">
-            Mengerjakan proyek website untuk UMKM dan instansi: company profile,
-            landing page, dan dashboard admin dengan fokus kecepatan serta SEO.
-          </p>
-          <p class="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
-          <ul class="p-exp-list">
-            <li>Membangun UI responsif dari desain Figma ke kode produksi</li>
-            <li>Integrasi REST API dan optimasi Core Web Vitals</li>
-            <li>Maintenance serta dokumentasi tiap rilis proyek</li>
-          </ul>
-          <div class="p-tags">
-            <span>Vue</span><span>React</span><span>Flutter</span><span>Firebase</span><span>Figma</span>
-          </div>
-          <div class="p-exp-foot">
-            <span class="p-date">Januari 2024 - Sekarang</span>
-            <span class="p-badge">Freelance</span>
-          </div>
-        </div>
-      </div>
       </div>
 
       <!-- SOSMED -->
       <div class="p-socials">
-        <a href="#" aria-label="Instagram" class="p-soc">
+        <a :href="profile.socials.instagram" aria-label="Instagram" class="p-soc">
           <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2Zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4Zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.4a1.4 1.4 0 1 0 0-2.9 1.4 1.4 0 0 0 0 2.9Z" fill="currentColor"/></svg>
         </a>
-        <a href="#" aria-label="GitHub" class="p-soc">
+        <a :href="profile.socials.github" aria-label="GitHub" class="p-soc">
           <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 6.8 9.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.4 4.7-4.6 4.9.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z" fill="currentColor"/></svg>
         </a>
-        <a href="#" aria-label="LinkedIn" class="p-soc">
+        <a :href="profile.socials.linkedin" aria-label="LinkedIn" class="p-soc">
           <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8.09h4.56V23H.22V8.09Zm7.44 0h4.37v2.04h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 7v8.24h-4.55v-7.3c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V23H7.66V8.09Z" fill="currentColor"/></svg>
         </a>
       </div>
 
       <!-- FOOTER -->
       <div class="p-foot">
-        <span class="p-foot-l"><span class="dim">Status:</span> Lulusan Teknik Informatika</span>
-        <span class="p-foot-r"><span class="dim">Peran:</span> Software Engineer</span>
+        <span class="p-foot-l"><span class="dim">Status:</span> {{ profile.status }}</span>
+        <span class="p-foot-r"><span class="dim">Peran:</span> {{ profile.role }}</span>
       </div>
-      <p class="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+      <p class="p-copy">© 2026 {{ profile.name.toUpperCase() }}</p>
     </div>
 
     <!-- BOTTOM NAV -->

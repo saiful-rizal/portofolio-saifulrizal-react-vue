@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import portfolio from "../data/portfolio.json";
 
 const emit = defineEmits(["navigate"]);
 defineProps({ active: { type: String, default: "project" } });
@@ -7,72 +8,7 @@ defineProps({ active: { type: String, default: "project" } });
 const filter = ref("Semua");
 const filters = ["Semua", "Web", "Mobile", "AI"];
 
-const projects = [
-  {
-    title: "SIAKAD Instansi",
-    desc: "Sistem informasi akademik end-to-end: KRS, nilai, presensi QR, dan panel admin role-based.",
-    tags: ["Next.js", "Laravel", "MySQL"],
-    cat: "Web", year: "2025", status: "Live",
-    grad: "linear-gradient(135deg,#303130,#1b1c1b)",
-    icon: "M4 5h16v14H4z M4 9h16",
-  },
-  {
-    title: "PKM Riset App",
-    desc: "Aplikasi riset terdanai PKM: survei lapangan offline-first dengan sinkronisasi otomatis.",
-    tags: ["Flutter", "Firebase"],
-    cat: "Mobile", year: "2024", status: "Source",
-    grad: "linear-gradient(135deg,#2b2c2b,#181918)",
-    icon: "M9 2h6v20H9z M12 18h.01",
-  },
-  {
-    title: "AI Helpdesk Chatbot",
-    desc: "Chatbot layanan kampus dengan RAG: jawab FAQ, buat tiket, dan eskalasi ke staf.",
-    tags: ["Python", "OpenAI", "Next.js"],
-    cat: "AI", year: "2025", status: "Demo",
-    grad: "linear-gradient(135deg,#333433,#1b1c1b)",
-    icon: "M12 3a7 7 0 0 1 7 7c0 2-1 3.6-2.5 4.7V17H7.5v-2.3C6 13.6 5 12 5 10a7 7 0 0 1 7-7z M9 21h6",
-  },
-  {
-    title: "E-Commerce Headless",
-    desc: "Toko online headless: katalog cepat, checkout midtrans, dan dashboard penjualan.",
-    tags: ["Next.js", "Tailwind"],
-    cat: "Web", year: "2024", status: "Live",
-    grad: "linear-gradient(135deg,#353633,#222322)",
-    icon: "M3 7h13v10H3z M3 7l2-3h9l2 3 M7 12h6",
-  },
-  {
-    title: "Absensi QR Mobile",
-    desc: "Presensi karyawan via QR + geofence dengan rekap otomatis dan ekspor Excel.",
-    tags: ["Flutter", "Laravel"],
-    cat: "Mobile", year: "2025", status: "Source",
-    grad: "linear-gradient(135deg,#2f3030,#181918)",
-    icon: "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h2v2h2v2h-2v2h-2z",
-  },
-  {
-    title: "Analitik Dashboard",
-    desc: "Dashboard KPI real-time: chart interaktif, filter tanggal, dan ekspor CSV.",
-    tags: ["React", "TypeScript"],
-    cat: "Web", year: "2023", status: "Demo",
-    grad: "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
-    icon: "M4 20V10 M10 20V4 M16 20v-8 M20 20H4",
-  },
-  {
-    title: "Kasir POS Web",
-    desc: "Point of sales untuk UMKM: kelola stok, struk thermal, dan laporan harian.",
-    tags: ["Vue", "Laravel"],
-    cat: "Web", year: "2024", status: "Live",
-    grad: "linear-gradient(135deg,#33352f,#1b1c1b)",
-    icon: "M4 4h16v12H4z M8 20h8 M12 16v4 M7 9h4 M7 12h7",
-  },
-  {
-    title: "Absensi Wajah AI",
-    desc: "Presensi berbasis pengenalan wajah on-device dengan anti-spoofing sederhana.",
-    tags: ["Python", "Flutter"],
-    cat: "AI", year: "2025", status: "Demo",
-    grad: "linear-gradient(135deg,#2b2c2b,#181918)",
-    icon: "M12 3a7 7 0 0 1 7 7v5l-2 2H7l-2-2v-5a7 7 0 0 1 7-7z M9 12h.01 M15 12h.01 M9 16h6",
-  },
-];
+const projects = portfolio.projects;
 
 const shown = computed(() =>
   filter.value === "Semua" ? projects : projects.filter((p) => p.cat === filter.value)

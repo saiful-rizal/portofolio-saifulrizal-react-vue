@@ -1,16 +1,8 @@
-const STATS = [
-  { n: "8+", l: "Penghargaan" },
-  { n: "3", l: "Pendanaan Riset" },
-  { n: "5", l: "Kompetisi" },
-];
+const STATS = portfolio.achievements.stats;
 
-const ITEMS = [
-  { year: "2025", title: "Lolos Pendanaan PKM", org: "Kemendikbudristek", desc: "Proposal riset aplikasi survei lapangan didanai penuh; lolos seleksi nasional dan monev.", tag: "Riset" },
-  { year: "2024", title: "Juara 1 Hackathon", org: "Hackathon Nasional", desc: "Bangun AI helpdesk kampus dalam 48 jam: RAG + ticketing, dinobatkan solusi terbaik.", tag: "Kompetisi" },
-  { year: "2024", title: "Best Intern", org: "PT. Wesdic Indonesia Neotech", desc: "Magang Full-Stack terbaik: ship 3 modul produksi dan pangkas waktu muat 40%.", tag: "Industri" },
-  { year: "2023", title: "Finalis GEMASTIK", org: "Kompetisi Mahasiswa Nasional", desc: "Finalis divisi pengembangan perangkat lunak dengan SIAKAD mini.", tag: "Kompetisi" },
-  { year: "2023", title: "Asisten Riset", org: "Politeknik Negeri Jember", desc: "Asisten riset dosen: bangun instrumen survei digital untuk 500+ responden.", tag: "Akademik" },
-];
+const ITEMS = portfolio.achievements.items;
+
+import portfolio from "./data/portfolio.json";
 
 export default function Achievement({ active = "achievement", onNavigate = () => {} }) {
   const go = (t) => () => onNavigate(t);
