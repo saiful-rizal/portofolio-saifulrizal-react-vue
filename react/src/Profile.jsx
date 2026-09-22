@@ -51,7 +51,7 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
 
         .profile-card {
           position: relative;
-          width: min(94vw, 740px);
+          width: min(96vw, 980px);
           background-color: rgba(34,35,34,.72);
           background-image:
             linear-gradient(rgba(150,150,150,.13) 1px, transparent 1px),
@@ -198,6 +198,7 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
           margin-top: 6px; border-radius: 1px;
         }
 
+        .p-exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .p-exp {
           display: flex; gap: 16px; text-align: left;
           background: #1b1c1b;
@@ -295,6 +296,9 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
         }
         .p-nav-item:hover { background: rgba(255,255,255,.1); color: #fff; }
 
+        @media (max-width: 860px) {
+          .p-exp-grid { grid-template-columns: 1fr; }
+        }
         @media (max-width: 560px) {
           .profile-card { padding: 26px 16px 18px; }
           .p-name { font-size: 16px; }
@@ -404,6 +408,7 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
 
           <h2 className="p-sec">Pengalaman Kerja</h2>
 
+          <div className="p-exp-grid">
           <div className="p-exp">
             <div className="p-exp-logo">
               wesclio<span className="sup">®</span>
@@ -435,6 +440,38 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
                 <span className="p-badge">Magang / Internship</span>
               </div>
             </div>
+          </div>
+
+          <div className="p-exp">
+            <div className="p-exp-logo">
+              SR<span className="sup">®</span>
+            </div>
+            <div className="p-exp-body">
+              <h3 className="p-exp-title">Frontend Web Developer</h3>
+              <p className="p-exp-sub">Freelance — Remote, Indonesia</p>
+              <p className="p-exp-desc">
+                Mengerjakan proyek website untuk UMKM dan instansi: company profile,
+                landing page, dan dashboard admin dengan fokus kecepatan serta SEO.
+              </p>
+              <p className="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
+              <ul className="p-exp-list">
+                <li>Membangun UI responsif dari desain Figma ke kode produksi</li>
+                <li>Integrasi REST API dan optimasi Core Web Vitals</li>
+                <li>Maintenance serta dokumentasi tiap rilis proyek</li>
+              </ul>
+              <div className="p-tags">
+                <span>Vue</span>
+                <span>React</span>
+                <span>Flutter</span>
+                <span>Firebase</span>
+                <span>Figma</span>
+              </div>
+              <div className="p-exp-foot">
+                <span className="p-date">Januari 2024 — Sekarang</span>
+                <span className="p-badge">Freelance</span>
+              </div>
+            </div>
+          </div>
           </div>
 
           <div className="p-socials">

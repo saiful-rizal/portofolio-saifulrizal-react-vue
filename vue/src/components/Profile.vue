@@ -125,6 +125,7 @@ const go = (tab) => emit("navigate", tab);
       <!-- PENGALAMAN -->
       <h2 class="p-sec">Pengalaman Kerja</h2>
 
+      <div class="p-exp-grid">
       <div class="p-exp">
         <div class="p-exp-logo">wesclio<span class="sup">®</span></div>
         <div class="p-exp-body">
@@ -149,6 +150,32 @@ const go = (tab) => emit("navigate", tab);
             <span class="p-badge">Magang / Internship</span>
           </div>
         </div>
+      </div>
+
+      <div class="p-exp">
+        <div class="p-exp-logo">SR<span class="sup">®</span></div>
+        <div class="p-exp-body">
+          <h3 class="p-exp-title">Frontend Web Developer</h3>
+          <p class="p-exp-sub">Freelance - Remote, Indonesia</p>
+          <p class="p-exp-desc">
+            Mengerjakan proyek website untuk UMKM dan instansi: company profile,
+            landing page, dan dashboard admin dengan fokus kecepatan serta SEO.
+          </p>
+          <p class="p-exp-resp">TANGGUNG JAWAB UTAMA</p>
+          <ul class="p-exp-list">
+            <li>Membangun UI responsif dari desain Figma ke kode produksi</li>
+            <li>Integrasi REST API dan optimasi Core Web Vitals</li>
+            <li>Maintenance serta dokumentasi tiap rilis proyek</li>
+          </ul>
+          <div class="p-tags">
+            <span>Vue</span><span>React</span><span>Flutter</span><span>Firebase</span><span>Figma</span>
+          </div>
+          <div class="p-exp-foot">
+            <span class="p-date">Januari 2024 - Sekarang</span>
+            <span class="p-badge">Freelance</span>
+          </div>
+        </div>
+      </div>
       </div>
 
       <!-- SOSMED -->
@@ -210,7 +237,7 @@ const go = (tab) => emit("navigate", tab);
 }
 .profile-card {
   position: relative;
-  width: min(94vw, 740px);
+  width: min(96vw, 980px);
   background-color: rgba(34,35,34,.72);
   background-image:
     linear-gradient(rgba(150,150,150,0.13) 1px, transparent 1px),
@@ -280,6 +307,7 @@ const go = (tab) => emit("navigate", tab);
 .p-git-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 9px; color: #707070; margin-top: 8px; }
 
 .p-sec { text-align: left; font-size: 13px; font-weight: 800; color: #f5f5f5; margin: 24px 0 12px; }
+.p-exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .p-exp {
   display: flex; gap: 14px; text-align: left;
   background: #1b1c1b; border: 1px solid rgba(255,255,255,0.14);
@@ -304,7 +332,7 @@ const go = (tab) => emit("navigate", tab);
   border-radius: 5px; padding: 3px 8px; background: rgba(255,255,255,0.03);
 }
 .p-exp-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-.p-date { font-size: 10px; color: #8a8a8a; }
+.p-date { font-size: 10px; color: #858585; }
 .p-badge {
   font-size: 10px; color: #e6e6e6; border: 1px solid rgba(255,255,255,0.25);
   border-radius: 6px; padding: 4px 10px; background: #1c1c1c;
@@ -327,7 +355,7 @@ const go = (tab) => emit("navigate", tab);
 .p-nav {
   position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%);
   display: flex; align-items: center; gap: 4px;
-  background: rgba(22,22,22,0.92); border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(34,35,34,.82); border: 1px solid rgba(255,255,255,.22);
   border-radius: 999px; padding: 6px; z-index: 60;
   backdrop-filter: blur(12px);
 }
@@ -343,6 +371,9 @@ const go = (tab) => emit("navigate", tab);
 .p-nav-item.active { background:rgba(255,255,255,.17); color: #f5f5f5; }
 .p-nav-item:hover { background: rgba(255,255,255,0.1); color: #f5f5f5; }
 
+@media (max-width: 860px) {
+  .p-exp-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 560px) {
   .profile-card { padding: 26px 16px 18px; }
   .p-name { font-size: 16px; }

@@ -56,6 +56,22 @@ const projects = [
     grad: "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
     icon: "M4 20V10 M10 20V4 M16 20v-8 M20 20H4",
   },
+  {
+    title: "Kasir POS Web",
+    desc: "Point of sales untuk UMKM: kelola stok, struk thermal, dan laporan harian.",
+    tags: ["Vue", "Laravel"],
+    cat: "Web", year: "2024", status: "Live",
+    grad: "linear-gradient(135deg,#33352f,#1b1c1b)",
+    icon: "M4 4h16v12H4z M8 20h8 M12 16v4 M7 9h4 M7 12h7",
+  },
+  {
+    title: "Absensi Wajah AI",
+    desc: "Presensi berbasis pengenalan wajah on-device dengan anti-spoofing sederhana.",
+    tags: ["Python", "Flutter"],
+    cat: "AI", year: "2025", status: "Demo",
+    grad: "linear-gradient(135deg,#2b2c2b,#181918)",
+    icon: "M12 3a7 7 0 0 1 7 7v5l-2 2H7l-2-2v-5a7 7 0 0 1 7-7z M9 12h.01 M15 12h.01 M9 16h6",
+  },
 ];
 
 const shown = computed(() =>
@@ -104,7 +120,7 @@ const go = (tab) => emit("navigate", tab);
       </div>
 
       <div class="x-stats">
-        <div><b>6+</b><span>Project</span></div>
+        <div><b>8+</b><span>Project</span></div>
         <div><b>3</b><span>Bidang</span></div>
         <div><b>9K+</b><span>Kontribusi</span></div>
       </div>
@@ -135,7 +151,7 @@ const go = (tab) => emit("navigate", tab);
 
 <style>
 .profile-page{min-height:100vh;min-height:100dvh;width:100%;background-color:#191a19;background-image:radial-gradient(circle at 50% 35%,#303130 0%,#292a29 30%,#222322 62%,#181918 100%);color:#f5f5f5;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;display:flex;flex-direction:column;align-items:center;padding:28px 14px 110px;box-sizing:border-box}
-.profile-card{position:relative;width:min(94vw,740px);background-color:rgba(34,35,34,.72);background-image:linear-gradient(rgba(150,150,150,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(150,150,150,.13) 1px,transparent 1px);background-size:16px 16px;border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:34px 30px 22px;box-sizing:border-box;text-align:center}
+.profile-card{position:relative;width:min(96vw,1200px);background-color:rgba(34,35,34,.72);background-image:linear-gradient(rgba(150,150,150,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(150,150,150,.13) 1px,transparent 1px);background-size:16px 16px;border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:34px 30px 22px;box-sizing:border-box;text-align:center}
 .pcorner{position:absolute;width:16px;height:16px;opacity:.85}
 .pcorner::before,.pcorner::after{content:"";position:absolute;background:#f5f5f5}
 .pcorner::before{width:100%;height:2px}
@@ -152,7 +168,7 @@ const go = (tab) => emit("navigate", tab);
 .x-chip{background:transparent;color:#d2d2d2;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-family:inherit;font-size:10.5px;font-weight:700;padding:7px 16px;cursor:pointer;transition:all .2s}
 .x-chip.on{background:#f5f5f5;color:#1b1c1b;border-color:#f5f5f5}
 .x-chip:hover{border-color:#f5f5f5;color:#f5f5f5}.x-chip.on:hover{color:#1b1c1b}
-.pj-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.pj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:left}
 .pj-card{background:#1b1c1b;border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;transition:transform .2s,border-color .2s}
 .pj-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.35)}
 .pj-cover{position:relative;height:110px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85)}
@@ -180,6 +196,7 @@ const go = (tab) => emit("navigate", tab);
 .p-nav-item.wide{padding:8px 16px}
 .p-nav-item.active{background:rgba(255,255,255,.17);color:#f5f5f5}
 .p-nav-item:hover{background:rgba(255,255,255,.1);color:#f5f5f5}
+@media(max-width:1024px){.pj-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.profile-card{padding:26px 16px 18px}.pj-grid{grid-template-columns:1fr}.x-title{font-size:18px}}
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
 </style>

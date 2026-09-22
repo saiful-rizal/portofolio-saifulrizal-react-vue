@@ -13,6 +13,9 @@ const certs = [
   { init: "FL", title: "Flutter Developer", issuer: "Google / Udemy", year: "2024", id: "FLT-88Q2-MB", cat: "Mobile", grad: "linear-gradient(135deg,#333433,#1b1c1b)" },
   { init: "LV", title: "Laravel Backend Pro", issuer: "BuildWithAngga", year: "2023", id: "BWA-LV-1031", cat: "Web", grad: "linear-gradient(135deg,#2f3030,#181918)" },
   { init: "AZ", title: "Azure Fundamentals AZ-900", issuer: "Microsoft", year: "2025", id: "MS-AZ-7734", cat: "Cloud", grad: "linear-gradient(135deg,#2e2f2e,#1b1c1b)" },
+  { init: "GC", title: "Cloud Digital Leader", issuer: "Google Cloud", year: "2025", id: "GCP-CDL-5520", cat: "Cloud", grad: "linear-gradient(135deg,#353633,#1b1c1b)" },
+  { init: "RW", title: "Responsive Web Design", issuer: "freeCodeCamp", year: "2023", id: "FCC-RWD-9918", cat: "Web", grad: "linear-gradient(135deg,#2b2c2b,#181918)" },
+  { init: "AD", title: "Android Pemula", issuer: "Dicoding Indonesia", year: "2023", id: "DCD-AND-3307", cat: "Mobile", grad: "linear-gradient(135deg,#33352f,#222322)" },
 ];
 
 const shown = computed(() =>
@@ -82,7 +85,7 @@ const go = (tab) => emit("navigate", tab);
 
 <style>
 .profile-page{min-height:100vh;min-height:100dvh;width:100%;background-color:#191a19;background-image:radial-gradient(circle at 50% 35%,#303130 0%,#292a29 30%,#222322 62%,#181918 100%);color:#f5f5f5;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;display:flex;flex-direction:column;align-items:center;padding:28px 14px 110px;box-sizing:border-box}
-.profile-card{position:relative;width:min(94vw,740px);background-color:rgba(34,35,34,.72);background-image:linear-gradient(rgba(150,150,150,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(150,150,150,.13) 1px,transparent 1px);background-size:16px 16px;border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:34px 30px 22px;box-sizing:border-box;text-align:center}
+.profile-card{position:relative;width:min(96vw,1200px);background-color:rgba(34,35,34,.72);background-image:linear-gradient(rgba(150,150,150,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(150,150,150,.13) 1px,transparent 1px);background-size:16px 16px;border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:34px 30px 22px;box-sizing:border-box;text-align:center}
 .pcorner{position:absolute;width:16px;height:16px;opacity:.85}
 .pcorner::before,.pcorner::after{content:"";position:absolute;background:#f5f5f5}
 .pcorner::before{width:100%;height:2px}
@@ -99,15 +102,15 @@ const go = (tab) => emit("navigate", tab);
 .x-chip{background:transparent;color:#d2d2d2;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-family:inherit;font-size:10.5px;font-weight:700;padding:7px 16px;cursor:pointer;transition:all .2s}
 .x-chip.on{background:#f5f5f5;color:#1b1c1b;border-color:#f5f5f5}
 .x-chip:hover{border-color:#f5f5f5;color:#f5f5f5}.x-chip.on:hover{color:#1b1c1b}
-.ct-list{display:flex;flex-direction:column;gap:10px;text-align:left}
-.ct-card{display:flex;align-items:center;gap:13px;background:#1b1c1b;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 14px;transition:border-color .2s,transform .2s}
+.ct-list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:left}
+.ct-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;background:#1b1c1b;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:18px 14px;transition:border-color .2s,transform .2s}
 .ct-card:hover{border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
-.ct-logo{flex-shrink:0;width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#f5f5f5;border:1px solid rgba(255,255,255,.15)}
+.ct-logo{flex-shrink:0;width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#f5f5f5;border:1px solid rgba(255,255,255,.15)}
 .ct-body{flex:1;min-width:0}
 .ct-body h3{font-size:12.5px;font-weight:800;color:#f5f5f5;margin:0 0 3px}
 .ct-issuer{font-size:10.5px;color:#d2d2d2;margin:0 0 2px}
 .ct-id{font-size:9.5px;color:#707070;margin:0}
-.ct-btn{flex-shrink:0;font-size:10px;font-weight:700;color:#1b1c1b;background:#f5f5f5;border-radius:7px;padding:8px 13px;text-decoration:none}
+.ct-btn{width:100%;box-sizing:border-box;text-align:center;font-size:10px;font-weight:700;color:#1b1c1b;background:#f5f5f5;border-radius:7px;padding:8px 13px;text-decoration:none}
 .ct-btn:hover{box-shadow:0 4px 16px rgba(255,255,255,.2)}
 .ct-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;background:#1b1c1b;border:1px dashed rgba(255,255,255,.3);border-radius:12px;padding:14px 15px;text-align:left}
 .ct-cta b{display:block;font-size:12px;color:#f5f5f5;margin-bottom:3px}
@@ -121,6 +124,7 @@ const go = (tab) => emit("navigate", tab);
 .p-nav-item.wide{padding:8px 16px}
 .p-nav-item.active{background:rgba(255,255,255,.17);color:#f5f5f5}
 .p-nav-item:hover{background:rgba(255,255,255,.1);color:#f5f5f5}
-@media(max-width:560px){.profile-card{padding:26px 16px 18px}.x-title{font-size:18px}.ct-cta{flex-direction:column;align-items:stretch;text-align:center}}
+@media(max-width:1024px){.ct-list{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.profile-card{padding:26px 16px 18px}.x-title{font-size:18px}.ct-list{grid-template-columns:1fr}.ct-cta{flex-direction:column;align-items:stretch;text-align:center}}
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
 </style>
