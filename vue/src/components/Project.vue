@@ -6,7 +6,7 @@ const emit = defineEmits(["navigate"]);
 defineProps({ active: { type: String, default: "project" } });
 
 const filter = ref("Semua");
-const filters = ["Semua", "Web", "Mobile", "AI"];
+const filters = ["Semua", "Web", "Mobile", "Desktop", "IoT", "AI"];
 
 const projects = portfolio.projects;
 

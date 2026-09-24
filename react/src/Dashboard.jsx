@@ -215,7 +215,7 @@ export default function Dashboard({ onNavigate = () => {} }) {
                   <div className="db-row3">
                     <Field label="Kategori">
                       <select value={p.cat} onChange={(e) => set((d) => { d.projects[i].cat = e.target.value; })}>
-                        <option>Web</option><option>Mobile</option><option>AI</option>
+                        <option>Web</option><option>Mobile</option><option>Desktop</option><option>IoT</option><option>AI</option>
                       </select>
                     </Field>
                     <Field label="Status">

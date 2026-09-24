@@ -155,7 +155,7 @@ const saveGitHub = async () => {
           <label class="db-field"><span>Deskripsi</span><textarea v-model="p.desc" rows="2" /></label>
           <div class="db-row3">
             <label class="db-field"><span>Kategori</span>
-              <select v-model="p.cat"><option>Web</option><option>Mobile</option><option>AI</option></select>
+              <select v-model="p.cat"><option>Web</option><option>Mobile</option><option>Desktop</option><option>IoT</option><option>AI</option></select>
             </label>
             <label class="db-field"><span>Status</span>
               <select v-model="p.status"><option>Live</option><option>Demo</option><option>Source</option></select>

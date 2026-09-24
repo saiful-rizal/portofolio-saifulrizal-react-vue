@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import portfolio from "./data/portfolio.json";
 
-const FILTERS = ["Semua", "Web", "Mobile", "AI"];
+const FILTERS = ["Semua", "Web", "Mobile", "Desktop", "IoT", "AI"];
 
 const PROJECTS = portfolio.projects;
 

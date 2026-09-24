@@ -183,35 +183,38 @@ function ProfileNav({ active = "", onNavigate = () => {} }) {
 
   return (
     <nav className="p-nav" aria-label="Navigasi utama">
-      <button className={`p-nav-item ${active === "home" ? "active" : ""}`} onClick={go("home")} aria-label="Beranda">
+      <button className={`p-nav-item ${active === "home" ? "active" : ""}`} onClick={go("home")}>
         <svg viewBox="0 0 24 24"><path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5L12 3Z" fill="currentColor" /></svg>
+        <span>Beranda</span>
       </button>
-      <button className={`p-nav-item wide ${active === "about" ? "active" : ""}`} onClick={go("about")}>
+      <button className={`p-nav-item ${active === "about" ? "active" : ""}`} onClick={go("about")}>
         <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0v1H5v-1Z" fill="currentColor" /></svg>
         <span>Tentang</span>
       </button>
-      <button className={`p-nav-item ${active === "project" ? "active" : ""}`} onClick={go("project")} aria-label="Project">
+      <button className={`p-nav-item ${active === "project" ? "active" : ""}`} onClick={go("project")}>
         <svg viewBox="0 0 24 24"><path d="M4 5h6l2 2h8v11H4V5Zm0 5h16v2H4v-2Z" fill="currentColor" /></svg>
+        <span>Project</span>
       </button>
-      <button className={`p-nav-item ${active === "achievement" ? "active" : ""}`} onClick={go("achievement")} aria-label="Achievement">
+      <button className={`p-nav-item ${active === "achievement" ? "active" : ""}`} onClick={go("achievement")}>
         <svg viewBox="0 0 24 24"><path d="M6 3h12v5a6 6 0 0 1-4 5.65V16h3v2H7v-2h3v-2.35A6 6 0 0 1 6 8V3Zm-2 2H2v2a4 4 0 0 0 4 4V9H4V5Zm16 0h-2v4h-2v2a4 4 0 0 0 4-4V5ZM9 20h6v2H9v-2Z" fill="currentColor" /></svg>
+        <span>Achievement</span>
       </button>
-      <button className={`p-nav-item ${active === "certification" ? "active" : ""}`} onClick={go("certification")} aria-label="Certification">
+      <button className={`p-nav-item ${active === "certification" ? "active" : ""}`} onClick={go("certification")}>
         <svg viewBox="0 0 24 24"><path d="M4 4h7v16H4V4Zm11 0h5v16h-5V4ZM12 4v16" stroke="currentColor" strokeWidth="1.8" fill="none" /></svg>
+        <span>Certification</span>
       </button>
     </nav>
   );
 }
 
 const DEFAULT_PROJECTS = [
-  { title: "SIAKAD Instansi", desc: "Sistem informasi akademik end-to-end: KRS, nilai, presensi QR, dan panel admin role-based.", tags: ["Next.js", "Laravel", "MySQL"], cat: "Web", year: "2025", status: "Live" },
-  { title: "PKM Riset App", desc: "Aplikasi riset terdanai PKM: survei lapangan offline-first dengan sinkronisasi otomatis.", tags: ["Flutter", "Firebase"], cat: "Mobile", year: "2024", status: "Source" },
-  { title: "AI Helpdesk Chatbot", desc: "Chatbot layanan kampus dengan RAG: jawab FAQ, buat tiket, dan eskalasi ke staf.", tags: ["Python", "OpenAI", "Next.js"], cat: "AI", year: "2025", status: "Demo" },
-  { title: "E-Commerce Headless", desc: "Toko online headless: katalog cepat, checkout midtrans, dan dashboard penjualan.", tags: ["Next.js", "Tailwind"], cat: "Web", year: "2024", status: "Live" },
-  { title: "Absensi QR Mobile", desc: "Presensi karyawan via QR + geofence dengan rekap otomatis dan ekspor Excel.", tags: ["Flutter", "Laravel"], cat: "Mobile", year: "2025", status: "Source" },
-  { title: "Analitik Dashboard", desc: "Dashboard KPI real-time: chart interaktif, filter tanggal, dan ekspor CSV.", tags: ["React", "TypeScript"], cat: "Web", year: "2023", status: "Demo" },
-  { title: "Kasir POS Web", desc: "Point of sales untuk UMKM: kelola stok, struk thermal, dan laporan harian.", tags: ["Vue", "Laravel"], cat: "Web", year: "2024", status: "Live" },
-  { title: "Absensi Wajah AI", desc: "Presensi berbasis pengenalan wajah on-device dengan anti-spoofing sederhana.", tags: ["Python", "Flutter"], cat: "AI", year: "2025", status: "Demo" },
+  { title: "SI Kasir Pintar Sniper Seblak Nurins Prasmanan", desc: "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
+  { title: "SI Kasir Cerdas Allestic", desc: "Sistem informasi kasir cerdas: transaksi, kelola stok barang, dan rekap penjualan otomatis.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
+  { title: "SIPORA Versi 1.0", desc: "Pengembangan Sistem Informasi Polije Repository Assets versi 1.0 berbasis website dan mobile untuk pendataan aset.", tags: ["Laravel", "Flutter", "MySQL"], cat: "Web", year: "2024", status: "Live" },
+  { title: "SIPORA Versi 1.2 + AI Screening", desc: "Pengembangan SIPORA terintegrasi AI Screening versi 1.2: pendataan aset website dan mobile dengan seleksi cerdas.", tags: ["Laravel", "Flutter", "AI Screening"], cat: "Web", year: "2025", status: "Live" },
+  { title: "Absensi Arduino Nano", desc: "Sistem pencatatan absensi berbasis sistem tertanam menggunakan Arduino Nano untuk presensi otomatis.", tags: ["Arduino Nano", "Embedded", "Absensi"], cat: "IoT", year: "2024", status: "Demo" },
+  { title: "SI Pemilahan Sampah Computer Vision", desc: "Sistem informasi pemilahan sampah menggunakan computer vision untuk daur ulang sampah organik dan non organik.", tags: ["Computer Vision", "Python", "AI"], cat: "AI", year: "2025", status: "Demo" },
+  { title: "SI Data Bendahara SMA Unggulan BPPT", desc: "Sistem informasi pencatatan data bendahara SMA Unggulan BPPT Darus Sholah Jember: kas, iuran, dan laporan keuangan.", tags: ["Web", "MySQL", "Keuangan"], cat: "Web", year: "2025", status: "Live" },
 ];
 
 const DEFAULT_ACHIEVEMENTS = [
@@ -517,13 +520,16 @@ const PROFILE_CSS = `
         .p-nav-item {
           border: none; background: transparent; color: #5a6070; cursor: pointer;
           min-width: 44px; min-height: 44px; border-radius: 999px;
-          display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+          display: inline-flex; align-items: center; justify-content: center; gap: 0;
           font-family: inherit; font-size: 11px; font-weight: 700;
           padding: 8px 10px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
           position: relative;
         }
         .p-nav-item svg { width: 17px; height: 17px; }
         .p-nav-item.wide { padding: 8px 16px; }
+        .p-nav-item span { max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.3s ease, opacity 0.25s ease; }
+        .p-nav-item.active span, .p-nav-item:hover span { max-width: 90px; opacity: 1; }
+        .p-nav-item.active, .p-nav-item:hover { gap: 10px; }
         .p-nav-item.active {
           background: rgba(170,170,170,0.1); color: #d4d4d4;
           box-shadow: 0 0 12px rgba(170,170,170,0.08);
@@ -575,7 +581,9 @@ const PROFILE_CSS = `
           .p-photo { width: 122px; height: 122px; }
           .p-modal-bg { padding: 12px; }
           .p-modal-box { padding: 20px 16px; }
-          .p-nav { bottom: 10px; max-width: calc(100vw - 16px); }
+          .p-nav { bottom: 10px; max-width: calc(100vw - 16px); overflow-x: auto; }
+          .p-nav-item { min-width: 40px; min-height: 40px; font-size: 9px; padding: 8px 8px; }
+          .p-nav-item.wide { padding: 8px 10px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1236,7 +1244,7 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
           <p className="p-title-line">Web • Mobile • AI</p>
 
           <p className="p-bio">
-            Koleksi project web, mobile, dan AI. Klik Lihat pada kartu untuk detail.
+            Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat pada kartu untuk detail.
           </p>
 
           <div className="p-ct-grid">
