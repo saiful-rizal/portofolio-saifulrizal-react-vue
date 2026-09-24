@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import portfolio from "./data/portfolio.json";
 
-const FILTERS = ["Semua", "Cloud", "Web", "Mobile"];
+const FILTERS = ["Semua", "Training", "HKI", "Kepanitiaan", "Organisasi", "Penghargaan"];
 
 const CERTS = portfolio.certifications;
 
@@ -64,7 +64,7 @@ export default function Certification({ active = "certification", onNavigate = (
 
           <p className="x-eyebrow">KREDENSIAL</p>
           <h1 className="x-title">Certification</h1>
-          <p className="x-sub">Sertifikasi terverifikasi yang mendukung keahlian web, mobile, dan cloud.</p>
+          <p className="x-sub">Kepanitiaan, organisasi, dan penghargaan Saiful Rizal sesuai CV.</p>
 
           <div className="x-filters">
             {FILTERS.map((f) => (
@@ -94,7 +94,7 @@ export default function Certification({ active = "certification", onNavigate = (
             <a href="#" className="ct-dl" onClick={(e) => e.preventDefault()}>Unduh CV</a>
           </div>
 
-          <p className="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+          <p className="p-copy">© 2026 SAIFUL RIZAL</p>
         </div>
 
         <nav className="p-nav" aria-label="Navigasi utama">

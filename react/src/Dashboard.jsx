@@ -303,7 +303,7 @@ export default function Dashboard({ onNavigate = () => {} }) {
                     <Field label="ID Kredensial"><input value={c.id} onChange={(e) => set((d) => { d.certifications[i].id = e.target.value; })} /></Field>
                     <Field label="Kategori">
                       <select value={c.cat} onChange={(e) => set((d) => { d.certifications[i].cat = e.target.value; })}>
-                        <option>Web</option><option>Mobile</option><option>Cloud</option>
+                        <option>Training</option><option>HKI</option><option>Kepanitiaan</option><option>Organisasi</option><option>Penghargaan</option>
                       </select>
                     </Field>
                     <Field label="Gradient"><input value={c.grad} onChange={(e) => set((d) => { d.certifications[i].grad = e.target.value; })} /></Field>

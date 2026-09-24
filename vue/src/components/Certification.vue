@@ -6,7 +6,7 @@ const emit = defineEmits(["navigate"]);
 defineProps({ active: { type: String, default: "certification" } });
 
 const filter = ref("Semua");
-const filters = ["Semua", "Cloud", "Web", "Mobile"];
+const filters = ["Semua", "Training", "HKI", "Kepanitiaan", "Organisasi", "Penghargaan"];
 
 const certs = portfolio.certifications;
 
@@ -25,7 +25,7 @@ const go = (tab) => emit("navigate", tab);
 
       <p class="x-eyebrow">KREDENSIAL</p>
       <h1 class="x-title">Certification</h1>
-      <p class="x-sub">Sertifikasi terverifikasi yang mendukung keahlian web, mobile, dan cloud.</p>
+      <p class="x-sub">Kepanitiaan, organisasi, dan penghargaan Saiful Rizal sesuai CV.</p>
 
       <div class="x-filters">
         <button v-for="f in filters" :key="f" class="x-chip" :class="{ on: filter === f }" @click="filter = f">{{ f }}</button>
@@ -51,7 +51,7 @@ const go = (tab) => emit("navigate", tab);
         <a href="#" class="ct-dl" @click.prevent>Unduh CV</a>
       </div>
 
-      <p class="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+      <p class="p-copy">© 2026 SAIFUL RIZAL</p>
     </div>
 
     <nav class="p-nav" aria-label="Navigasi utama">

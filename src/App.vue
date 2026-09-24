@@ -16,30 +16,30 @@ const closing = ref(false)
 const ms = ref('00')
 
 const digits = ['2', '0', '2', '5']
-const tech = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS', 'Git', 'Figma', 'MySQL']
+const tech = ['Flutter', 'Dart', 'Java', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git']
 const exps = [
   {
-    year: '2024',
-    role: 'Junior Web Developer',
-    company: 'PT. Teknologi Nusantara',
-    tech: ['React', 'Next.js', 'TypeScript', 'PostgreSQL'],
+    year: '2024-Sekarang',
+    role: 'Mahasiswa D4 Teknik Informatika',
+    company: 'Politeknik Negeri Jember',
+    tech: ['Flutter', 'Dart', 'Java', 'MySQL'],
   },
   {
-    year: '2023',
-    role: 'Web Developer Intern',
-    company: 'Startup Digital Indonesia',
-    tech: ['Vue.js', 'Node.js', 'MySQL', 'Git'],
+    year: '2024-Sekarang',
+    role: 'Ketua Divisi Kominfo',
+    company: 'UKM PSHT Politeknik Negeri Jember',
+    tech: ['Leadership', 'Publikasi', 'Kominfo'],
   },
   {
     year: '2022',
-    role: 'Freelance Developer',
-    company: 'Self-Employed',
-    tech: ['HTML', 'CSS', 'JavaScript', 'PHP'],
+    role: 'Magang Teknik Elektronika Industri',
+    company: 'Kantor PDAM Bondowoso',
+    tech: ['Elektronika Industri', 'Teknikal', 'Maintenance'],
   },
 ]
 const yearLabels = [
-  { label: '2024', start: 0, end: 7 },
-  { label: '2023', start: 7, end: 14 },
+  { label: '2026', start: 0, end: 7 },
+  { label: '2024', start: 7, end: 14 },
   { label: '2022', start: 14, end: 20 },
 ]
 const mLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
@@ -405,8 +405,7 @@ function toggleAbout() {
             animation: closing ? undefined : 'fadeUp 0.5s ease 0.1s both',
           }"
         >
-          Informatics engineering student building efficient digital solutions. Passionate about clean code, modern
-          web technologies, and creating meaningful user experiences that make a real impact.
+          Informatics engineering student (D4 Teknik Informatika, Politeknik Negeri Jember) building responsive web & mobile apps with Flutter, Dart, Java, HTML, and CSS. Familiar with VS Code and Android Studio, passionate about clean code and guiding others to understand programming simply.
         </p>
 
         <div

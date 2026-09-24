@@ -78,7 +78,7 @@ export default function Achievement({ active = "achievement", onNavigate = () =>
             ))}
           </div>
 
-          <p className="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+          <p className="p-copy">© 2026 SAIFUL RIZAL</p>
         </div>
 
         <nav className="p-nav" aria-label="Navigasi utama">

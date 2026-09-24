@@ -40,7 +40,7 @@ const go = (tab) => emit("navigate", tab);
         </div>
       </div>
 
-      <p class="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+      <p class="p-copy">© 2026 SAIFUL RIZAL</p>
     </div>
 
     <nav class="p-nav" aria-label="Navigasi utama">

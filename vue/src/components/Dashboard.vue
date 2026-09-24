@@ -228,7 +228,7 @@ const saveGitHub = async () => {
           <div class="db-row3">
             <label class="db-field"><span>ID Kredensial</span><input v-model="c.id" /></label>
             <label class="db-field"><span>Kategori</span>
-              <select v-model="c.cat"><option>Web</option><option>Mobile</option><option>Cloud</option></select>
+              <select v-model="c.cat"><option>Training</option><option>HKI</option><option>Kepanitiaan</option><option>Organisasi</option><option>Penghargaan</option></select>
             </label>
             <label class="db-field"><span>Gradient</span><input v-model="c.grad" /></label>
           </div>

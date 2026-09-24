@@ -131,7 +131,7 @@ export default function Project({ active = "project", onNavigate = () => {} }) {
             <div><b>9K+</b><span>Kontribusi</span></div>
           </div>
 
-          <p className="p-copy">© 2026 YANUAR ARDHIKA, S.Tr.Kom.</p>
+          <p className="p-copy">© 2026 SAIFUL RIZAL</p>
         </div>
 
         <Nav active={active} onNavigate={onNavigate} />

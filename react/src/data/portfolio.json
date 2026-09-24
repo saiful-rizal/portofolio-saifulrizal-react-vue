@@ -1,49 +1,107 @@
 {
   "profile": {
-    "name": "Yanuar Ardhika Rahmadhani Ubaidillah, S.Tr.Kom.",
+    "name": "Saiful Rizal",
     "shortName": "SAIFUL RIZAL",
-    "role": "Software Engineer",
+    "role": "Junior Web & Mobile Developer",
     "title": "JUNIOR DEVELOPER",
     "hello": "HELLO",
-    "bio": "Software Engineer dan lulusan Sarjana Terapan (S.Tr.Kom.) Teknik Informatika Politeknik Negeri Jember dengan spesialisasi pengembangan web dan mobile (Next.js, Laravel, Flutter). Memiliki rekam jejak dalam merancang serta membangun aplikasi end-to-end yang skalabel, efisien, dan ramah pengguna — mulai dari sistem informasi instansi, proyek riset terdanai PKM, hingga pengalaman industri. Berorientasi pada clean code, pemecahan masalah nyata, dan siap memberikan kontribusi optimal dalam pengembangan produk digital.",
+    "bio": "Mahasiswa semester 5 D4 Teknik Informatika Politeknik Negeri Jember yang memiliki minat pada pengembangan teknologi dan konstruksi perangkat lunak. Menguasai Framework Laravel, React.js, dan Flutter untuk pengembangan aplikasi web dan mobile, serta memiliki kemampuan dalam PHP, JavaScript, Dart, Java, HTML, dan CSS. Terbiasa menggunakan Visual Studio Code, Android Studio, Figma, Git, dan GitHub dalam membangun aplikasi yang interaktif, responsif, dan mudah digunakan. Memiliki integritas yang tinggi, teliti, disiplin, bertanggung jawab, serta mampu menjelaskan konsep pemrograman secara sederhana dan mudah dipahami. Berpengalaman membimbing peserta didik dalam memahami pemrograman.",
     "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop",
-    "status": "Lulusan Teknik Informatika",
+    "status": "Mahasiswa D4 Teknik Informatika",
+    "phone": "082225675196",
+    "email": "syaifulrizal320206@gmail.com",
+    "location": "Sumberjambe, Jember, Jawa Timur",
     "githubTotal": 9430,
     "githubYear": "2026",
     "socials": {
-      "instagram": "#",
-      "github": "#",
-      "linkedin": "#"
-    }
+      "instagram": "https://www.instagram.com/hai_saifulrizal",
+      "github": "https://github.com/saiful-rizal",
+      "linkedin": "https://www.linkedin.com/in/saiful-rizal-8606613ab/"
+    },
+    "education": [
+      {
+        "school": "SMKN 3 Bondowoso",
+        "major": "Teknik Elektronika Industri",
+        "period": "2021 - 2024"
+      },
+      {
+        "school": "Politeknik Negeri Jember",
+        "major": "D4 Teknik Informatika",
+        "period": "2024 - Sekarang"
+      }
+    ],
+    "skills": ["Laravel", "ReactJS", "Flutter", "PHP", "JavaScript", "Dart", "Java", "HTML", "CSS", "MySQL", "Git", "GitHub", "Figma", "VS Code", "Android Studio"]
   },
   "experiences": [
     {
-      "logo": "wesclio",
-      "title": "Full-Stack Web Developer",
-      "company": "PT. Wesdic Indonesia Neotech - Yogyakarta, Indonesia",
-      "desc": "Magang sebagai Full-Stack Web Developer di perusahaan yang bergerak dibidang Teknologi Informasi dengan layanan perencanaan, pembuatan, pengembangan, perbaikan serta perawatan infrastruktur IT.",
+      "logo": "PDAM",
+      "title": "Magang Teknik Elektronika Industri",
+      "company": "Kantor PDAM Bondowoso - Bondowoso, Indonesia",
+      "desc": "Praktik kerja lapangan di bidang teknik elektronika industri: membantu perawatan dan perbaikan instalasi serta perangkat elektronika pendukung operasional kantor.",
       "resp": [
-        "Mengembangkan dan memelihara proyek aplikasi web yang ada di perusahaan",
-        "Berpartisipasi dalam code review dan agile development",
-        "Mengoptimalkan sistem kinerja proyek pada perusahaan"
+        "Membantu pemeriksaan dan perawatan perangkat elektronika industri",
+        "Mendokumentasikan hasil temuan teknis selama masa magang",
+        "Bekerja sama dengan teknisi dalam penyelesaian masalah lapangan"
       ],
-      "tags": ["React", "Next.js", "TypeScript", "Laravel", "MySQL", "Tailwind CSS"],
-      "date": "Agustus 2025 - Desember 2025",
-      "badge": "Magang / Internship"
+      "tags": ["Elektronika Industri", "Teknikal", "Maintenance"],
+      "date": "2023",
+      "badge": "Magang"
     },
     {
-      "logo": "SR",
-      "title": "Frontend Web Developer",
-      "company": "Freelance - Remote, Indonesia",
-      "desc": "Mengerjakan proyek website untuk UMKM dan instansi: company profile, landing page, dan dashboard admin dengan fokus kecepatan serta SEO.",
+      "logo": "BLP",
+      "title": "Tenaga Didik (Freelance)",
+      "company": "Bimbel Bina Learning Prestasi",
+      "desc": "Mengajar dan membimbing peserta didik dalam memahami pemrograman secara sederhana dan mudah dipahami.",
       "resp": [
-        "Membangun UI responsif dari desain Figma ke kode produksi",
-        "Integrasi REST API dan optimasi Core Web Vitals",
-        "Maintenance serta dokumentasi tiap rilis proyek"
+        "Membimbing peserta didik memahami konsep pemrograman",
+        "Menjelaskan materi secara sederhana dan mudah dipahami",
+        "Mendampingi peserta didik dalam praktik dan latihan"
       ],
-      "tags": ["Vue", "React", "Flutter", "Firebase", "Figma"],
-      "date": "Januari 2024 - Sekarang",
+      "tags": ["Mengajar", "Pemrograman", "Komunikasi"],
+      "date": "2025 - Sekarang",
       "badge": "Freelance"
+    },
+    {
+      "logo": "PSHT",
+      "title": "Ketua Divisi Kominfo",
+      "company": "UKM Persaudaraan Setia Hati Terate - Politeknik Negeri Jember",
+      "desc": "Memimpin divisi komunikasi dan informasi: mengelola publikasi, dokumentasi kegiatan, dan media informasi organisasi.",
+      "resp": [
+        "Mengelola konten publikasi dan dokumentasi kegiatan UKM",
+        "Mengoordinasikan tim kominfo dalam setiap agenda organisasi",
+        "Membangun alur informasi internal yang cepat dan jelas"
+      ],
+      "tags": ["Leadership", "Kominfo", "Publikasi"],
+      "date": "2024 - Sekarang",
+      "badge": "Organisasi"
+    },
+    {
+      "logo": "KMTF",
+      "title": "Anggota Divisi Humas",
+      "company": "KEMATIF (Keluarga Mahasiswa Teknik Informatika) - Politeknik Negeri Jember",
+      "desc": "Menjalankan fungsi hubungan masyarakat: menjalin relasi antar himpunan, publikasi acara, dan koordinasi kepanitiaan TIF Exhibition.",
+      "resp": [
+        "Menjadi panitia Sie Perkabin TIF Exhibition Ganjil 2024",
+        "Menjadi panitia Sie Acara TIF Exhibition Genap 2025",
+        "Mengelola komunikasi dan relasi eksternal himpunan"
+      ],
+      "tags": ["Humas", "Event", "Komunikasi"],
+      "date": "2024 - Sekarang",
+      "badge": "Organisasi"
+    },
+    {
+      "logo": "BPM",
+      "title": "Anggota Komisi Teknis",
+      "company": "Bakor Pemandu Mahasiswa - Politeknik Negeri Jember",
+      "desc": "Bertugas di komisi teknis: mendukung kegiatan kepemanduan dan ketertiban program kemahasiswaan.",
+      "resp": [
+        "Mendukung pelaksanaan kegiatan kepemanduan mahasiswa",
+        "Berkolaborasi dengan komisi lain dalam program kerja",
+        "Membantu dokumentasi dan pelaporan kegiatan"
+      ],
+      "tags": ["Kepemanduan", "Ketertiban", "Kelembagaan"],
+      "date": "2025 - Sekarang",
+      "badge": "Organisasi"
     }
   ],
   "projects": [
@@ -130,120 +188,278 @@
   ],
   "achievements": {
     "stats": [
-      { "n": "8+", "l": "Penghargaan" },
-      { "n": "3", "l": "Pendanaan Riset" },
-      { "n": "5", "l": "Kompetisi" }
+      { "n": "7+", "l": "Penghargaan" },
+      { "n": "1", "l": "Pendanaan" },
+      { "n": "24+", "l": "Training" }
     ],
     "items": [
       {
+        "year": "2026",
+        "title": "Lolos Pendanaan P2MW",
+        "org": "Program Pembinaan Mahasiswa Wirausaha",
+        "desc": "Proposal kewirausahaan mahasiswa lolos seleksi pendanaan nasional pembinaan wirausaha.",
+        "tag": "Pendanaan"
+      },
+      {
         "year": "2025",
-        "title": "Lolos Pendanaan PKM",
-        "org": "Kemendikbudristek",
-        "desc": "Proposal riset aplikasi survei lapangan didanai penuh; lolos seleksi nasional dan monev.",
-        "tag": "Riset"
-      },
-      {
-        "year": "2024",
-        "title": "Juara 1 Hackathon",
-        "org": "Hackathon Nasional",
-        "desc": "Bangun AI helpdesk kampus dalam 48 jam: RAG + ticketing, dinobatkan solusi terbaik.",
-        "tag": "Kompetisi"
-      },
-      {
-        "year": "2024",
-        "title": "Best Intern",
-        "org": "PT. Wesdic Indonesia Neotech",
-        "desc": "Magang Full-Stack terbaik: ship 3 modul produksi dan pangkas waktu muat 40%.",
-        "tag": "Industri"
-      },
-      {
-        "year": "2023",
-        "title": "Finalis GEMASTIK",
-        "org": "Kompetisi Mahasiswa Nasional",
-        "desc": "Finalis divisi pengembangan perangkat lunak dengan SIAKAD mini.",
-        "tag": "Kompetisi"
-      },
-      {
-        "year": "2023",
-        "title": "Asisten Riset",
-        "org": "Politeknik Negeri Jember",
-        "desc": "Asisten riset dosen: bangun instrumen survei digital untuk 500+ responden.",
+        "title": "Terbaik ke-10 Pagelaran Mahasiswa TIF",
+        "org": "Teknik Informatika, Politeknik Negeri Jember",
+        "desc": "Masuk 10 terbaik pagelaran karya mahasiswa Teknik Informatika tahun 2025.",
         "tag": "Akademik"
+      },
+      {
+        "year": "2025",
+        "title": "Peringkat ke-7 Olimpiade Sastra Nasional",
+        "org": "OSN 2.8 Nasional",
+        "desc": "Meraih peringkat ke-7 pada Olimpiade Sastra Nasional OSN 2.8 tahun 2025.",
+        "tag": "Kompetisi"
+      },
+      {
+        "year": "2024",
+        "title": "Juara 3 Pemuda Pelopor Bidang Pendidikan",
+        "org": "Kabupaten Bondowoso",
+        "desc": "Meraih juara 3 Pemuda Pelopor Bidang Pendidikan Kabupaten Bondowoso.",
+        "tag": "Penghargaan"
+      },
+      {
+        "year": "2024",
+        "title": "Siswa Terbaik Jurusan Elektronika Industri",
+        "org": "SMKN 3 Bondowoso",
+        "desc": "Dinobatkan sebagai siswa terbaik jurusan Teknik Elektronika Industri SMKN 3 Bondowoso.",
+        "tag": "Akademik"
+      },
+      {
+        "year": "2024",
+        "title": "Juara 3 Poster TIF Exhibition 2024",
+        "org": "TIF Exhibition, Politeknik Negeri Jember",
+        "desc": "Meraih juara 3 lomba poster pada TIF Exhibition 2024.",
+        "tag": "Desain"
+      },
+      {
+        "year": "2024",
+        "title": "Juara 1 Seni Tunggal Putra IPSI SH Cup",
+        "org": "IPSI SH Cup Bondowoso",
+        "desc": "Juara 1 terbaik putra kategori seni tunggal pada kejuaraan IPSI SH Cup Bondowoso 2024.",
+        "tag": "Olahraga"
       }
     ]
   },
   "certifications": [
     {
-      "init": "AWS",
-      "title": "Cloud Practitioner",
-      "issuer": "Amazon Web Services",
+      "init": "HKI",
+      "title": "Hak Kekayaan Intelektual Sistem Sterilisasi Air Minum Ternak (AIQUA)",
+      "issuer": "Politeknik Negeri Jember",
       "year": "2025",
-      "id": "AWS-9K42-X1",
-      "cat": "Cloud",
-      "grad": "linear-gradient(135deg,#353633,#222322)"
-    },
-    {
-      "init": "FE",
-      "title": "Front-End Expert",
-      "issuer": "Dicoding Indonesia",
-      "year": "2024",
-      "id": "DCD-FE-2204",
-      "cat": "Web",
+      "id": "HKI-AIQUA",
+      "cat": "HKI",
       "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
     },
     {
-      "init": "FL",
-      "title": "Flutter Developer",
-      "issuer": "Google / Udemy",
-      "year": "2024",
-      "id": "FLT-88Q2-MB",
-      "cat": "Mobile",
+      "init": "PRM",
+      "title": "Pemandu Materi Latihan Keterampilan Pramuka - Tingkat Dasar",
+      "issuer": "Jurusan Kesehatan Pertanian, Politeknik Negeri Jember",
+      "year": "2025",
+      "id": "PRM-D1",
+      "cat": "Training",
       "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
     },
     {
-      "init": "LV",
-      "title": "Laravel Backend Pro",
-      "issuer": "BuildWithAngga",
-      "year": "2023",
-      "id": "BWA-LV-1031",
-      "cat": "Web",
+      "init": "PRM",
+      "title": "Pemandu Materi Latihan Keterampilan Pramuka - Tingkat Dasar",
+      "issuer": "Jurusan Teknologi Pertanian, Politeknik Negeri Jember",
+      "year": "2025",
+      "id": "PRM-D2",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#353633,#222322)"
+    },
+    {
+      "init": "IBM",
+      "title": "Data Classification And Summarization Using IBM Granite",
+      "issuer": "IBM SkillsBuild",
+      "year": "2025",
+      "id": "IBM-CLS",
+      "cat": "Training",
       "grad": "linear-gradient(135deg,#2f3030,#181918)"
     },
     {
-      "init": "AZ",
-      "title": "Azure Fundamentals AZ-900",
-      "issuer": "Microsoft",
+      "init": "IBM",
+      "title": "Penyelesaian Data Menggunakan IBM Granite",
+      "issuer": "IBM SkillsBuild",
       "year": "2025",
-      "id": "MS-AZ-7734",
-      "cat": "Cloud",
+      "id": "IBM-SLV",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+    },
+    {
+      "init": "IBM",
+      "title": "Summarizing Data Using IBM Granite",
+      "issuer": "IBM SkillsBuild",
+      "year": "2025",
+      "id": "IBM-SUM",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
+    },
+    {
+      "init": "HR",
+      "title": "Mengenal Dunia Human Resource : Menguasai Dasar - Dasar HR",
+      "issuer": "SF Chow Consulting",
+      "year": "2025",
+      "id": "HR-SF",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+    },
+    {
+      "init": "MC",
+      "title": "Penetration Tester | Bug Hunter - Punggawa Cyber Security",
+      "issuer": "Merdeka Cyber",
+      "year": "2025",
+      "id": "MC-PT",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#33352f,#222322)"
+    },
+    {
+      "init": "MC",
+      "title": "Strategi Terbaik Live Sesi Broken Access Control Hacking",
+      "issuer": "Merdeka Cyber",
+      "year": "2025",
+      "id": "MC-BAC",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+    },
+    {
+      "init": "SI",
+      "title": "Sekolah Ilmiah 2025",
+      "issuer": "UKM Skim Politeknik Negeri Jember",
+      "year": "2025",
+      "id": "SI-2025",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+    },
+    {
+      "init": "H8",
+      "title": "Code Generations And Optimization Class in the Student Developer Initiative",
+      "issuer": "Hacktiv8 Indonesia",
+      "year": "2025",
+      "id": "H8-SDI",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+    },
+    {
+      "init": "UGM",
+      "title": "Model G2R Tetrapeneur : Inovasi Perencanaan Bisnis Ikonik Asli Indonesia",
+      "issuer": "Kewirausahaan HMP Universitas Gadjah Mada",
+      "year": "2025",
+      "id": "UGM-G2R",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#353633,#222322)"
+    },
+    {
+      "init": "UGM",
+      "title": "Mastering The Balance, Achieving Success : A Journey In Entrepreneurship",
+      "issuer": "Unit Kewirausahaan Pascasarjana Universitas Gadjah Mada",
+      "year": "2025",
+      "id": "UGM-BAL",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 174 : IOS : Mendalami Swift UI, UI Framework Masa depan",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-174",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 179 : Flutter : Ciptakan Animasi Epik Dengan Animation",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-179",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#33352f,#222322)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 192 : Soft Skill : Penangkal Nirwaktu : Atur Prioritas dengan lebih cerdas",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-192",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 193 : React : Hooks Mengubah Segalanya",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-193",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 194 : Data Engineering | ETL : Wajib Bagi Seorang Data Engineer",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-194",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 195 : Kotlin 101 | Mengenal Special Classes dan Collection",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "DC-195",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+    },
+    {
+      "init": "DC",
+      "title": "DevCoach 168 : ML in Google Cloud | Training dan Deployment Machine Learning dengan Google Cloud",
+      "issuer": "Dicoding Event",
+      "year": "2024",
+      "id": "DC-168",
+      "cat": "Training",
       "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
     },
     {
       "init": "GC",
-      "title": "Cloud Digital Leader",
-      "issuer": "Google Cloud",
+      "title": "Google Cloud Arcade Fasilitator 2025 : Program Overview & Deep Dive",
+      "issuer": "Dicoding Event",
       "year": "2025",
-      "id": "GCP-CDL-5520",
-      "cat": "Cloud",
-      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
-    },
-    {
-      "init": "RW",
-      "title": "Responsive Web Design",
-      "issuer": "freeCodeCamp",
-      "year": "2023",
-      "id": "FCC-RWD-9918",
-      "cat": "Web",
+      "id": "GCA-2025",
+      "cat": "Training",
       "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
     },
     {
-      "init": "AD",
-      "title": "Android Pemula",
-      "issuer": "Dicoding Indonesia",
-      "year": "2023",
-      "id": "DCD-AND-3307",
-      "cat": "Mobile",
+      "init": "IDC",
+      "title": "IDCamo Alumni Dialogue #5 - Debunking The Myth Of Inteligent Automation",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "IDC-05",
+      "cat": "Training",
       "grad": "linear-gradient(135deg,#33352f,#222322)"
+    },
+    {
+      "init": "IDC",
+      "title": "IDCamp x Dicoding Live #8 - When Business Questions Meet Machine",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "IDC-08",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+    },
+    {
+      "init": "IDC",
+      "title": "[Reschedule] IDCamp Alumni Dialogue #4 - Failing Forward: Turning Setbacks into Growth in Tech",
+      "issuer": "Dicoding Event",
+      "year": "2025",
+      "id": "IDC-04",
+      "cat": "Training",
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
     }
   ]
 }
