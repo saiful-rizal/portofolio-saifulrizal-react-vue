@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { useGitHubContributions } from './composables/useGitHubContributions'
 
 const A = 'var(--accent)'
 const D = 'var(--dim)'
@@ -31,6 +32,12 @@ const exps = [
     tech: ['Leadership', 'Publikasi', 'Kominfo'],
   },
   {
+    year: '2023-2024',
+    role: 'Pemuda Pelopor Bidang Pendidikan',
+    company: 'Disparpora Hub Kabupaten Bondowoso',
+    tech: ['Pendidikan', 'Pemberdayaan Pemuda', 'Advokasi'],
+  },
+  {
     year: '2022',
     role: 'Magang Teknik Elektronika Industri',
     company: 'Kantor PDAM Bondowoso',
@@ -52,6 +59,16 @@ const cCol = [
   'rgba(99,102,241,0.85)',
 ]
 
+const {
+  contributions: githubContributions,
+  totalContributions,
+  loading: githubLoading,
+  error: githubError,
+  fetchContributions,
+} = useGitHubContributions()
+
+const contrib = computed(() => githubContributions.value.length > 0 ? githubContributions.value : genContrib())
+
 function genContrib(): number[][] {
   const d: number[][] = []
   for (let w = 0; w < 20; w++) {
@@ -69,8 +86,6 @@ function genContrib(): number[][] {
   }
   return d
 }
-
-const contrib = genContrib()
 const dust = Array.from({ length: 8 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
@@ -312,7 +327,7 @@ function toggleAbout() {
         background: 'rgba(0,0,0,0.7)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
-        animation: closing ? 'panelBgOut 0.25s ease both' : 'panelBgIn 0.25s ease both',
+        animation: closing ? 'panelBgOut 0.3s cubic-bezier(0.4,0,0.2,1) both' : 'panelBgIn 0.4s cubic-bezier(0.16,1,0.3,1) both',
       }"
       @click="closePanel"
     >
@@ -333,9 +348,10 @@ function toggleAbout() {
           boxShadow: '0 24px 96px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02) inset',
           padding: 'clamp(32px,6vw,52px)',
           animation: closing
-            ? 'panelOut 0.3s cubic-bezier(0.4,0,0.2,1) both'
-            : 'panelIn 0.5s cubic-bezier(0.16,1,0.3,1) both',
+            ? 'panelOut 0.35s cubic-bezier(0.4,0,0.2,1) both'
+            : 'panelIn 0.6s cubic-bezier(0.16,1,0.3,1) both',
           cursor: 'default',
+          willChange: 'transform, opacity',
         }"
         @click.stop
       >
@@ -477,59 +493,122 @@ function toggleAbout() {
             animation: closing ? undefined : 'fadeUp 0.5s ease 0.35s both',
           }"
         >
-          <div :style="{ display: 'flex', justifyContent: 'space-between', padding: '0 2px', marginBottom: '6px' }">
-            <span
-              v-for="y in yearLabels"
-              :key="y.label"
-              class="year-label"
-              :style="{
-                fontSize: 'clamp(7px,0.9vw,9px)',
-                fontWeight: 600,
-                color: y.start === 0 ? 'rgba(99,102,241,0.5)' : 'rgba(255,255,255,0.15)',
-                letterSpacing: '0.05em',
-              }"
-            >
-              {{ y.label }}
-            </span>
-          </div>
-          <div class="month-label" :style="{ position: 'relative', height: '16px', marginBottom: '3px' }">
-            <span
-              v-for="(col, i) in mCols"
-              :key="i"
-              :style="{
-                position: 'absolute',
-                left: (col * 5 + 2.5) + '%',
-                fontSize: 'clamp(6px,0.8vw,8px)',
-                color: 'rgba(255,255,255,0.14)',
-                fontWeight: 500,
-                transform: 'translateX(-50%)',
-              }"
-            >
-              {{ mLabels[i] }}
-            </span>
-          </div>
-          <div :style="{ display: 'grid', gridTemplateColumns: 'repeat(20,1fr)', gap: '1.5px' }">
+          <div
+            v-if="githubLoading"
+            :style="{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '20px',
+            }"
+          >
             <div
-              v-for="(lv, i) in contrib.flat()"
-              :key="i"
-              class="contrib-cell"
-              :title="lv + ' contributions'"
               :style="{
-                width: '100%',
-                aspectRatio: '1',
-                borderRadius: '1.5px',
-                background: cCol[lv],
-                animation: closing ? undefined : `cellPop 0.2s ease ${0.4 + i * 0.004}s both`,
-                opacity: closing ? 1 : 0,
-                transform: closing ? undefined : 'scale(0)',
+                width: '20px',
+                height: '20px',
+                border: '2px solid ' + LN,
+                borderTopColor: A,
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite',
               }"
             />
+            <span :style="{ fontSize: '10px', color: D }">Loading contributions...</span>
           </div>
-          <div :style="{ display: 'flex', alignItems: 'center', gap: '3px', marginTop: '6px', justifyContent: 'flex-end' }">
-            <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', color: 'rgba(255,255,255,0.14)' }">Less</span>
-            <div v-for="c in cCol" :key="c" :style="{ width: '6px', height: '6px', borderRadius: '1.5px', border: c }" />
-            <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', color: 'rgba(255,255,255,0.14)' }">More</span>
+          <div v-else-if="githubError" :style="{ textAlign: 'center', padding: '16px', color: 'rgba(255,100,100,0.8)', fontSize: '10px' }">
+            {{ githubError }}
+            <button
+              @click="fetchContributions"
+              :style="{
+                marginTop: '8px',
+                padding: '4px 12px',
+                fontSize: '9px',
+                background: 'rgba(99,102,241,0.15)',
+                border: '1px solid ' + A,
+                borderRadius: '6px',
+                color: A,
+                cursor: 'pointer',
+              }"
+            >
+              Retry
+            </button>
           </div>
+          <template v-else>
+            <div :style="{ display: 'flex', justifyContent: 'space-between', padding: '0 2px', marginBottom: '6px' }">
+              <span
+                v-for="y in yearLabels"
+                :key="y.label"
+                class="year-label"
+                :style="{
+                  fontSize: 'clamp(7px,0.9vw,9px)',
+                  fontWeight: 600,
+                  color: y.start === 0 ? 'rgba(99,102,241,0.5)' : 'rgba(255,255,255,0.15)',
+                  letterSpacing: '0.05em',
+                }"
+              >
+                {{ y.label }}
+              </span>
+            </div>
+            <div class="month-label" :style="{ position: 'relative', height: '16px', marginBottom: '3px' }">
+              <span
+                v-for="(col, i) in mCols"
+                :key="i"
+                :style="{
+                  position: 'absolute',
+                  left: (col * 5 + 2.5) + '%',
+                  fontSize: 'clamp(6px,0.8vw,8px)',
+                  color: 'rgba(255,255,255,0.14)',
+                  fontWeight: 500,
+                  transform: 'translateX(-50%)',
+                }"
+              >
+                {{ mLabels[i] }}
+              </span>
+            </div>
+            <div
+              :style="{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(20,1fr)',
+                gap: '1.5px',
+                transition: 'opacity 0.3s ease',
+              }"
+            >
+              <div
+                v-for="(lv, i) in contrib.flat()"
+                :key="i"
+                class="contrib-cell"
+                :title="lv + ' contributions'"
+                :style="{
+                  width: '100%',
+                  aspectRatio: '1',
+                  borderRadius: '1.5px',
+                  background: cCol[lv],
+                  animation: closing ? undefined : `cellPop 0.2s cubic-bezier(0.16,1,0.3,1) ${0.4 + i * 0.003}s both`,
+                  opacity: closing ? 1 : 0,
+                  transform: closing ? undefined : 'scale(0)',
+                  transition: 'transform 0.2s cubic-bezier(0.16,1,0.3,1), background 0.3s ease',
+                }"
+                @mouseenter="($event.target as HTMLElement).style.transform = 'scale(1.5)'"
+                @mouseleave="($event.target as HTMLElement).style.transform = 'scale(1)'"
+              />
+            </div>
+            <div :style="{ display: 'flex', alignItems: 'center', gap: '3px', marginTop: '6px', justifyContent: 'flex-end' }">
+              <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', color: 'rgba(255,255,255,0.14)' }">Less</span>
+              <div v-for="c in cCol" :key="c" :style="{ width: '6px', height: '6px', borderRadius: '1.5px', border: c }" />
+              <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', color: 'rgba(255,255,255,0.14)' }">More</span>
+            </div>
+            <div
+              :style="{
+                marginTop: '10px',
+                textAlign: 'right',
+                fontSize: 'clamp(9px,1.1vw,11px)',
+                color: 'rgba(255,255,255,0.4)',
+                fontFamily: `'JetBrains Mono',monospace`,
+              }"
+            >
+              {{ totalContributions }} total contributions
+            </div>
+          </template>
         </div>
 
         <div
@@ -662,7 +741,7 @@ function toggleAbout() {
           }"
         >
           <div :style="{ width: '16px', height: '1px', background: LN }" />
-          <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', fontWeight: 600, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase' }">Junior Developer</span>
+          <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', fontWeight: 600, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase' }">Developer</span>
           <div :style="{ width: '3px', height: '3px', borderRadius: '50%', background: A, opacity: 0.5 }" />
           <span :style="{ fontSize: 'clamp(6px,0.8vw,8px)', fontWeight: 600, letterSpacing: '0.2em', color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase' }">Portfolio</span>
           <div :style="{ width: '16px', height: '1px', background: LN }" />
@@ -923,7 +1002,7 @@ function toggleAbout() {
       </div>
       <div :style="{ width: '28px', height: '1px', background: A, marginBottom: 'clamp(12px,2vh,20px)', opacity: 0, animation: 'fadeUp 0.6s ease 0.8s both' }" />
       <div :style="{ opacity: 0, animation: 'fadeUp 0.8s ease 0.9s both', marginBottom: 'clamp(10px,1.6vh,18px)' }">
-        <span class="label-sm" :style="{ fontSize: '9px', fontWeight: 600, letterSpacing: '0.3em', color: D, textTransform: 'uppercase' }">JUNIOR DEVELOPER</span>
+        <span class="label-sm" :style="{ fontSize: '9px', fontWeight: 600, letterSpacing: '0.3em', color: D, textTransform: 'uppercase' }">DEVELOPER</span>
       </div>
       <div :style="{ opacity: 0, animation: 'fadeUp 0.8s ease 1s both', marginBottom: 'clamp(3px,0.5vh,6px)' }">
         <span class="name-hello" :style="{ fontSize: 'clamp(12px,1.8vw,16px)', fontWeight: 400, letterSpacing: '0.05em', color: D }">Hello, I am</span>
@@ -1093,4 +1172,250 @@ function toggleAbout() {
 .nav-item:not(.nav-item-active):hover {
   color: var(--text) !important;
 }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.contrib-cell {
+  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contrib-cell:hover {
+  transform: scale(1.4) !important;
+  z-index: 10;
+  box-shadow: 0 0 12px rgba(99,102,241,0.6);
+}
+
+.panel-box {
+  transition: box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+.nav-item {
+  transition: color 0.25s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+.nav-item:not(.nav-item-active):hover {
+  color: var(--text) !important;
+  transform: translateY(-2px);
+}
+
+.gh-link, .social-icon, .tech-pill, .btn-about, .btn-cv, .close-btn {
+  transition: all 0.25s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.contrib-cell {
+  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1), background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contrib-cell:hover {
+  transform: scale(1.4) !important;
+  z-index: 10;
+  box-shadow: 0 0 12px rgba(99,102,241,0.6);
+}
+
+.panel-box {
+  transition: box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+.nav-item {
+  transition: color 0.25s cubic-bezier(0.16,1,0.3,1), transform 0.2s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+@keyframes panelBgIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes panelBgOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes panelOut {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cellPop {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pillIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes expIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes numIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes socialIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes btnIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tagInL {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tagInR {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes clipIn {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes typeIn {
+  from { opacity: 0; clip-path: inset(0 100% 0 0); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+
+@keyframes navFloatIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes navItemIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gridIn {
+  from { opacity: 0; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes drawH {
+  from { transform-origin: left; transform: scaleX(0); }
+  to { transform-origin: left; transform: scaleX(1); }
+}
+
+@keyframes drawV {
+  from { transform-origin: top; transform: scaleY(0); }
+  to { transform-origin: top; transform: scaleY(1); }
+}
+
+@keyframes dotBeat {
+  0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes colonBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes digitRoll {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes msFlicker {
+  0%, 90% { opacity: 1; }
+  91%, 100% { opacity: 0.3; }
+}
+
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes cursorBlink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.nav-float {
+  will-change: transform, opacity;
+}
+
+.panel-box {
+  will-change: transform, opacity, box-shadow;
+}
+
+.contrib-cell {
+  will-change: transform;
+}
+
+.social-icon, .tech-pill, .nav-item, .btn-about, .btn-cv {
+  will-change: transform;
+}
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
