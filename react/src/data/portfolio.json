@@ -257,7 +257,8 @@
       "year": "2025",
       "id": "HKI-AIQUA",
       "cat": "HKI",
-      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)",
+      "image": "/cert-hki-aiqua.pdf"
     },
     {
       "init": "PRM",
@@ -266,7 +267,8 @@
       "year": "2025",
       "id": "PRM-D1",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)",
+      "image": "/cert-pemandu.png"
     },
     {
       "init": "PRM",
@@ -275,7 +277,8 @@
       "year": "2025",
       "id": "PRM-D2",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#353633,#222322)"
+      "grad": "linear-gradient(135deg,#353633,#222322)",
+      "image": "/cert-pemandu.png"
     },
     {
       "init": "IBM",
@@ -284,7 +287,8 @@
       "year": "2025",
       "id": "IBM-CLS",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+      "grad": "linear-gradient(135deg,#2f3030,#181918)",
+      "image": "/cert-ibm-classify.png"
     },
     {
       "init": "IBM",
@@ -293,7 +297,8 @@
       "year": "2025",
       "id": "IBM-SLV",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
+      "image": "/cert-ibm-session1.pdf"
     },
     {
       "init": "IBM",
@@ -302,7 +307,8 @@
       "year": "2025",
       "id": "IBM-SUM",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#353633,#1b1c1b)",
+      "image": "/cert-ibm-summarize.png"
     },
     {
       "init": "HR",
@@ -311,7 +317,8 @@
       "year": "2025",
       "id": "HR-SF",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)",
+      "image": "/cert-hr.pdf"
     },
     {
       "init": "MC",
@@ -320,7 +327,8 @@
       "year": "2025",
       "id": "MC-PT",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#33352f,#222322)"
+      "grad": "linear-gradient(135deg,#33352f,#222322)",
+      "image": "/cert-ios-pentest.pdf"
     },
     {
       "init": "MC",
@@ -329,7 +337,8 @@
       "year": "2025",
       "id": "MC-BAC",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)",
+      "image": "/cert-ios-pentest.pdf"
     },
     {
       "init": "SI",
@@ -338,7 +347,8 @@
       "year": "2025",
       "id": "SI-2025",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)",
+      "image": "/cert-sekolah-ilmiah.png"
     },
     {
       "init": "H8",
@@ -347,7 +357,8 @@
       "year": "2025",
       "id": "H8-SDI",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+      "grad": "linear-gradient(135deg,#2f3030,#181918)",
+      "image": "/cert-skillsbuild.pdf"
     },
     {
       "init": "UGM",
@@ -356,7 +367,8 @@
       "year": "2025",
       "id": "UGM-G2R",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#353633,#222322)"
+      "grad": "linear-gradient(135deg,#353633,#222322)",
+      "image": "/cert-ugm-workshop.pdf"
     },
     {
       "init": "UGM",
@@ -365,7 +377,8 @@
       "year": "2025",
       "id": "UGM-BAL",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
+      "image": "/cert-ugm-unit.pdf"
     },
     {
       "init": "DC",
@@ -374,7 +387,8 @@
       "year": "2025",
       "id": "DC-174",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)",
+      "image": "/devcoach-173-ios-mendalami-swiftui-ui-framework-masa-depan-certificate.pdf"
     },
     {
       "init": "DC",
@@ -383,7 +397,8 @@
       "year": "2025",
       "id": "DC-179",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#33352f,#222322)"
+      "grad": "linear-gradient(135deg,#33352f,#222322)",
+      "image": "/devcoach-179-flutter-ciptakan-animasi-epik-dengan-animation-certificate.pdf"
     },
     {
       "init": "DC",
@@ -392,7 +407,8 @@
       "year": "2025",
       "id": "DC-192",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)",
+      "image": "/devcoach-192-soft-skill-penangkal-nirwaktu-atur-prioritas-dengan-lebih-cerdas-certificate (1).pdf"
     },
     {
       "init": "DC",
@@ -401,7 +417,8 @@
       "year": "2025",
       "id": "DC-193",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)",
+      "image": "/devcoach-193-react-hooks-mengubah-segalanya-certificate.pdf"
     },
     {
       "init": "DC",
@@ -410,7 +427,8 @@
       "year": "2025",
       "id": "DC-194",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#353633,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#353633,#1b1c1b)",
+      "image": "/devcoach-194-data-engineering-etl-skill-wajib-bagi-seorang-data-engineer-certificate.pdf"
     },
     {
       "init": "DC",
@@ -419,7 +437,8 @@
       "year": "2025",
       "id": "DC-195",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2f3030,#181918)"
+      "grad": "linear-gradient(135deg,#2f3030,#181918)",
+      "image": "/devcoach-195-kotlin-101-mengenal-special-classes-dan-collection-certificate.pdf"
     },
     {
       "init": "DC",
@@ -428,7 +447,8 @@
       "year": "2024",
       "id": "DC-168",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
+      "image": "/DOC-20241006-WA0115..pdf"
     },
     {
       "init": "GC",
@@ -437,7 +457,8 @@
       "year": "2025",
       "id": "GCA-2025",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#2b2c2b,#181918)"
+      "grad": "linear-gradient(135deg,#2b2c2b,#181918)",
+      "image": "/google-cloud-arcade-fasilitator-2025-program-overview-deep-dive-certificate (1).pdf"
     },
     {
       "init": "IDC",
@@ -446,7 +467,8 @@
       "year": "2025",
       "id": "IDC-05",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#33352f,#222322)"
+      "grad": "linear-gradient(135deg,#33352f,#222322)",
+      "image": "/idcamp-alumni-dialogue-5-debunking-the-myth-of-intelligent-automation-prepare-for-the-future-workforce-certificate (1).pdf"
     },
     {
       "init": "IDC",
@@ -455,7 +477,8 @@
       "year": "2025",
       "id": "IDC-08",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#303130,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#303130,#1b1c1b)",
+      "image": "/idcamp-x-dicoding-live-8-when-business-questions-meet-machine-learning-a-love-story-in-data-certificate.pdf"
     },
     {
       "init": "IDC",
@@ -464,7 +487,8 @@
       "year": "2025",
       "id": "IDC-04",
       "cat": "Training",
-      "grad": "linear-gradient(135deg,#333433,#1b1c1b)"
+      "grad": "linear-gradient(135deg,#333433,#1b1c1b)",
+      "image": "/reschedule-idcamp-alumni-dialogue-4-failing-forward-turning-setbacks-into-growth-in-tech-certificate.pdf"
     }
   ]
 }
