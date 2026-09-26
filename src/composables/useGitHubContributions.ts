@@ -51,9 +51,11 @@ function parseWeeksToGrid(weeks: ContributionWeek[]): number[][] {
   const grid: number[][] = []
 
   for (let w = 0; w < weeks.length; w++) {
+    const weekData = weeks[w]
+    if (!weekData) continue
     const week: number[] = []
     for (let d = 0; d < 7; d++) {
-      const day = weeks[w].contributionDays[d]
+      const day = weekData.contributionDays[d]
       const level = day ? getColorLevel(day.contributionCount) : 0
       week.push(level)
     }
@@ -118,7 +120,7 @@ export function useGitHubContributions(): UseGitHubContributionsReturn {
 
       const data: { data?: GitHubContributionsData; errors?: Array<{ message: string }> } = await response.json()
 
-      if (data.errors) {
+      if (data.errors && data.errors.length > 0) {
         throw new Error(data.errors[0].message)
       }
 
