@@ -599,8 +599,7 @@ const PROFILE_CSS = `
 
 function ProfileView({ data, active = "about", onNavigate = () => {} }) {
   const profile = data.profile;
-  const [realGrid, setRealGrid] = useState(null);
-  const [realTotal, setRealTotal] = useState(null);
+  const [year, setYear] = useState("2026");
 
   const grid = useMemo(() => {
     const cols = [];
@@ -610,69 +609,6 @@ function ProfileView({ data, active = "about", onNavigate = () => {} }) {
       cols.push(days);
     }
     return cols;
-  }, []);
-
-  useEffect(() => {
-    let cancelled = false;
-    const CACHE_KEY = "saiful-gh-contrib-v1";
-    try {
-      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || "null");
-      if (cached && Date.now() - cached.t < 6 * 3600 * 1000 && Array.isArray(cached.grid)) {
-        setRealGrid(cached.grid);
-        setRealTotal(cached.total);
-        return;
-      }
-    } catch (e) {}
-    async function loadRealContrib() {
-      try {
-        const reposRes = await fetch(
-          "https://api.github.com/users/saiful-rizal/repos?per_page=100&sort=pushed"
-        );
-        if (!reposRes.ok) return;
-        const repos = await reposRes.json();
-        const mine = repos.filter((r) => !r.fork).slice(0, 10);
-        const weeks = Array.from({ length: 53 }, () => Array(7).fill(0));
-        let total = 0;
-        await Promise.all(
-          mine.map(async (r) => {
-            try {
-              const sRes = await fetch(
-                `https://api.github.com/repos/saiful-rizal/${r.name}/stats/commit_activity`
-              );
-              if (!sRes.ok) return;
-              const sData = await sRes.json();
-              if (!Array.isArray(sData)) return;
-              const last = sData.slice(-53);
-              const off = 53 - last.length;
-              last.forEach((w, i) => {
-                (w.days || []).forEach((c, d) => {
-                  weeks[off + i][d] += c;
-                  total += c;
-                });
-              });
-            } catch (e) {}
-          })
-        );
-        if (!cancelled && total > 0) {
-          const levels = weeks.map((wk) =>
-            wk.map((c) => (c <= 0 ? 0 : c <= 2 ? 1 : c <= 5 ? 2 : c <= 9 ? 3 : 4))
-          );
-          const str = total.toLocaleString("id-ID");
-          setRealGrid(levels);
-          setRealTotal(str);
-          try {
-            localStorage.setItem(
-              CACHE_KEY,
-              JSON.stringify({ t: Date.now(), grid: levels, total: str })
-            );
-          } catch (e) {}
-        }
-      } catch (e) {}
-    }
-    loadRealContrib();
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   const go = (tab) => () => onNavigate(tab);
@@ -723,8 +659,13 @@ function ProfileView({ data, active = "about", onNavigate = () => {} }) {
           <div className="p-git-head">
             <div className="p-git-left">
               <span className="p-git-title">Kontribusi GitHub</span>
+              <select value={year} onChange={(e) => setYear(e.target.value)} className="p-year" aria-label="Pilih tahun">
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+              </select>
             </div>
-            <span className="p-git-total"><b>{realTotal || profile.githubTotal}</b> kontribusi • {realGrid ? "live GitHub" : "12 bulan terakhir"}</span>
+            <span className="p-git-total"><b>{profile.githubTotal}</b> kontribusi</span>
           </div>
 
           <div className="p-git-scroll">
@@ -741,7 +682,7 @@ function ProfileView({ data, active = "about", onNavigate = () => {} }) {
                   ))}
                 </div>
                 <div className="p-git-grid">
-                  {(realGrid || grid).map((week, wi) => (
+                  {grid.map((week, wi) => (
                     <div key={wi} className="p-week">
                       {week.map((lv, di) => (
                         <span key={di} className={`p-cell ${P_LEVELS[lv]}`} />
