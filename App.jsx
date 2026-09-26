@@ -552,11 +552,13 @@ const PROFILE_CSS = `
         .p-nav-item:hover { background: rgba(255,255,255,0.05); color: #c8ccd4; }
         .p-nav-item.active:hover { background: rgba(170,170,170,0.15); color: #d4d4d4; }
 
-        .p-exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        @media (max-width: 820px) { .p-exp-grid { grid-template-columns: 1fr; } }
+        .p-exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        @media (max-width: 1024px) { .p-exp-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .p-exp-grid { grid-template-columns: 1fr; } }
 
-        .p-ct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: left; }
-        @media (max-width: 820px) { .p-ct-grid { grid-template-columns: 1fr; } }
+        .p-ct-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: left; }
+        @media (max-width: 1024px) { .p-ct-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .p-ct-grid { grid-template-columns: 1fr; } }
         .p-ct-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #181818; margin-bottom: 12px; display: block; }
         .p-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; text-align: left; }
         .p-field > span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8a8f9e; }
@@ -879,7 +881,7 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
           <p className="p-title-line">Kepanitiaan • Organisasi • Penghargaan</p>
 
           <p className="p-bio">
-            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal sesuai CV.
+            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal.
           </p>
 
           {certs.length === 0 ? (
