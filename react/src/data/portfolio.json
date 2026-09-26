@@ -102,6 +102,21 @@
       "tags": ["Kepemanduan", "Ketertiban", "Kelembagaan"],
       "date": "2025 - Sekarang",
       "badge": "Organisasi"
+    },
+    {
+      "logo": "DISPPR",
+      "title": "Pemuda Pelopor Bidang Pendidikan",
+      "company": "Dinas Pariwisata, Pemuda dan Olahraga Kabupaten Bondowoso",
+      "desc": "Mewakili pemuda Bondowoso dalam program Pemuda Pelopor bidang pendidikan: mengembangkan inovasi pembelajaran, mendampingi kegiatan literasi, dan berperan dalam penguatan karakter generasi muda.",
+      "resp": [
+        "Mengembangkan program inovasi pendidikan bagi pemuda Bondowoso",
+        "Mendampingi kegiatan literasi dan penguatan karakter generasi muda",
+        "Berkolaborasi dengan DISPARPORAHUB dalam pelaksanaan program pemuda pelopor",
+        "Meraih Juara 3 Pemuda Pelopor Bidang Pendidikan tingkat Kabupaten Bondowoso 2024"
+      ],
+      "tags": ["Pendidikan", "Pemuda", "Literasi", "Karakter"],
+      "date": "2024",
+      "badge": "Penghargaan"
     }
   ],
   "projects": [

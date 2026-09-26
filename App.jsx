@@ -12,7 +12,7 @@ const PROFILE = {
   heroCategory: "JUNIOR DEVELOPER",
   phone: "082225675196",
   email: "syaifulrizal320206@gmail.com",
-  githubTotal: "9,430",
+  githubTotal: 9430,
   status: "Mahasiswa D4 Teknik Informatika",
   role: "Junior Web & Mobile Developer",
   socials: {
@@ -93,13 +93,28 @@ const EXPERIENCES = [
       date: "2025 — Sekarang",
       badge: "Freelance",
     },
+    {
+      logo: "DISPPR",
+      title: "Pemuda Pelopor Bidang Pendidikan",
+      company: "Dinas Pariwisata, Pemuda dan Olahraga Kabupaten Bondowoso",
+      desc: "Mewakili pemuda Bondowoso dalam program Pemuda Pelopor bidang pendidikan: mengembangkan inovasi pembelajaran, mendampingi kegiatan literasi, dan berperan dalam penguatan karakter generasi muda.",
+      resp: [
+        "Mengembangkan program inovasi pendidikan bagi pemuda Bondowoso",
+        "Mendampingi kegiatan literasi dan penguatan karakter generasi muda",
+        "Berkolaborasi dengan DISPARPORAHUB dalam pelaksanaan program pemuda pelopor",
+        "Meraih Juara 3 Pemuda Pelopor Bidang Pendidikan tingkat Kabupaten Bondowoso 2024",
+      ],
+      tags: ["Pendidikan", "Pemuda", "Literasi", "Karakter"],
+      date: "2024",
+      badge: "Penghargaan",
+    },
   ];
 
 /* =====================================================
    DATA LAYER — default + localStorage + hash routing
 ===================================================== */
 
-const DATA_KEY = "saiful-portfolio-data-v2";
+const DATA_KEY = "saiful-portfolio-data-v3";
 
 const DEFAULT_CERTS = [
   { id: "HKI-AIQUA", title: "Hak Kekayaan Intelektual Sistem Sterilisasi Air Minum Ternak (AIQUA)", issuer: "Politeknik Negeri Jember", year: "2025", code: "HKI-AIQUA", cat: "HKI", image: "" },
@@ -656,49 +671,52 @@ function ProfileView({ data, active = "about", onNavigate = () => {} }) {
 
           <hr className="p-divider" />
 
-          <div className="p-git-head">
-            <div className="p-git-left">
-              <span className="p-git-title">Kontribusi GitHub</span>
-              <select value={year} onChange={(e) => setYear(e.target.value)} className="p-year" aria-label="Pilih tahun">
-                <option value="2026">2026</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-              </select>
+          {/* GitHub Contributions - Hidden */}
+          <div style={{ display: "none" }}>
+            <div className="p-git-head">
+              <div className="p-git-left">
+                <span className="p-git-title">Kontribusi GitHub</span>
+                <select value={year} onChange={(e) => setYear(e.target.value)} className="p-year" aria-label="Pilih tahun">
+                  <option value="2026">2026</option>
+                  <option value="2025">2025</option>
+                  <option value="2024">2024</option>
+                </select>
+              </div>
+              <span className="p-git-total"><b>{profile.githubTotal}</b> kontribusi</span>
             </div>
-            <span className="p-git-total"><b>{profile.githubTotal}</b> kontribusi</span>
-          </div>
 
-          <div className="p-git-scroll">
-            <div className="p-git">
-              <div className="p-git-months">
-                {P_MONTHS.map((m, i) => (
-                  <span key={i}>{m}</span>
-                ))}
-              </div>
-              <div className="p-git-body">
-                <div className="p-git-days">
-                  {P_DAY_LABELS.map((d, i) => (
-                    <span key={i}>{d}</span>
+            <div className="p-git-scroll">
+              <div className="p-git">
+                <div className="p-git-months">
+                  {P_MONTHS.map((m, i) => (
+                    <span key={i}>{m}</span>
                   ))}
                 </div>
-                <div className="p-git-grid">
-                  {grid.map((week, wi) => (
-                    <div key={wi} className="p-week">
-                      {week.map((lv, di) => (
-                        <span key={di} className={`p-cell ${P_LEVELS[lv]}`} />
-                      ))}
-                    </div>
-                  ))}
+                <div className="p-git-body">
+                  <div className="p-git-days">
+                    {P_DAY_LABELS.map((d, i) => (
+                      <span key={i}>{d}</span>
+                    ))}
+                  </div>
+                  <div className="p-git-grid">
+                    {grid.map((week, wi) => (
+                      <div key={wi} className="p-week">
+                        {week.map((lv, di) => (
+                          <span key={di} className={`p-cell ${P_LEVELS[lv]}`} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-              <div className="p-git-legend">
-                <span>Jarang</span>
-                <span className="p-cell lv0 sm" />
-                <span className="p-cell lv1 sm" />
-                <span className="p-cell lv2 sm" />
-                <span className="p-cell lv3 sm" />
-                <span className="p-cell lv4 sm" />
-                <span>Sering</span>
+                <div className="p-git-legend">
+                  <span>Jarang</span>
+                  <span className="p-cell lv0 sm" />
+                  <span className="p-cell lv1 sm" />
+                  <span className="p-cell lv2 sm" />
+                  <span className="p-cell lv3 sm" />
+                  <span className="p-cell lv4 sm" />
+                  <span>Sering</span>
+                </div>
               </div>
             </div>
           </div>
@@ -862,7 +880,6 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
 
           <p className="p-bio">
             Kepanitiaan, organisasi, dan penghargaan Saiful Rizal sesuai CV.
-            Kelola datanya lewat dashboard (tambahkan /# pada link).
           </p>
 
           {certs.length === 0 ? (
@@ -3452,6 +3469,52 @@ export default function App() {
 
             <span className="nav-label">
               Certification
+            </span>
+
+          </a>
+
+          {/* DASHBOARD */}
+
+          <a
+            href="#"
+            className="nav-item"
+            onClick={(e) => { e.preventDefault(); navTo("dashboard"); }}
+          >
+
+            <span className="nav-icon">
+
+              <svg viewBox="0 0 24 24">
+
+                <path d="
+                  M3 13
+                  H21
+                  V11
+                  H3
+                  Z
+                " />
+
+                <path d="
+                  M3 9
+                  H21
+                  V7
+                  H3
+                  Z
+                " />
+
+                <path d="
+                  M3 17
+                  H21
+                  V15
+                  H3
+                  Z
+                " />
+
+              </svg>
+
+            </span>
+
+            <span className="nav-label">
+              Dashboard
             </span>
 
           </a>

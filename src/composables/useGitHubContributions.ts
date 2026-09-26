@@ -120,8 +120,9 @@ export function useGitHubContributions(): UseGitHubContributionsReturn {
 
       const data: { data?: GitHubContributionsData; errors?: Array<{ message: string }> } = await response.json()
 
-      if (data.errors && data.errors.length > 0) {
-        throw new Error(data.errors[0].message)
+      const firstError = data.errors?.[0]
+      if (firstError) {
+        throw new Error(firstError.message)
       }
 
       if (!data.data?.user?.contributionsCollection?.contributionCalendar) {

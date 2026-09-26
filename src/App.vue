@@ -44,13 +44,23 @@ const exps = [
     tech: ['Elektronika Industri', 'Teknikal', 'Maintenance'],
   },
 ]
-const yearLabels = [
-  { label: '2026', start: 0, end: 7 },
-  { label: '2024', start: 7, end: 14 },
-  { label: '2022', start: 14, end: 20 },
-]
-const mLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
-const mCols = [0, 4, 8, 12, 16]
+const yearLabels = computed(() => {
+    const weeks = contrib.value.length
+    if (weeks === 0) return []
+    const currentYear = new Date().getFullYear()
+    const startYear = currentYear - Math.ceil(weeks / 52)
+    const labels = []
+    const yearsToShow = Math.min(3, Math.ceil(weeks / 17))
+    for (let y = 0; y < yearsToShow; y++) {
+      const year = startYear + y
+      const start = y * Math.floor(weeks / yearsToShow)
+      const end = y === yearsToShow - 1 ? weeks : (y + 1) * Math.floor(weeks / yearsToShow)
+      labels.push({ label: String(year), start, end })
+    }
+    return labels
+  })
+const mLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const mCols = [0, 4.33, 8.66, 13, 17.33, 21.66, 26, 30.33, 34.66, 39, 43.33, 47.66]
 const cCol = [
   'rgba(99,102,241,0.04)',
   'rgba(99,102,241,0.15)',
@@ -565,10 +575,10 @@ function toggleAbout() {
                 {{ mLabels[i] }}
               </span>
             </div>
-            <div
+<div
               :style="{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(20,1fr)',
+                gridTemplateColumns: `repeat(${contrib.length}, 1fr)`,
                 gap: '1.5px',
                 transition: 'opacity 0.3s ease',
               }"
@@ -1397,6 +1407,214 @@ function toggleAbout() {
   will-change: transform;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
