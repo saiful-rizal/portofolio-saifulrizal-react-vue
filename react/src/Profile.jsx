@@ -395,7 +395,7 @@ export default function Profile({ active = "about", onNavigate = () => {} }) {
                 <span className="p-cell lv1 sm" />
                 <span className="p-cell lv2 sm" />
                 <span className="p-cell lv3 sm" />
-                <span className="p-cell lv4 sm" />
+                <span className="p-cell lv4 sm" />x
                 <span>Sering</span>
               </div>
             </div>

@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { useGitHubContributions } from './composables/useGitHubContributions'
+import { certificates } from './data/certificates'
+
+const categories = computed(() => {
+  const cats = ['Semua', ...new Set(certificates.map(c => c.category))]
+  return cats
+})
+
+const filteredCertificates = computed(() => {
+  if (selectedCategory.value === 'Semua') return certificates
+  return certificates.filter(c => c.category === selectedCategory.value)
+})
 
 const A = 'var(--accent)'
 const D = 'var(--dim)'
@@ -15,6 +26,11 @@ const activeNav = ref('Home')
 const panel = ref<string | null>(null)
 const closing = ref(false)
 const ms = ref('00')
+
+const certModalOpen = ref(false)
+const certModalCert = ref<typeof certificates[0] | null>(null)
+const certModalView = ref<'pdf' | 'image'>('pdf')
+const selectedCategory = ref('Semua')
 
 const digits = ['2', '0', '2', '5']
 const tech = ['Flutter', 'Dart', 'Java', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git']
@@ -171,6 +187,23 @@ function closePanel() {
     closing.value = false
     activeNav.value = 'Home'
   }, 300)
+}
+
+function openCertModal(cert: typeof certificates[0]) {
+  certModalCert.value = cert
+  certModalView.value = cert.pdf ? 'pdf' : 'image'
+  certModalOpen.value = true
+}
+
+function closeCertModal() {
+  certModalOpen.value = false
+  setTimeout(() => {
+    certModalCert.value = null
+  }, 300)
+}
+
+function switchCertView(view: 'pdf' | 'image') {
+  certModalView.value = view
 }
 
 function handleNav(name: string) {
@@ -825,7 +858,7 @@ function toggleAbout() {
       </div>
     </div>
 
-    <!-- Certificate Panel -->
+<!-- Certificate Panel -->
     <div
       v-if="panel === 'certificate'"
       :style="{
@@ -844,15 +877,16 @@ function toggleAbout() {
           position: 'absolute',
           top: '50%',
           left: '50%',
-          width: 'min(75vw,340px)',
-          background: 'rgba(12,12,14,0.94)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
+          width: 'min(95vw,1000px)',
+          maxHeight: '90vh',
+          background: 'rgba(12,12,14,0.96)',
+          backdropFilter: 'blur(32px)',
+          WebkitBackdropFilter: 'blur(32px)',
           border: '1px solid rgba(255,255,255,0.06)',
-          borderRadius: '18px',
-          boxShadow: '0 16px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.02) inset',
-          padding: 'clamp(24px,5vw,40px)',
-          textAlign: 'center',
+          borderRadius: '20px',
+          boxShadow: '0 24px 96px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.02) inset',
+          padding: 'clamp(20px,4vw,32px)',
+          overflowY: 'auto',
           animation: closing ? 'panelOut 0.3s cubic-bezier(0.4,0,0.2,1) both' : 'panelIn 0.4s cubic-bezier(0.16,1,0.3,1) both',
           cursor: 'default',
         }"
@@ -863,11 +897,11 @@ function toggleAbout() {
           @click="closePanel"
           :style="{
             position: 'absolute',
-            top: '12px',
-            right: '12px',
-            width: '26px',
-            height: '26px',
-            borderRadius: '7px',
+            top: '16px',
+            right: '16px',
+            width: '32px',
+            height: '32px',
+            borderRadius: '8px',
             border: '1px solid ' + LN,
             display: 'flex',
             alignItems: 'center',
@@ -875,18 +909,343 @@ function toggleAbout() {
             cursor: 'pointer',
             transition: 'all 0.2s ease',
             color: D,
+            zIndex: 5,
           }"
         >
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
         </div>
-        <div :style="{ width: '40px', height: '40px', borderRadius: '12px', border: '1px solid ' + LN, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px', color: A, opacity: closing ? 1 : 0, animation: closing ? undefined : 'fadeUp 0.4s ease 0.15s both' }">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" /></svg>
+
+        <div
+          :style="{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            marginBottom: 'clamp(20px,3vh,28px)',
+            opacity: closing ? 1 : 0,
+            animation: closing ? undefined : 'fadeUp 0.5s ease 0.05s both',
+          }"
+        >
+          <div :style="{ width: '40px', height: '40px', borderRadius: '12px', border: '1px solid ' + LN, display: 'flex', alignItems: 'center', justifyContent: 'center', color: A }">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" /></svg>
+          </div>
+          <div>
+            <h2 :style="{ fontSize: 'clamp(18px,3vw,24px)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '2px' }">Sertifikat</h2>
+            <span :style="{ fontSize: 'clamp(10px,1.3vw,12px)', color: D }">{{ certificates.length }} sertifikat</span>
+          </div>
         </div>
-        <h2 :style="{ fontSize: '16px', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: '6px', opacity: closing ? 1 : 0, animation: closing ? undefined : 'fadeUp 0.4s ease 0.25s both' }">Certificate</h2>
-        <p :style="{ fontSize: '11px', lineHeight: 1.6, color: D, maxWidth: '240px', margin: '0 auto', opacity: closing ? 1 : 0, animation: closing ? undefined : 'fadeUp 0.4s ease 0.35s both' }">Professional certificates will be listed here.</p>
-        <div :style="{ display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '16px', padding: '5px 14px', borderRadius: '16px', border: '1px dashed ' + LN, opacity: closing ? 1 : 0, animation: closing ? undefined : 'fadeUp 0.4s ease 0.45s both' }">
-          <div :style="{ width: '3px', height: '3px', borderRadius: '50%', background: 'rgba(99,102,241,0.3)' }" />
-          <span :style="{ fontSize: '8px', fontWeight: 600, letterSpacing: '0.12em', color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase' }">Coming Soon</span>
+
+        <div
+          :style="{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            marginBottom: 'clamp(20px,3vh,28px)',
+            opacity: closing ? 1 : 0,
+            animation: closing ? undefined : 'fadeUp 0.5s ease 0.1s both',
+          }"
+        >
+          <span
+            v-for="cat in categories"
+            :key="cat"
+            @click="selectedCategory = cat"
+            :style="{
+              fontSize: 'clamp(9px,1.1vw,11px)',
+              fontWeight: 500,
+              letterSpacing: '0.04em',
+              padding: 'clamp(5px,0.8vw,7px) clamp(10px,1.5vw,14px)',
+              borderRadius: '20px',
+              border: '1px solid ' + (selectedCategory === cat ? A : LN),
+              background: selectedCategory === cat ? 'rgba(99,102,241,0.1)' : 'transparent',
+              color: selectedCategory === cat ? A : D,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+            }"
+          >
+            {{ cat }}
+          </span>
+        </div>
+
+        <div
+          :style="{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+            gap: '16px',
+            opacity: closing ? 1 : 0,
+            animation: closing ? undefined : 'fadeUp 0.5s ease 0.15s both',
+          }"
+        >
+          <div
+            v-for="cert in filteredCertificates"
+            :key="cert.id"
+            @click="openCertModal(cert)"
+            :style="{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid ' + LN,
+              borderRadius: '14px',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+            }"
+            @mouseenter="($event.currentTarget as HTMLElement).style.borderColor = A; ($event.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; ($event.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(99,102,241,0.15)'"
+            @mouseleave="($event.currentTarget as HTMLElement).style.borderColor = LN; ($event.currentTarget as HTMLElement).style.transform = 'translateY(0)'; ($event.currentTarget as HTMLElement).style.boxShadow = 'none'"
+          >
+            <div :style="{ position: 'relative', aspectRatio: '1.4 / 1', overflow: 'hidden' }">
+              <img
+                :src="`/${cert.image}`"
+                :alt="cert.title"
+                :style="{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transition: 'transform 0.3s ease',
+                }"
+                loading="lazy"
+              />
+              <div :style="{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)', opacity: 0, transition: 'opacity 0.3s ease' }">
+                <div :style="{ position: 'absolute', bottom: '10px', left: '10px', right: '10px', display: 'flex', gap: '6px' }">
+                  <span
+                    v-if="cert.pdf"
+                    :style="{
+                      flex: 1,
+                      padding: '6px 10px',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                      background: 'rgba(99,102,241,0.9)',
+                      color: '#fff',
+                      borderRadius: '6px',
+                    }"
+                  >
+                    View PDF
+                  </span>
+                  <span
+                    :style="{
+                      flex: 1,
+                      padding: '6px 10px',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      textAlign: 'center',
+                      background: 'rgba(255,255,255,0.9)',
+                      color: '#000',
+                      borderRadius: '6px',
+                    }"
+                  >
+                    View Image
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div :style="{ padding: '12px' }">
+              <h3 :style="{ fontSize: 'clamp(11px,1.3vw,13px)', fontWeight: 600, letterSpacing: '-0.01em', marginBottom: '4px', lineHeight: 1.3, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }">{{ cert.title }}</h3>
+              <div :style="{ fontSize: '9px', color: D, marginBottom: '2px' }">{{ cert.issuer }}</div>
+              <div :style="{ fontSize: '9px', color: M }">{{ cert.dateLabel }}</div>
+              <div :style="{ fontSize: '8px', fontWeight: 500, color: A, marginTop: '6px', textTransform: 'uppercase', letterSpacing: '0.06em' }">{{ cert.category }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div
+      v-if="certModalOpen"
+      :style="{
+        position: 'fixed',
+        inset: '0px',
+        zIndex: 100,
+        background: 'rgba(0,0,0,0.9)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        animation: 'fadeIn 0.3s ease both',
+      }"
+      @click="closeCertModal"
+    >
+      <div
+        :style="{
+          width: 'min(95vw, 1000px)',
+          maxHeight: '95vh',
+          background: 'rgba(10,10,12,0.98)',
+          backdropFilter: 'blur(32px)',
+          WebkitBackdropFilter: 'blur(32px)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '16px',
+          boxShadow: '0 32px 128px rgba(0,0,0,0.8)',
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          animation: 'panelIn 0.4s cubic-bezier(0.16,1,0.3,1) both',
+        }"
+        @click.stop
+      >
+        <div
+          :style="{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '16px 20px',
+            borderBottom: '1px solid ' + LN,
+          }"
+        >
+          <div :style="{ display: 'flex', alignItems: 'center', gap: '10px' }">
+            <div :style="{ width: '36px', height: '36px', borderRadius: '10px', border: '1px solid ' + LN, display: 'flex', alignItems: 'center', justifyContent: 'center', color: A }">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" /></svg>
+            </div>
+            <div>
+              <h3 :style="{ fontSize: '14px', fontWeight: 600, marginBottom: '2px' }">{{ certModalCert?.title }}</h3>
+              <span :style="{ fontSize: '10px', color: D }">{{ certModalCert?.issuer }}</span>
+            </div>
+          </div>
+          <div :style="{ display: 'flex', alignItems: 'center', gap: '8px' }">
+            <button
+              v-if="certModalCert?.pdf"
+              @click="switchCertView('pdf')"
+              :style="{
+                padding: '6px 12px',
+                fontSize: '10px',
+                fontWeight: 600,
+                borderRadius: '6px',
+                border: '1px solid ' + (certModalView === 'pdf' ? A : LN),
+                background: certModalView === 'pdf' ? 'rgba(99,102,241,0.15)' : 'transparent',
+                color: certModalView === 'pdf' ? A : D,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }"
+            >
+              PDF
+            </button>
+            <button
+              @click="switchCertView('image')"
+              :style="{
+                padding: '6px 12px',
+                fontSize: '10px',
+                fontWeight: 600,
+                borderRadius: '6px',
+                border: '1px solid ' + (certModalView === 'image' ? A : LN),
+                background: certModalView === 'image' ? 'rgba(99,102,241,0.15)' : 'transparent',
+                color: certModalView === 'image' ? A : D,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }"
+            >
+              Image
+            </button>
+            <div
+              class="close-btn"
+              @click="closeCertModal"
+              :style="{
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
+                border: '1px solid ' + LN,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                color: D,
+              }"
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12" /></svg>
+            </div>
+          </div>
+        </div>
+
+        <div
+          :style="{
+            flex: 1,
+            overflow: 'auto',
+            padding: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }"
+        >
+          <div v-if="certModalView === 'pdf' && certModalCert?.pdf" :style="{ width: '100%', height: '100%', minHeight: '500px' }">
+            <iframe
+              :src="`/${certModalCert.pdf}`"
+              :style="{ width: '100%', height: '100%', border: 'none', borderRadius: '8px' }"
+              title="Certificate PDF"
+            />
+          </div>
+          <div v-else-if="certModalCert" :style="{ textAlign: 'center' }">
+            <img
+              :src="`/${certModalCert.image}`"
+              :alt="certModalCert.title"
+              :style="{
+                maxWidth: '100%',
+                maxHeight: '80vh',
+                borderRadius: '8px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+              }"
+            />
+          </div>
+        </div>
+
+        <div
+          v-if="certModalCert"
+          :style="{
+            padding: '16px 20px',
+            borderTop: '1px solid ' + LN,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px',
+            justifyContent: 'center',
+          }"
+        >
+          <a
+            v-if="certModalCert.pdf"
+            :href="`/${certModalCert.pdf}`"
+            target="_blank"
+            rel="noopener noreferrer"
+            :style="{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              fontSize: '10px',
+              fontWeight: 600,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: '#fff',
+              background: A,
+              border: 'none',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+            Download PDF
+          </a>
+          <a
+            :href="`/${certModalCert.image}`"
+            target="_blank"
+            rel="noopener noreferrer"
+            :style="{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '8px 16px',
+              fontSize: '10px',
+              fontWeight: 600,
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              color: D,
+              background: 'transparent',
+              border: '1px solid ' + LN,
+              borderRadius: '8px',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><circle cx="8.5" cy="8.5" r="1.5" /><polyline points="21 15 16 10 5 21" /></svg>
+            Open Image
+          </a>
         </div>
       </div>
     </div>

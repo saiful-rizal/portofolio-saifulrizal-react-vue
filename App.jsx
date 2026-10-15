@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { CERTIFICATES } from "./certificates-data.js";
 
 /* =====================================================
    PROFILE DATA — Saiful Rizal (sesuai CV)
@@ -8,7 +9,7 @@ const PROFILE = {
   name: "Saiful Rizal",
   title: "Junior Web & Mobile Developer",
   photo: "/profile.png",
-  bio: "Mahasiswa semester 5 D4 Teknik Informatika Politeknik Negeri Jember yang passionate dalam pengembangan teknologi dan pembuatan aplikasi. Terbiasa membangun aplikasi web dan mobile yang responsif, interaktif, dan mudah digunakan dengan Flutter, Dart, Java, HTML, dan CSS menggunakan VS Code dan Android Studio. Memiliki kemampuan public speaking, bertanggung jawab, serta mampu menjelaskan dan membimbing peserta didik dalam memahami pemrograman secara sederhana dan mudah dipahami.",
+  bio: "Mahasiswa D4 Teknik Informatika (semester 5) Politeknik Negeri Jember yang berfokus pada pengembangan aplikasi full stack meliputi web, mobile, dan Internet of Things (IoT). Berlatar belakang Teknik Elektronika Industri sehingga memahami sisi perangkat keras sekaligus perangkat lunak. Terbiasa membangun aplikasi yang interaktif, responsif, dan terstruktur; Juara 3 kompetisi Aplikasi Website dan Mobile TIF Exhibition 2025. Komunikatif, aktif berorganisasi, dan siap berkontribusi dalam tim pengembangan produk.",
   heroCategory: "JUNIOR DEVELOPER",
   phone: "082225675196",
   email: "syaifulrizal320206@gmail.com",
@@ -114,34 +115,10 @@ const EXPERIENCES = [
    DATA LAYER — default + localStorage + hash routing
 ===================================================== */
 
-const DATA_KEY = "saiful-portfolio-data-v3";
+const DATA_KEY = "saiful-portfolio-data-v4";
 
-const DEFAULT_CERTS = [
-  { id: "HKI-AIQUA", title: "Hak Kekayaan Intelektual Sistem Sterilisasi Air Minum Ternak (AIQUA)", issuer: "Politeknik Negeri Jember", year: "2025", code: "HKI-AIQUA", cat: "HKI", image: "" },
-  { id: "PRM-D1", title: "Pemandu Materi Latihan Keterampilan Pramuka - Tingkat Dasar", issuer: "Jurusan Kesehatan Pertanian, Politeknik Negeri Jember", year: "2025", code: "PRM-D1", cat: "Training", image: "" },
-  { id: "PRM-D2", title: "Pemandu Materi Latihan Keterampilan Pramuka - Tingkat Dasar", issuer: "Jurusan Teknologi Pertanian, Politeknik Negeri Jember", year: "2025", code: "PRM-D2", cat: "Training", image: "" },
-  { id: "IBM-CLS", title: "Data Classification And Summarization Using IBM Granite", issuer: "IBM SkillsBuild", year: "2025", code: "IBM-CLS", cat: "Training", image: "" },
-  { id: "IBM-SLV", title: "Penyelesaian Data Menggunakan IBM Granite", issuer: "IBM SkillsBuild", year: "2025", code: "IBM-SLV", cat: "Training", image: "" },
-  { id: "IBM-SUM", title: "Summarizing Data Using IBM Granite", issuer: "IBM SkillsBuild", year: "2025", code: "IBM-SUM", cat: "Training", image: "" },
-  { id: "HR-SF", title: "Mengenal Dunia Human Resource : Menguasai Dasar - Dasar HR", issuer: "SF Chow Consulting", year: "2025", code: "HR-SF", cat: "Training", image: "" },
-  { id: "MC-PT", title: "Penetration Tester | Bug Hunter - Punggawa Cyber Security", issuer: "Merdeka Cyber", year: "2025", code: "MC-PT", cat: "Training", image: "" },
-  { id: "MC-BAC", title: "Strategi Terbaik Live Sesi Broken Access Control Hacking", issuer: "Merdeka Cyber", year: "2025", code: "MC-BAC", cat: "Training", image: "" },
-  { id: "SI-2025", title: "Sekolah Ilmiah 2025", issuer: "UKM Skim Politeknik Negeri Jember", year: "2025", code: "SI-2025", cat: "Training", image: "" },
-  { id: "H8-SDI", title: "Code Generations And Optimization Class in the Student Developer Initiative", issuer: "Hacktiv8 Indonesia", year: "2025", code: "H8-SDI", cat: "Training", image: "" },
-  { id: "UGM-G2R", title: "Model G2R Tetrapeneur : Inovasi Perencanaan Bisnis Ikonik Asli Indonesia", issuer: "Kewirausahaan HMP Universitas Gadjah Mada", year: "2025", code: "UGM-G2R", cat: "Training", image: "" },
-  { id: "UGM-BAL", title: "Mastering The Balance, Achieving Success : A Journey In Entrepreneurship", issuer: "Unit Kewirausahaan Pascasarjana Universitas Gadjah Mada", year: "2025", code: "UGM-BAL", cat: "Training", image: "" },
-  { id: "DC-174", title: "DevCoach 174 : IOS : Mendalami Swift UI, UI Framework Masa depan", issuer: "Dicoding Event", year: "2025", code: "DC-174", cat: "Training", image: "" },
-  { id: "DC-179", title: "DevCoach 179 : Flutter : Ciptakan Animasi Epik Dengan Animation", issuer: "Dicoding Event", year: "2025", code: "DC-179", cat: "Training", image: "" },
-  { id: "DC-192", title: "DevCoach 192 : Soft Skill : Penangkal Nirwaktu : Atur Prioritas dengan lebih cerdas", issuer: "Dicoding Event", year: "2025", code: "DC-192", cat: "Training", image: "" },
-  { id: "DC-193", title: "DevCoach 193 : React : Hooks Mengubah Segalanya", issuer: "Dicoding Event", year: "2025", code: "DC-193", cat: "Training", image: "" },
-  { id: "DC-194", title: "DevCoach 194 : Data Engineering | ETL : Wajib Bagi Seorang Data Engineer", issuer: "Dicoding Event", year: "2025", code: "DC-194", cat: "Training", image: "" },
-  { id: "DC-195", title: "DevCoach 195 : Kotlin 101 | Mengenal Special Classes dan Collection", issuer: "Dicoding Event", year: "2025", code: "DC-195", cat: "Training", image: "" },
-  { id: "DC-168", title: "DevCoach 168 : ML in Google Cloud | Training dan Deployment Machine Learning dengan Google Cloud", issuer: "Dicoding Event", year: "2024", code: "DC-168", cat: "Training", image: "" },
-  { id: "GCA-2025", title: "Google Cloud Arcade Fasilitator 2025 : Program Overview & Deep Dive", issuer: "Dicoding Event", year: "2025", code: "GCA-2025", cat: "Training", image: "" },
-  { id: "IDC-05", title: "IDCamo Alumni Dialogue #5 - Debunking The Myth Of Inteligent Automation", issuer: "Dicoding Event", year: "2025", code: "IDC-05", cat: "Training", image: "" },
-  { id: "IDC-08", title: "IDCamp x Dicoding Live #8 - When Business Questions Meet Machine", issuer: "Dicoding Event", year: "2025", code: "IDC-08", cat: "Training", image: "" },
-  { id: "IDC-04", title: "[Reschedule] IDCamp Alumni Dialogue #4 - Failing Forward: Turning Setbacks into Growth in Tech", issuer: "Dicoding Event", year: "2025", code: "IDC-04", cat: "Training", image: "" },
-];
+// 35 sertifikat asli dari folder Sertifikatku (gambar JPG + PDF di public/)
+const DEFAULT_CERTS = CERTIFICATES;
 
 function defaultStore() {
   return {
@@ -164,14 +141,37 @@ function loadStore() {
     ) {
       mergedProfile.photo = fresh.profile.photo;
     }
+    // Migrasi: kalau bio tersimpan masih bio bawaan lama, ganti dengan bio baru.
+    const LEGACY_BIO_START = "Mahasiswa semester 5 D4 Teknik Informatika Politeknik Negeri Jember yang passionate";
+    if (
+      typeof mergedProfile.bio === "string" &&
+      mergedProfile.bio.indexOf(LEGACY_BIO_START) === 0
+    ) {
+      mergedProfile.bio = fresh.profile.bio;
+    }
+    // Migrasi: lengkapi data lama tersimpan dengan field baru dari default (per id),
+    // supaya field seperti "bidang" muncul tanpa menghapus editan user.
+    const freshById = new Map(fresh.certifications.map((c) => [c.id, c]));
+    const storedCerts = Array.isArray(parsed.certifications)
+      ? parsed.certifications
+      : [];
+    const migratedCerts = storedCerts.map((c) => ({
+      ...(freshById.get(c.id) || {}),
+      ...c,
+      bidang: c.bidang || (freshById.get(c.id) || {}).bidang || c.cat || "Lainnya",
+    }));
+    const storedIds = new Set(storedCerts.map((c) => c.id));
+    for (const c of fresh.certifications) {
+      if (!storedIds.has(c.id)) migratedCerts.push({ ...c });
+    }
     return {
       profile: mergedProfile,
       experiences:
         Array.isArray(parsed.experiences) && parsed.experiences.length
           ? parsed.experiences
           : fresh.experiences,
-      certifications: Array.isArray(parsed.certifications)
-        ? parsed.certifications
+      certifications: migratedCerts.length
+        ? migratedCerts
         : fresh.certifications,
     };
   } catch (e) {
@@ -223,6 +223,8 @@ function ProfileNav({ active = "", onNavigate = () => {} }) {
 }
 
 const DEFAULT_PROJECTS = [
+  { title: "Bimbel Bina Learning Prestasi", desc: "", tags: ["React", "TypeScript", "Vite", "Tailwind CSS"], cat: "Web", year: "2025", status: "Live", liveUrl: "https://bimbel-learning-prestasi.vercel.app", image: "/bimbel-learning-prestasi-preview.jpg" },
+  { title: "Saraso Koffiehaus", desc: "Website cafe specialty coffee: katalog menu, keranjang, checkout pesanan, dan riwayat pesanan. Buka setiap hari sampai 00:00 WIB.", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
   { title: "SI Kasir Pintar Sniper Seblak Nurins Prasmanan", desc: "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
   { title: "SI Kasir Cerdas Allestic", desc: "Sistem informasi kasir cerdas: transaksi, kelola stok barang, dan rekap penjualan otomatis.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
   { title: "SIPORA Versi 1.0", desc: "Pengembangan Sistem Informasi Polije Repository Assets versi 1.0 berbasis website dan mobile untuk pendataan aset.", tags: ["Laravel", "Flutter", "MySQL"], cat: "Web", year: "2024", status: "Live" },
@@ -560,6 +562,12 @@ const PROFILE_CSS = `
         @media (max-width: 1024px) { .p-ct-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .p-ct-grid { grid-template-columns: 1fr; } }
         .p-ct-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #181818; margin-bottom: 12px; display: block; }
+        .profile-card.cert-wide { width: min(98vw, 1400px); }
+        .p-ct-grid.ct-wide { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .p-ct-grid.ct-wide .p-ct-img { height: 170px; }
+        @media (max-width: 1280px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 1024px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .p-ct-grid.ct-wide { grid-template-columns: 1fr; } }
         .p-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; text-align: left; }
         .p-field > span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8a8f9e; }
         .p-input, .p-textarea { background: #141414; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #e8e8e8; font-family: inherit; font-size: 12px; padding: 10px 12px; width: 100%; box-sizing: border-box; }
@@ -819,14 +827,14 @@ function PlaceholderView({ title, desc, active = "", onNavigate = () => {} }) {
 ===================================================== */
 
 function DetailModal({ item, onClose = () => {} }) {
+  const [tab, setTab] = useState(
+    item && item.liveUrl ? "preview" : item && item.pdf ? "pdf" : "gambar"
+  );
   if (!item) return null;
 
   return (
     <div className="p-modal-bg" onClick={onClose}>
-      <div className="p-modal-box" onClick={(e) => e.stopPropagation()}>
-        {item.image ? (
-          <img className="p-ct-img" src={item.image} alt={item.title} />
-        ) : null}
+      <div className="p-modal-box" onClick={(e) => e.stopPropagation()} style={{ width: "min(96vw, 1100px)", maxWidth: "1100px" }}>
         <h3 className="p-exp-title" style={{ fontSize: "16px", marginBottom: "6px" }}>
           {item.title}
         </h3>
@@ -839,10 +847,85 @@ function DetailModal({ item, onClose = () => {} }) {
             ))}
           </div>
         ) : null}
+        {item.liveUrl || item.pdf || item.image ? (
+          <div className="p-btn-row" style={{ justifyContent: "center", marginTop: "10px" }}>
+            {item.liveUrl ? (
+              <button
+                className={`p-btn${tab === "preview" ? " solid" : ""}`}
+                onClick={() => setTab("preview")}
+              >
+                Preview Live
+              </button>
+            ) : null}
+            {item.pdf ? (
+              <button
+                className={`p-btn${tab === "pdf" ? " solid" : ""}`}
+                onClick={() => setTab("pdf")}
+              >
+                Lihat PDF
+              </button>
+            ) : null}
+            {item.image ? (
+              <button
+                className={`p-btn${tab === "gambar" ? " solid" : ""}`}
+                onClick={() => setTab("gambar")}
+              >
+                Lihat Gambar
+              </button>
+            ) : null}
+          </div>
+        ) : null}
+        {tab === "preview" && item.liveUrl ? (
+          <iframe
+            title={item.title + " live preview"}
+            src={item.liveUrl}
+            loading="lazy"
+            allowFullScreen
+            style={{ width: "100%", height: "72vh", border: "1px solid rgba(255,255,255,0.14)", borderRadius: "12px", marginTop: "10px", background: "#000" }}
+          />
+        ) : null}
+        {tab === "pdf" && item.pdf ? (
+          <iframe
+            title={item.title}
+            src={item.pdf}
+            style={{ width: "100%", height: "72vh", border: "1px solid var(--line)", borderRadius: "12px", marginTop: "10px", background: "#fff" }}
+          />
+        ) : null}
+        {(tab === "gambar" || (!item.liveUrl && !item.pdf)) && item.image ? (
+          <img
+            className="p-ct-img"
+            src={item.image}
+            alt={item.title}
+            style={{ marginTop: "10px" }}
+            onError={(e) => { e.currentTarget.style.display = "none"; }}
+          />
+        ) : null}
         <div className="p-btn-row" style={{ justifyContent: "center", marginTop: "10px" }}>
-          {item.image ? (
+          {item.liveUrl ? (
             <a
               className="p-btn solid"
+              href={item.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              Buka Live Demo
+            </a>
+          ) : null}
+          {item.pdf ? (
+            <a
+              className="p-btn solid"
+              href={item.pdf}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              Buka PDF
+            </a>
+          ) : null}
+          {item.image ? (
+            <a
+              className="p-btn"
               href={item.image}
               target="_blank"
               rel="noreferrer"
@@ -866,12 +949,34 @@ function DetailModal({ item, onClose = () => {} }) {
 
 function CertificationView({ certs, active = "certification", onNavigate = () => {} }) {
   const [selected, setSelected] = useState(null);
+  const [filter, setFilter] = useState("Semua");
+  const bidangOf = (c) => c.bidang || c.cat || "Lainnya";
+  const BIDANG_ORDER = [
+    "Cyber Security",
+    "Data, AI & Cloud",
+    "Mobile & Web Development",
+    "Sains & Inovasi",
+    "Kompetisi & Prestasi",
+    "Kewirausahaan & Bisnis",
+    "Organisasi & Kampus",
+    "Pengembangan Diri & Bahasa",
+  ];
+  const cats = useMemo(() => {
+    const ada = new Set(certs.map(bidangOf));
+    return ["Semua", ...BIDANG_ORDER.filter((b) => ada.has(b)), ...[...ada].filter((b) => b !== "Semua" && !BIDANG_ORDER.includes(b))];
+  }, [certs]);
+  const countOf = (cat) =>
+    cat === "Semua"
+      ? certs.length
+      : certs.filter((c) => bidangOf(c) === cat).length;
+  const shown =
+    filter === "Semua" ? certs : certs.filter((c) => bidangOf(c) === filter);
   return (
     <>
       <style>{PROFILE_CSS}</style>
 
       <div className="profile-page">
-        <div className="profile-card">
+        <div className="profile-card cert-wide">
           <span className="pcorner tl" />
           <span className="pcorner tr" />
           <span className="pcorner bl" />
@@ -881,14 +986,26 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
           <p className="p-title-line">Kepanitiaan • Organisasi • Penghargaan</p>
 
           <p className="p-bio">
-            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal.
+            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal — dikelompokkan per bidang ({certs.length} sertifikat).
           </p>
 
-          {certs.length === 0 ? (
+          <div className="p-tabs">
+            {cats.map((cat) => (
+              <button
+                key={cat}
+                className={`p-tab${filter === cat ? " on" : ""}`}
+                onClick={() => setFilter(cat)}
+              >
+                {cat} ({countOf(cat)})
+              </button>
+            ))}
+          </div>
+
+          {shown.length === 0 ? (
             <p className="p-bio">Belum ada data sertifikasi.</p>
           ) : (
-            <div className="p-ct-grid">
-              {certs.map((c) => (
+            <div className="p-ct-grid ct-wide">
+              {shown.map((c) => (
                 <div key={c.id} className="p-exp">
                   <div className="p-exp-body">
                     {c.image ? (
@@ -896,20 +1013,27 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
                     ) : null}
                     <h3 className="p-exp-title">{c.title}</h3>
                     <p className="p-exp-sub">
-                      {c.issuer}{c.year ? ` • ${c.year}` : ""}
+                      {c.issuer}{c.dateLabel ? ` • ${c.dateLabel}` : c.year ? ` • ${c.year}` : ""}
                     </p>
                     {c.code ? <p className="p-exp-desc">ID: {c.code}</p> : null}
+                    {c.pdf || c.image ? (
+                      <div style={{ display: "flex", gap: "6px", marginTop: "6px" }}>
+                        {c.pdf ? <span className="p-badge">PDF</span> : null}
+                        {c.image ? <span className="p-badge">Gambar</span> : null}
+                      </div>
+                    ) : null}
                     <div className="p-exp-foot">
-                      <span className="p-badge">{c.cat || "Lainnya"}</span>
+                      <span className="p-badge">{c.bidang || c.cat || "Lainnya"}</span>
                       <button
                         className="p-btn"
                         onClick={() =>
                           setSelected({
                             title: c.title,
-                            sub: `${c.issuer}${c.year ? ` • ${c.year}` : ""}`,
-                            desc: c.code ? `ID: ${c.code}` : "",
-                            tags: c.cat ? [c.cat] : [],
+                            sub: `${c.issuer}${c.dateLabel ? ` • ${c.dateLabel}` : c.year ? ` • ${c.year}` : ""}`,
+                            desc: c.desc || (c.code ? `ID: ${c.code}` : ""),
+                            tags: [c.bidang, c.cat].filter(Boolean),
                             image: c.image || "",
+                            pdf: c.pdf || "",
                           })
                         }
                       >
@@ -957,9 +1081,13 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
           title: "Sertifikat Baru",
           issuer: "",
           year: "2026",
+          dateLabel: "",
           code: "",
           cat: "Training",
+          bidang: "Lainnya",
+          desc: "",
           image: "",
+          pdf: "",
         },
       ],
     }));
@@ -1076,6 +1204,30 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
                           <option>Kepanitiaan</option>
                           <option>Organisasi</option>
                           <option>Penghargaan</option>
+                          <option>Kampus & Organisasi</option>
+                          <option>Prestasi & Lomba</option>
+                          <option>Webinar & Workshop</option>
+                          <option>Dicoding & Komunitas</option>
+                          <option>IBM SkillsBuild</option>
+                          <option>Bahasa</option>
+                          <option>Lainnya</option>
+                        </select>
+                      </div>
+                      <div className="p-field">
+                        <span>Bidang</span>
+                        <select
+                          className="p-input"
+                          value={c.bidang || "Lainnya"}
+                          onChange={(e) => updateCert(c.id, { bidang: e.target.value })}
+                        >
+                          <option>Cyber Security</option>
+                          <option>Data, AI & Cloud</option>
+                          <option>Mobile & Web Development</option>
+                          <option>Sains & Inovasi</option>
+                          <option>Kompetisi & Prestasi</option>
+                          <option>Kewirausahaan & Bisnis</option>
+                          <option>Organisasi & Kampus</option>
+                          <option>Pengembangan Diri & Bahasa</option>
                           <option>Lainnya</option>
                         </select>
                       </div>
@@ -1099,6 +1251,15 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
                               updateCert(c.id, { image: url })
                             )
                           }
+                        />
+                      </div>
+                      <div className="p-field">
+                        <span>PDF (URL)</span>
+                        <input
+                          className="p-input"
+                          value={c.pdf || ""}
+                          placeholder="/nama-file.pdf"
+                          onChange={(e) => updateCert(c.id, { pdf: e.target.value })}
                         />
                       </div>
                       <div className="p-btn-row">
@@ -1263,16 +1424,25 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
           <p className="p-title-line">Web • Mobile • AI</p>
 
           <p className="p-bio">
-            Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat pada kartu untuk detail.
+            Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat untuk detail + live preview, atau buka langsung demo onlinenya.
           </p>
 
           <div className="p-ct-grid">
             {DEFAULT_PROJECTS.map((pr) => (
               <div key={pr.title} className="p-exp">
                 <div className="p-exp-body">
+                  {pr.image ? (
+                    <img
+                      className="p-ct-img"
+                      src={pr.image}
+                      alt={pr.title}
+                      loading="lazy"
+                      onError={(e) => { e.currentTarget.style.display = "none"; }}
+                    />
+                  ) : null}
                   <h3 className="p-exp-title">{pr.title}</h3>
                   <p className="p-exp-sub">{pr.cat} • {pr.year}</p>
-                  <p className="p-exp-desc">{pr.desc}</p>
+                  {pr.desc ? <p className="p-exp-desc">{pr.desc}</p> : null}
                   <div className="p-tags">
                     {pr.tags.map((t) => (
                       <span key={t}>{t}</span>
@@ -1280,20 +1450,34 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
                   </div>
                   <div className="p-exp-foot">
                     <span className="p-badge">{pr.status}</span>
-                    <button
-                      className="p-btn"
-                      onClick={() =>
-                        setSelected({
-                          title: pr.title,
-                          sub: `${pr.cat} • ${pr.year} • ${pr.status}`,
-                          desc: pr.desc,
-                          tags: pr.tags,
-                          image: "",
-                        })
-                      }
-                    >
-                      Lihat
-                    </button>
+                    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                      <button
+                        className="p-btn"
+                        onClick={() =>
+                          setSelected({
+                            title: pr.title,
+                            sub: `${pr.cat} • ${pr.year} • ${pr.status}`,
+                            desc: pr.desc,
+                            tags: pr.tags,
+                            image: pr.image || "",
+                            liveUrl: pr.liveUrl || "",
+                          })
+                        }
+                      >
+                        {pr.liveUrl ? "Preview" : "Lihat"}
+                      </button>
+                      {pr.liveUrl ? (
+                        <a
+                          className="p-btn solid"
+                          href={pr.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ textDecoration: "none" }}
+                        >
+                          Live Demo
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3471,52 +3655,6 @@ export default function App() {
 
             <span className="nav-label">
               Certification
-            </span>
-
-          </a>
-
-          {/* DASHBOARD */}
-
-          <a
-            href="#"
-            className="nav-item"
-            onClick={(e) => { e.preventDefault(); navTo("dashboard"); }}
-          >
-
-            <span className="nav-icon">
-
-              <svg viewBox="0 0 24 24">
-
-                <path d="
-                  M3 13
-                  H21
-                  V11
-                  H3
-                  Z
-                " />
-
-                <path d="
-                  M3 9
-                  H21
-                  V7
-                  H3
-                  Z
-                " />
-
-                <path d="
-                  M3 17
-                  H21
-                  V15
-                  H3
-                  Z
-                " />
-
-              </svg>
-
-            </span>
-
-            <span className="nav-label">
-              Dashboard
             </span>
 
           </a>
