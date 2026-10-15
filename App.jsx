@@ -224,7 +224,7 @@ function ProfileNav({ active = "", onNavigate = () => {} }) {
 
 const DEFAULT_PROJECTS = [
   { title: "Bimbel Bina Learning Prestasi", desc: "", tags: ["React", "TypeScript", "Vite", "Tailwind CSS"], cat: "Web", year: "2025", status: "Live", liveUrl: "https://bimbel-learning-prestasi.vercel.app", image: "/bimbel-learning-prestasi-preview.jpg" },
-  { title: "Saraso Koffiehaus", desc: "Website cafe specialty coffee: katalog menu, keranjang, checkout pesanan, dan riwayat pesanan. Buka setiap hari sampai 00:00 WIB.", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
+  { title: "Saraso Koffiehaus", desc: "", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
   { title: "SI Kasir Pintar Sniper Seblak Nurins Prasmanan", desc: "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
   { title: "SI Kasir Cerdas Allestic", desc: "Sistem informasi kasir cerdas: transaksi, kelola stok barang, dan rekap penjualan otomatis.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
   { title: "SIPORA Versi 1.0", desc: "Pengembangan Sistem Informasi Polije Repository Assets versi 1.0 berbasis website dan mobile untuk pendataan aset.", tags: ["Laravel", "Flutter", "MySQL"], cat: "Web", year: "2024", status: "Live" },
