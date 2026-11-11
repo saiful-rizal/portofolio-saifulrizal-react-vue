@@ -193,6 +193,7 @@ function hashToView() {
       : DEFAULT_PROJECTS.findIndex((project) => project.slug === key);
     return index >= 0 && index < DEFAULT_PROJECTS.length ? "project-detail" : "project";
   }
+  if (/^certification\/[a-z0-9-]+$/i.test(v)) return "certification-detail";
   return HASH_VIEWS.includes(v) ? v : "home";
 }
 
@@ -682,7 +683,7 @@ const PROFILE_CSS = `
         }
         .project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease; }
         .project-card:hover .project-visual img { transform: scale(1.04); }
-        .project-grid .project-visual img { object-fit: contain; }
+        .project-grid .project-visual img { object-fit: cover; }
         .project-grid .project-card:hover .project-visual img { transform: none; }
         .project-visual.is-placeholder {
           display: grid; place-items: center;
@@ -699,27 +700,48 @@ const PROFILE_CSS = `
           right: 10px; width: 27px; height: 27px; display: grid; place-items: center;
           border-radius: 50%; text-decoration: none; font-size: 13px;
         }
-        .project-grid .project-card .p-exp-body { display: flex; flex-direction: column; min-height: 205px; padding: 14px 15px 13px; }
+        .project-grid .project-card .p-exp-body { display: flex; flex-direction: column; min-height: 350px; padding: 0 15px 14px; }
         .project-grid .p-ct-img { height: 100%; margin: 0; border: 0; border-radius: 0; }
+        .project-grid .project-card:not(.project-card-wide) .project-visual {
+          width: calc(100% + 30px); height: 138px; margin: 0 -15px 11px;
+        }
+        .project-grid .project-card:not(.project-card-wide) .project-visual::after {
+          inset: 24% 0 0; background: linear-gradient(180deg, transparent 4%, rgba(9,9,9,.45) 54%, #090909 100%);
+        }
         .project-grid .p-exp-title { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; min-height: 40px; font-size: 14px; line-height: 1.45; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-title {
+          order: 2; min-height: 0; margin: 0 0 8px; font-size: 16px; line-height: 1.35;
+        }
         .project-grid .p-exp-sub { margin-bottom: 8px; color: #777; font-size: 9px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-sub { display: none; }
         .project-grid .p-exp-desc { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; min-height: 45px; margin-bottom: 10px; color: #aaa; font-size: 9px; line-height: 1.65; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-desc {
+          order: 3; min-height: 0; margin: 0 0 12px; font-size: 11px; line-height: 1.55; -webkit-line-clamp: 3;
+        }
         .project-grid .p-tags { gap: 5px; margin-bottom: 11px; }
-        .project-grid .p-tags span { padding: 3px 7px; border-radius: 5px; font-size: 8px; }
+        .project-grid .project-card:not(.project-card-wide) .p-tags { order: 1; margin: 0 0 10px; }
+        .project-grid .p-tags span { padding: 4px 7px; border-radius: 5px; font-size: 9px; }
         .project-grid .p-exp-foot { margin-top: auto; padding-top: 9px; border-top: 1px solid rgba(255,255,255,.08); }
-        .project-grid .p-badge { border: 0; background: none; color: #666; padding: 0; font-size: 8px; }
-        .project-grid .p-btn { padding: 7px 11px; font-size: 9px; }
+        .project-grid .p-badge { border: 0; background: none; color: #777; padding: 0; font-size: 9px; }
+        .project-grid .p-btn { padding: 8px 13px; font-size: 10px; }
         .project-grid .p-exp-foot > div { gap: 6px !important; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-foot { order: 4; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-foot a.p-btn.solid { display: none; }
+        .project-grid .project-card:not(.project-card-wide) .p-btn { background: #e8e8e8; color: #111; border-color: #e8e8e8; }
         .project-grid .project-card-wide { display: flex; grid-column: span 2; }
         .project-grid .project-card-wide .p-exp-body {
-          position: relative; display: grid; flex: 1; grid-template-columns: 1fr 1fr;
-          align-content: center; gap: 0 18px; min-height: 252px; padding: 20px;
+          position: relative; display: grid; flex: 1; grid-template-columns: 1.6fr 1fr;
+          grid-template-rows: auto auto auto 1fr; align-content: start;
+          gap: 0 16px; min-height: 350px; padding: 18px;
         }
         .project-grid .project-card-wide .project-visual {
           position: absolute; inset: 0 auto 0 0; width: 58%; height: 100%;
         }
+        .project-grid .project-card-wide .project-visual img {
+          object-fit: cover; object-position: center;
+        }
         .project-grid .project-card-wide .project-visual::after {
-          inset: 0; background: linear-gradient(90deg, transparent 38%, rgba(9,9,9,.72) 70%, #090909 100%);
+          inset: 0; background: linear-gradient(90deg, transparent 42%, rgba(9,9,9,.58) 74%, #090909 100%);
         }
         .project-grid .project-card-wide .project-visual.is-placeholder {
           background: radial-gradient(ellipse at 30% 45%, #414141 0, transparent 48%), linear-gradient(120deg, #252525, #101010 75%);
@@ -729,29 +751,37 @@ const PROFILE_CSS = `
         .project-grid .project-card-wide .p-exp-desc,
         .project-grid .project-card-wide .p-tags,
         .project-grid .project-card-wide .p-exp-foot { grid-column: 2; position: relative; }
-        .project-grid .project-card-wide .p-exp-title { min-height: 0; margin-bottom: 5px; }
-        .project-grid .project-card-wide .p-exp-sub { margin-bottom: 8px; }
-        .project-grid .project-card-wide .p-exp-desc { min-height: 0; margin-bottom: 10px; }
-        .project-grid .project-card-wide .p-tags { margin-bottom: 11px; }
+        .project-grid .project-card-wide .p-exp-title { grid-row: 1; }
+        .project-grid .project-card-wide .p-exp-title {
+          min-height: 0; margin: 0 0 8px; font-size: 16px; line-height: 1.35;
+        }
+        .project-grid .project-card-wide .p-exp-sub { display: none; }
+        .project-grid .project-card-wide .p-exp-desc {
+          grid-row: 2; min-height: 0; margin: 0 0 12px; -webkit-line-clamp: 3;
+          font-size: 11px; line-height: 1.55;
+        }
+        .project-grid .project-card-wide .p-tags { grid-row: 3; margin-bottom: 0; }
+        .project-grid .project-card-wide .p-exp-foot { grid-row: 4; }
+        .project-grid .project-card-wide .p-tags span { padding: 4px 7px; font-size: 9px; }
         .project-grid .project-card-wide .p-exp-foot { align-self: end; }
+        .project-grid .project-card-wide .p-btn { padding: 8px 13px; font-size: 10px; }
         @media (max-width: 1024px) { .p-ct-grid.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 640px) {
           .p-ct-grid.project-grid { grid-template-columns: 1fr; }
-          .project-grid .project-card .p-exp-body { min-height: 205px; padding: 0 15px 13px; }
+          .project-grid .project-card .p-exp-body { min-height: 0; padding: 0 15px 16px; }
           .project-grid .project-card .project-visual {
-            position: relative; inset: auto; width: calc(100% + 30px); height: 190px;
-            margin: 0 -15px;
+            position: relative; inset: auto; width: calc(100% + 30px); height: 200px;
+            margin: 0 -15px 12px;
           }
           .project-grid .project-card .project-visual::after {
-            inset: 20% 0 0;
-            background: linear-gradient(180deg, transparent 8%, rgba(9,9,9,.48) 58%, #090909 100%);
+            inset: 30% 0 0;
+            background: linear-gradient(180deg, transparent 4%, rgba(9,9,9,.55) 54%, #090909 100%);
           }
           .project-grid .project-card .p-exp-title {
-            position: relative; z-index: 1; min-height: 0; margin: -42px 0 4px;
+            position: relative; z-index: 1; min-height: 0; margin: 0 0 10px;
           }
-          .project-grid .project-card .p-exp-sub { margin-bottom: 6px; }
           .project-grid .project-card-wide { grid-column: auto; }
-          .project-grid .project-card-wide .p-exp-body { display: flex; }
+          .project-grid .project-card-wide .p-exp-body { display: flex; min-height: 0; padding: 0 15px 16px; }
           .project-grid .project-card-wide .p-exp-title,
           .project-grid .project-card-wide .p-exp-sub,
           .project-grid .project-card-wide .p-exp-desc,
@@ -787,6 +817,24 @@ const PROFILE_CSS = `
         .project-detail-tags span { border: 1px solid #292929; border-radius: 7px; padding: 5px 8px; color: #c3c3c3; font-size: 8px; }
         .project-detail-actions { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid #222; margin-top: 16px; padding-top: 14px; }
         .project-detail-actions .p-btn { padding: 8px 12px; font-size: 9px; }
+        .certificate-detail-visual {
+          display: grid; place-items: center; min-height: 300px; padding: 14px;
+          background: #111; border-bottom: 1px solid #242424;
+        }
+        .certificate-detail-visual img {
+          display: block; width: 100%; max-height: min(62vh, 620px); object-fit: contain;
+          border-radius: 9px; background: #f4f4f4;
+        }
+        .certificate-detail-content { padding-top: 20px; }
+        .certificate-detail-content h1 { font: 700 clamp(20px, 3vw, 28px)/1.25 'Space Grotesk', sans-serif; margin: 0 0 12px; }
+        .certificate-detail-meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+        .certificate-detail-meta span {
+          padding: 4px 8px; border: 1px solid #292929; border-radius: 999px;
+          background: #111; color: #aaa; font-size: 9px;
+        }
+        .certificate-detail-copy { color: #aaa; font-size: 11px; line-height: 1.8; margin: 0; }
+        .certificate-detail-code { margin: 12px 0 0; color: #777; font-size: 10px; }
+        .certificate-detail-list { max-height: 68vh; overflow-y: auto; }
         .project-detail-sidebar h2, .project-related h2 { color: #eee; font: 700 14px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
         .project-detail-list { display: flex; flex-direction: column; gap: 7px; }
         .project-detail-list button {
@@ -859,10 +907,30 @@ const PROFILE_CSS = `
         }
         .profile-card.cert-wide { width: min(98vw, 1400px); }
         .p-ct-grid.ct-wide { grid-template-columns: repeat(5, 1fr); gap: 16px; }
-        .p-ct-grid.ct-wide .p-ct-img { height: 170px; }
+        .p-ct-grid.ct-wide .p-exp { min-height: 450px; padding: 14px; align-items: stretch; }
+        .p-ct-grid.ct-wide .p-exp-body { display: flex; flex-direction: column; min-width: 0; }
+        .p-ct-grid.ct-wide .p-ct-img {
+          height: 190px; object-fit: contain; border-radius: 10px;
+          border: 1px solid rgba(255,255,255,.1); background: #f4f4f4;
+          margin: 0 0 14px;
+        }
+        .p-ct-grid.ct-wide .p-exp-title { line-height: 1.45; }
+        .p-ct-grid.ct-wide .p-exp-sub { line-height: 1.5; }
+        .p-ct-grid.ct-wide .certificate-preview-desc {
+          display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+          color: #aaa; font-size: 10px; line-height: 1.6; margin: 0 0 10px;
+        }
+        .p-ct-grid.ct-wide .p-exp-foot { margin-top: auto; padding-top: 10px; }
         @media (max-width: 1280px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 1024px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .p-ct-grid.ct-wide { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) {
+          .p-ct-grid.ct-wide { grid-template-columns: 1fr; }
+          .p-ct-grid.ct-wide .p-exp { min-height: 0; }
+          .p-ct-grid.ct-wide .p-ct-img { height: clamp(190px, 55vw, 280px); }
+          .certificate-detail-visual { min-height: 180px; padding: 10px; }
+          .certificate-detail-visual img { max-height: 55vh; }
+          .certificate-detail-list { max-height: none; }
+        }
         .p-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; text-align: left; }
         .p-field > span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8a8f9e; }
         .p-input, .p-textarea { background: #141414; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #e8e8e8; font-family: inherit; font-size: 12px; padding: 10px 12px; width: 100%; box-sizing: border-box; }
@@ -1243,7 +1311,6 @@ function DetailModal({ item, onClose = () => {} }) {
 ===================================================== */
 
 function CertificationView({ certs, active = "certification", onNavigate = () => {} }) {
-  const [selected, setSelected] = useState(null);
   const [filter, setFilter] = useState("Semua");
   const bidangOf = (c) => c.bidang || c.cat || "Lainnya";
   const BIDANG_ORDER = [
@@ -1310,6 +1377,7 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
                     <p className="p-exp-sub">
                       {c.issuer}{c.dateLabel ? ` • ${c.dateLabel}` : c.year ? ` • ${c.year}` : ""}
                     </p>
+                    {c.desc ? <p className="certificate-preview-desc">{c.desc}</p> : null}
                     {c.code ? <p className="p-exp-desc">ID: {c.code}</p> : null}
                     {c.pdf || c.image ? (
                       <div style={{ display: "flex", gap: "6px", marginTop: "6px" }}>
@@ -1319,19 +1387,7 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
                     ) : null}
                     <div className="p-exp-foot">
                       <span className="p-badge">{c.bidang || c.cat || "Lainnya"}</span>
-                      <button
-                        className="p-btn"
-                        onClick={() =>
-                          setSelected({
-                            title: c.title,
-                            sub: `${c.issuer}${c.dateLabel ? ` • ${c.dateLabel}` : c.year ? ` • ${c.year}` : ""}`,
-                            desc: c.desc || (c.code ? `ID: ${c.code}` : ""),
-                            tags: [c.bidang, c.cat].filter(Boolean),
-                            image: c.image || "",
-                            pdf: c.pdf || "",
-                          })
-                        }
-                      >
+                      <button className="p-btn" onClick={() => onNavigate(`certification/${c.id}`)}>
                         Lihat
                       </button>
                     </div>
@@ -1346,7 +1402,112 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
 
         <ProfileNav active={active} onNavigate={onNavigate} />
       </div>
-      <DetailModal item={selected} onClose={() => setSelected(null)} />
+    </>
+  );
+}
+
+function CertificationDetailView({ certs, index = 0, onNavigate = () => {} }) {
+  const certificate = certs[index];
+  if (!certificate) {
+    return <CertificationView certs={certs} active="certification" onNavigate={onNavigate} />;
+  }
+
+  const previous = certs[(index - 1 + certs.length) % certs.length];
+  const next = certs[(index + 1) % certs.length];
+  const issuerDate = [
+    certificate.issuer,
+    certificate.dateLabel || certificate.year,
+  ].filter(Boolean).join(" • ");
+
+  return (
+    <>
+      <style>{PROFILE_CSS}</style>
+      <div className="profile-page">
+        <main className="project-detail-page">
+          <div className="project-detail-top">
+            <button className="project-back" onClick={() => onNavigate("certification")}>
+              ← Kembali ke Sertifikat
+            </button>
+            <div className="project-step-controls" aria-label="Navigasi sertifikat">
+              <button
+                className="project-step"
+                onClick={() => onNavigate(`certification/${previous.id}`)}
+                aria-label="Sertifikat sebelumnya"
+              >
+                ←
+              </button>
+              <span>{String(index + 1).padStart(2, "0")} / {String(certs.length).padStart(2, "0")}</span>
+              <button
+                className="project-step"
+                onClick={() => onNavigate(`certification/${next.id}`)}
+                aria-label="Sertifikat berikutnya"
+              >
+                →
+              </button>
+            </div>
+          </div>
+
+          <div className="project-detail-layout">
+            <article className="project-detail-card">
+              <div className="certificate-detail-visual">
+                {certificate.image ? (
+                  <img src={certificate.image} alt={`Sertifikat ${certificate.title}`} />
+                ) : (
+                  <span className="project-visual-mark" aria-hidden="true">CERT</span>
+                )}
+              </div>
+              <div className="project-detail-content certificate-detail-content">
+                <div className="certificate-detail-meta">
+                  {[certificate.bidang || certificate.cat || "Lainnya", certificate.year].filter(Boolean).map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+                <h1>{certificate.title}</h1>
+                <p className="certificate-detail-copy">{certificate.desc || "Tidak ada keterangan tambahan untuk sertifikat ini."}</p>
+                {issuerDate ? <p className="certificate-detail-code">{issuerDate}</p> : null}
+                {certificate.code ? <p className="certificate-detail-code">ID Sertifikat: {certificate.code}</p> : null}
+                <div className="project-detail-actions">
+                  {certificate.image ? (
+                    <a className="p-btn solid" href={certificate.image} target="_blank" rel="noreferrer">
+                      Lihat Gambar ↗
+                    </a>
+                  ) : null}
+                  {certificate.pdf ? (
+                    <a className="p-btn solid" href={certificate.pdf} target="_blank" rel="noreferrer">
+                      Buka PDF ↗
+                    </a>
+                  ) : null}
+                  <button className="p-btn" onClick={() => onNavigate("certification")}>
+                    ← Semua Sertifikat
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <aside className="project-detail-sidebar">
+              <h2>Sertifikat Lainnya</h2>
+              <div className="project-detail-list certificate-detail-list">
+                {certs.map((item, itemIndex) => (
+                  <button
+                    key={item.id}
+                    onClick={() => onNavigate(`certification/${item.id}`)}
+                    aria-current={itemIndex === index ? "page" : undefined}
+                  >
+                    <span className="project-detail-thumb">
+                      {item.image ? <img src={item.image} alt="" /> : <span>PDF</span>}
+                    </span>
+                    <span className="project-detail-list-copy">
+                      <strong>{item.title}</strong>
+                      <small>{item.year ? `Tahun ${item.year}` : item.issuer}</small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </aside>
+          </div>
+          <p className="p-copy">© 2026 SAIFUL RIZAL</p>
+        </main>
+      </div>
     </>
   );
 }
@@ -1722,7 +1883,7 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
 
           <div className="p-ct-grid project-grid">
             {DEFAULT_PROJECTS.map((pr, index) => (
-              <div key={pr.title} className={`p-exp project-card${(index + 1) % 5 === 0 ? " project-card-wide" : ""}`}>
+              <div key={pr.title} className={`p-exp project-card${index === 3 ? " project-card-wide" : ""}`}>
                 <div className="p-exp-body">
                   <div className={`project-visual${pr.image ? "" : " is-placeholder"}`}>
                     {pr.image ? (
@@ -1753,18 +1914,19 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
                   <p className="p-exp-sub">{pr.cat} • {pr.year}</p>
                   {pr.desc ? <p className="p-exp-desc">{pr.desc}</p> : null}
                   <div className="p-tags">
-                    {pr.tags.map((t) => (
+                    {(index === 0 ? pr.tags : pr.tags.slice(0, 3)).map((t) => (
                       <span key={t}>{t}</span>
                     ))}
+                    {index !== 0 && pr.tags.length > 3 ? <span>+{pr.tags.length - 3}</span> : null}
                   </div>
                   <div className="p-exp-foot">
-                    <span className="p-badge">{pr.status}</span>
+                    <span className="p-badge">{index === 0 ? pr.status : `${pr.tags.length} teknologi`}</span>
                     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                       <button
                         className="p-btn"
                         onClick={() => onNavigate(`project/${index}`)}
                       >
-                        Lihat detail
+                        {index === 0 ? "Lihat detail" : "Detail →"}
                       </button>
                       {pr.liveUrl ? (
                         <a
@@ -2145,6 +2307,10 @@ export default function App() {
   const projectDetailIndex = /^\d+$/.test(projectDetailKey)
     ? Number(projectDetailKey)
     : Math.max(0, DEFAULT_PROJECTS.findIndex((project) => project.slug === projectDetailKey.toLowerCase()));
+  const certificateDetailKey = ((window.location.hash || "").match(/^#\/?certification\/([a-z0-9-]+)$/i) || [])[1] || "";
+  const certificateDetailIndex = store.certifications.findIndex(
+    (certificate) => certificate.id.toLowerCase() === certificateDetailKey.toLowerCase(),
+  );
 
   if (view === "dashboard") {
     return (
@@ -2161,6 +2327,8 @@ export default function App() {
         <PageFade viewKey={view} />
         {view === "about" ? (
           <ProfileView data={store} active={view} onNavigate={navTo} />
+        ) : view === "certification-detail" ? (
+          <CertificationDetailView certs={store.certifications} index={certificateDetailIndex} onNavigate={navTo} />
         ) : view === "certification" ? (
           <CertificationView certs={store.certifications} active={view} onNavigate={navTo} />
         ) : view === "project" ? (
