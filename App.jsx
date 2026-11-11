@@ -7,7 +7,7 @@ import { CERTIFICATES } from "./certificates-data.js";
 
 const PROFILE = {
   name: "Saiful Rizal",
-  title: "Junior Web & Mobile Developer",
+  title: "Junior Web dan Mobile Developer",
   photo: "/profile.png",
   bio: "Mahasiswa D4 Teknik Informatika (semester 5) Politeknik Negeri Jember yang berfokus pada pengembangan aplikasi full stack meliputi web, mobile, dan Internet of Things (IoT). Berlatar belakang Teknik Elektronika Industri sehingga memahami sisi perangkat keras sekaligus perangkat lunak. Terbiasa membangun aplikasi yang interaktif, responsif, dan terstruktur; Juara 3 kompetisi Aplikasi Website dan Mobile TIF Exhibition 2025. Komunikatif, aktif berorganisasi, dan siap berkontribusi dalam tim pengembangan produk.",
   heroCategory: "JUNIOR DEVELOPER",
@@ -15,7 +15,7 @@ const PROFILE = {
   email: "syaifulrizal320206@gmail.com",
   githubTotal: 9430,
   status: "Mahasiswa D4 Teknik Informatika",
-  role: "Junior Web & Mobile Developer",
+  role: "Junior Web dan Mobile Developer",
   socials: {
     instagram: "https://www.instagram.com/hai_saifulrizal",
     github: "https://github.com/saiful-rizal",
@@ -27,7 +27,7 @@ const EXPERIENCES = [
   {
     logo: "PDAM",
     title: "Magang Teknik Elektronika Industri",
-    company: "Kantor PDAM Bondowoso — Bondowoso, Indonesia",
+    company: "Kantor PDAM Bondowoso, Bondowoso, Indonesia",
     desc: "Praktik kerja lapangan di bidang teknik elektronika industri: membantu perawatan dan perbaikan instalasi serta perangkat elektronika pendukung operasional kantor.",
     resp: [
       "Membantu pemeriksaan dan perawatan perangkat elektronika industri",
@@ -41,7 +41,7 @@ const EXPERIENCES = [
   {
     logo: "PSHT",
     title: "Ketua Divisi Kominfo",
-    company: "UKM Persaudaraan Setia Hati Terate — Politeknik Negeri Jember",
+    company: "UKM Persaudaraan Setia Hati Terate, Politeknik Negeri Jember",
     desc: "Memimpin divisi komunikasi dan informasi: mengelola publikasi, dokumentasi kegiatan, dan media informasi organisasi.",
     resp: [
       "Mengelola konten publikasi dan dokumentasi kegiatan UKM",
@@ -49,13 +49,13 @@ const EXPERIENCES = [
       "Membangun alur informasi internal yang cepat dan jelas",
     ],
     tags: ["Leadership", "Kominfo", "Publikasi"],
-    date: "2024 — Sekarang",
+    date: "2024 sampai Sekarang",
     badge: "Organisasi",
   },
   {
     logo: "KMTF",
     title: "Anggota Divisi Humas",
-    company: "KEMATIF (Keluarga Mahasiswa Teknik Informatika) — Politeknik Negeri Jember",
+    company: "KEMATIF (Keluarga Mahasiswa Teknik Informatika), Politeknik Negeri Jember",
     desc: "Menjalankan fungsi hubungan masyarakat: menjalin relasi antar himpunan, publikasi acara, dan koordinasi kepanitiaan TIF Exhibition.",
     resp: [
       "Menjadi panitia Sie Perlengkapan TIF Exhibition Ganjil 2024",
@@ -63,13 +63,13 @@ const EXPERIENCES = [
       "Mengelola komunikasi dan relasi eksternal himpunan",
     ],
     tags: ["Humas", "Event", "Komunikasi"],
-    date: "2024 — Sekarang",
+    date: "2024 sampai Sekarang",
     badge: "Organisasi",
   },
   {
     logo: "BPM",
     title: "Anggota Komisi Teknis",
-    company: "Bakor Pemandu Mahasiswa — Politeknik Negeri Jember",
+    company: "Bakor Pemandu Mahasiswa, Politeknik Negeri Jember",
     desc: "Bertugas di komisi informasi: menyebarluaskan informasi kelembagaan dan mendukung transparansi kegiatan kemahasiswaan.",
     resp: [
       "Menyusun dan menyebarkan informasi kegiatan BPM",
@@ -77,7 +77,7 @@ const EXPERIENCES = [
       "Mendukung dokumentasi rapat dan aspirasi mahasiswa",
     ],
       tags: ["Informasi", "Advokasi", "Kelembagaan"],
-      date: "2025 — Sekarang",
+      date: "2025 sampai Sekarang",
       badge: "Organisasi",
     },
     {
@@ -91,7 +91,7 @@ const EXPERIENCES = [
         "Mendampingi peserta didik dalam praktik dan latihan",
       ],
       tags: ["Mengajar", "Pemrograman", "Komunikasi"],
-      date: "2025 — Sekarang",
+      date: "2025 sampai Sekarang",
       badge: "Freelance",
     },
     {
@@ -231,9 +231,164 @@ function ProfileNav({ active = "", onNavigate = () => {} }) {
 }
 
 const DEFAULT_PROJECTS = [
-  { title: "Bimbel Bina Learning Prestasi", desc: "Website profil lembaga bimbingan belajar untuk memperkenalkan program belajar, informasi layanan, dan identitas Bina Learning Prestasi kepada calon siswa dan orang tua.", tags: ["React", "TypeScript", "Vite", "Tailwind CSS"], cat: "Web", year: "2025", status: "Live", liveUrl: "https://bimbel-learning-prestasi.vercel.app", image: "/bimbel-learning-prestasi-preview.jpg" },
-  { title: "Saraso Koffiehaus", desc: "Website profil kedai kopi yang menampilkan identitas Saraso Koffiehaus dan informasi untuk membantu pengunjung mengenal tempat serta pengalaman yang ditawarkan.", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
-  { title: "SI Kasir Pintar Sniper Seblak Nurins Prasmanan", desc: "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
+  {
+    title: "Bimbel Bina Learning Prestasi",
+    slug: "bimbel-bina-learning-prestasi",
+    desc: "Website profil lembaga bimbingan belajar untuk memperkenalkan program belajar, keunggulan, testimoni, dan pilihan biaya pendidikan Bina Learning Prestasi kepada calon siswa dan orang tua.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    cat: "Web",
+    year: "2025",
+    status: "Live",
+    liveUrl: "https://bimbel-learning-prestasi.vercel.app",
+    image: "/project/bimbel/hero.jpg",
+    documentation: {
+      about: "Bina Learning Prestasi adalah website profil lembaga bimbingan belajar yang memperkenalkan program belajar, layanan, dan identitas lembaga kepada calon siswa dan orang tua. Informasi disajikan secara jelas, mulai dari keunggulan program, testimoni siswa, hingga pilihan biaya pendidikan untuk jenjang TK, SD, dan SMP.",
+      highlights: [
+        { title: "Pemahaman Cepat", desc: "Metode belajar efektif yang mempercepat penguasaan materi dalam waktu singkat." },
+        { title: "Mentor Berpengalaman", desc: "Pengajar profesional yang siap membimbing dan menjawab setiap kesulitan belajar siswa." },
+        { title: "Program Fleksibel", desc: "Kurikulum yang dapat disesuaikan dengan kebutuhan dan target nilai akademik siswa." },
+        { title: "Materi Lengkap", desc: "Bank soal yang luas dan modul pembelajaran terstruktur untuk berbagai jenjang pendidikan." },
+        { title: "Laporan Berkala", desc: "Pantau perkembangan belajar anak secara transparan melalui laporan mingguan yang detail." },
+        { title: "Simulasi Ujian", desc: "Latihan ujian berkala untuk mengasah kesiapan mental dan kemampuan siswa menghadapi soal." },
+        { title: "Biaya Transparan", desc: "Pilihan biaya pendidikan disajikan jelas untuk jenjang TK, SD, dan SMP." },
+        { title: "Pendaftaran Mudah", desc: "Tombol daftar dan informasi program memudahkan calon siswa memulai bimbingan." },
+      ],
+      sections: [
+        {
+          title: "Siswa TK",
+          items: [
+            "Pengenalan huruf dan angka dasar",
+            "Video belajar animasi seru",
+            "Pengembangan motorik dan kreativitas",
+            "Laporan perkembangan bulanan",
+            "Guru ramah dan sabar",
+          ],
+        },
+        {
+          title: "Siswa SD",
+          items: [
+            "Akses materi kelas 1 sampai 6",
+            "Bimbingan pekerjaan rumah (PR)",
+            "Latihan soal dan ulangan harian",
+            "Persiapan ujian sekolah",
+            "Sertifikat dan reward belajar",
+            "Matematika, Bahasa Inggris, dan IPA",
+          ],
+        },
+        {
+          title: "Siswa SMP",
+          items: [
+            "Akses materi kelas 7 sampai 9",
+            "Latihan soal asesmen nasional",
+            "Simulasi ujian masuk SMA favorit",
+            "Mentoring akademik intensif",
+            "Analisis kemampuan siswa",
+            "Konsultasi minat bakat",
+          ],
+        },
+      ],
+      closing: "Bina Learning Prestasi membantu siswa mencapai potensi akademik terbaik melalui metode belajar yang efektif, fleksibel, dan terstruktur.",
+      gallery: [
+        { src: "/project/bimbel/hero.jpg", title: "Beranda", desc: "Hero utama dengan ajakan mendaftar dan highlight program bimbingan." },
+        { src: "/project/bimbel/keunggulan.jpg", title: "Keunggulan Program", desc: "Enam alasan memilih Bina Learning Prestasi, dari mentor hingga simulasi ujian." },
+        { src: "/project/bimbel/testimoni.jpg", title: "Testimoni Siswa", desc: "Cerita kesuksesan siswa yang telah mencapai target akademik mereka." },
+        { src: "/project/bimbel/biaya-pendidikan.jpg", title: "Biaya Pendidikan", desc: "Pilihan paket biaya untuk jenjang TK, SD, dan SMP." },
+      ],
+    },
+  },
+  {
+    title: "Saraso Koffiehaus",
+    slug: "saraso",
+    desc: "Website kedai kopi dengan katalog menu digital, pemesanan online, akun pelanggan, dan akun demo Admin Saraso untuk mencoba alur login serta melihat pesanan.",
+    tags: ["React", "Vite", "CSS"],
+    cat: "Web",
+    year: "2026",
+    status: "Live",
+    liveUrl: "https://saraso-koffiehaus.vercel.app",
+    image: "/project/saraso/hero.jpg",
+    documentation: {
+      about: "Saraso Koffiehaus adalah website kedai kopi yang menampilkan identitas, menu, dan pengalaman ruang Saraso. Pengunjung dapat menjelajahi menu berdasarkan kategori, menambahkan pesanan ke keranjang, membuat akun, dan melihat riwayat pesanan. Tersedia akun demo Admin Saraso untuk mencoba alur login dan melihat pesanan.",
+      highlights: [
+        { title: "Katalog Menu Digital", desc: "39 menu dengan kategori, harga, deskripsi, dan badge rekomendasi." },
+        { title: "Filter dan Pencarian", desc: "Temukan menu berdasarkan kategori atau kata kunci dengan cepat." },
+        { title: "Pemesanan Online", desc: "Tambahkan menu ke keranjang dan lihat ringkasan pesanan sebelum checkout." },
+        { title: "Akun Pelanggan", desc: "Register, login, dan akses halaman Pesanan Saya untuk memantau riwayat." },
+        { title: "Admin Saraso", desc: "Akun demo admin@sarasokoffiehaus.id untuk mencoba alur login dan melihat pesanan." },
+        { title: "Desain Responsif", desc: "Tampilan konsisten dan nyaman di desktop maupun perangkat mobile." },
+        { title: "Data Demo Lokal", desc: "Data menu, akun, dan pesanan tersimpan di localStorage dengan opsi reset demo." },
+        { title: "Rating dan Ulasan", desc: "Menampilkan rating 4.9/5 dari 169 ulasan Google untuk memperkuat kepercayaan pengunjung." },
+      ],
+      sections: [
+        {
+          title: "Pelanggan",
+          items: [
+            "Jelajahi menu berdasarkan kategori",
+            "Cari menu berdasarkan kata kunci",
+            "Tambah menu ke keranjang",
+            "Buat akun dan login",
+            "Lihat riwayat di Pesanan Saya",
+          ],
+        },
+        {
+          title: "Admin Saraso",
+          items: [
+            "Login dengan akun demo admin",
+            "Akses halaman pesanan",
+            "Lihat ringkasan pesanan",
+            "Reset data demo",
+            "Logout dan ganti akun",
+          ],
+        },
+        {
+          title: "Kategori Menu",
+          items: [
+            "Kopi Basic",
+            "Signature",
+            "Refreshment",
+            "Non-Coffee",
+            "Khas Sumatra",
+            "Dessert",
+            "Food",
+          ],
+        },
+      ],
+      closing: "Saraso Koffiehaus menghadirkan pengalaman memesan kopi yang praktis, dari menjelajahi menu hingga memantau pesanan dalam satu platform.",
+      gallery: [
+        { src: "/project/saraso/hero.jpg", title: "Beranda", desc: "Identitas Saraso Koffiehaus, rating Google, dan ajakan menjelajahi menu." },
+        { src: "/project/saraso/menu.jpg", title: "Katalog Menu", desc: "39 menu dengan filter kategori, pencarian, harga, dan badge rekomendasi." },
+        { src: "/project/saraso/pesan-menu.jpg", title: "Pemesanan", desc: "Rakit pesanan, tambah menu ke keranjang, dan lihat ringkasan." },
+        { src: "/project/saraso/login.jpg", title: "Login", desc: "Masuk dengan akun pelanggan atau akun demo Admin Saraso." },
+        { src: "/project/saraso/register.jpg", title: "Register", desc: "Buat akun baru untuk menyimpan dan memantau pesanan." },
+        { src: "/project/saraso/pesanan-saya.jpg", title: "Pesanan Saya", desc: "Riwayat pesanan akun Admin Saraso dengan status, rincian menu, dan total." },
+      ],
+    },
+  },
+  {
+    title: "SIAPKAN SNIPER (Seblak Nurins Prasmanan)",
+    slug: "siapkan-sniper",
+    desc: "Aplikasi kasir berbasis desktop untuk mempermudah transaksi dan pengelolaan stok barang di Seblak Nurins Prasmanan, dengan laporan akurat, stok efisien, pengguna aman, dan informasi real-time.",
+    tags: ["Point of Sales", "Desktop", "Database"],
+    cat: "Desktop",
+    year: "2025",
+    status: "Live",
+    image: "/project/seblak-nurins/dashboard-owner.jpg",
+    documentation: {
+      about: "Tingkatkan efisiensi bisnis Anda dengan SIAPKAN SNIPER, aplikasi kasir berbasis desktop yang dirancang untuk mempermudah transaksi dan pengelolaan stok barang di Seblak Nurins Prasmanan. Dengan fitur unggulan seperti laporan akurat, manajemen stok yang efisien, pengelolaan pengguna yang aman, dan akses informasi real-time, aplikasi ini mendukung operasional yang lebih terorganisir. Desainnya yang user-friendly memastikan kemudahan penggunaan, menjadikan aplikasi ini solusi ideal untuk meningkatkan efisiensi dan pengambilan keputusan bisnis secara tepat waktu.",
+      highlights: [
+        { title: "Laporan akurat", desc: "Rekap penjualan dan pembelian tersaji rapi untuk mendukung pengambilan keputusan bisnis." },
+        { title: "Manajemen stok efisien", desc: "Pantau stok, barang terlaris, dan stok menipis langsung dari dashboard." },
+        { title: "Pengelolaan pengguna aman", desc: "Kelola akses pengguna aplikasi sesuai kebutuhan operasional toko." },
+        { title: "Informasi real-time", desc: "Data transaksi dan stok diperbarui langsung agar operasional tetap terorganisir." },
+      ],
+      closing: "Jangan biarkan proses manual menghambat pertumbuhan bisnis Anda. Beralihlah ke SIAPKAN SNIPER dan rasakan kemudahannya sekarang juga!",
+      gallery: [
+        { src: "/project/seblak-nurins/dashboard-owner.jpg", title: "Dashboard Owner", desc: "Ringkasan pendapatan, penjualan, rata-rata transaksi, barang terlaris, dan stok menipis." },
+        { src: "/project/seblak-nurins/data-produk.jpg", title: "Data Produk", desc: "Kelola data produk, harga, stok, dan pencarian produk." },
+        { src: "/project/seblak-nurins/transaksi-penjualan.jpg", title: "Transaksi Penjualan", desc: "Input transaksi, hitung total dan kembalian, lalu cetak struk." },
+        { src: "/project/seblak-nurins/laporan-penjualan.jpg", title: "Laporan Penjualan", desc: "Filter laporan per periode, lihat rekap, dan ekspor data penjualan." },
+      ],
+    },
+  },
   {
     title: "ALLESTIC (Alle Store Intelligent Cashier)",
     slug: "allestic",
@@ -252,16 +407,16 @@ const DEFAULT_PROJECTS = [
       ],
       features: [
         "Transaksi penjualan",
-        "Laporan keuangan + grafik visual",
+        "Laporan keuangan dan grafik visual",
         "Manajemen stok barang",
-        "Presensi & penggajian karyawan",
-        "Data real-time & akurat",
+        "Presensi dan penggajian karyawan",
+        "Data real-time dan akurat",
       ],
       gallery: [
         { src: "/project/allestic/login-rfid.jpg", title: "Login RFID", desc: "Halaman login dengan opsi autentikasi scan kartu RFID." },
         { src: "/project/allestic/dashboard-admin.jpg", title: "Dashboard Admin", desc: "Ringkasan pendapatan, penjualan, laba, stok menipis, dan barang terlaris." },
         { src: "/project/allestic/form-barang-barcode.jpg", title: "Manajemen Barang", desc: "Input data barang, cetak barcode, dan pemantauan stok." },
-        { src: "/project/allestic/transaksi-cetak-nota.jpg", title: "Transaksi & Cetak Nota", desc: "Proses transaksi penjualan dengan preview struk sebelum dicetak." },
+        { src: "/project/allestic/transaksi-cetak-nota.jpg", title: "Transaksi dan Cetak Nota", desc: "Proses transaksi penjualan dengan preview struk sebelum dicetak." },
       ],
     },
   },
@@ -327,7 +482,36 @@ const DEFAULT_PROJECTS = [
       ],
     },
   },
-  { title: "SIPORA Versi 1.2 + AI Screening", desc: "Pengembangan SIPORA terintegrasi AI Screening versi 1.2: pendataan aset website dan mobile dengan seleksi cerdas.", tags: ["Laravel", "Flutter", "AI Screening"], cat: "Web", year: "2025", status: "Live" },
+  {
+    title: "SIPORA Versi 1.2 AI Screening",
+    slug: "sipora-ai",
+    desc: "Platform repository digital terpusat untuk menyimpan, mengelola, dan mengakses karya tulis akademik melalui website dan aplikasi mobile, dengan dashboard interaktif, screening dokumen YOLO v8, chatbot AI, dan pencarian cerdas.",
+    tags: ["Laravel", "Flutter", "AI Screening", "YOLO v8"],
+    cat: "Web",
+    year: "2025",
+    status: "Live",
+    image: "/project/sipora-ai/dashboard-admin.jpg",
+    documentation: {
+      about: "SIPORA v1.2 hadir sebagai platform repository digital yang dirancang untuk memudahkan penyimpanan, pengelolaan, dan akses karya tulis akademik secara terpusat melalui website maupun aplikasi mobile. Dengan berbagai pengembangan terbaru, SIPORA memberikan pengalaman yang lebih praktis, cepat, dan terintegrasi bagi seluruh pengguna.",
+      highlights: [
+        { title: "Dashboard Interaktif", desc: "Memantau statistik dan aktivitas repository secara real-time dalam satu tampilan yang informatif." },
+        { title: "Screening Dokumen", desc: "Membantu memeriksa dan memvalidasi dokumen yang diunggah, termasuk screening otomatis berbasis YOLO v8, sehingga proses pengelolaan repository lebih terarah." },
+        { title: "Chatbot AI", desc: "Asisten cerdas yang membantu pengguna menemukan informasi dan dokumen dengan lebih cepat." },
+        { title: "Pencarian Cerdas", desc: "Menemukan karya tulis yang dibutuhkan dengan hasil pencarian yang lebih relevan dan akurat." },
+        { title: "Unggah dan Kelola Dokumen", desc: "Proses unggah dan pengelolaan dokumen yang mudah dalam satu platform terintegrasi." },
+        { title: "Jelajahi Dokumen", desc: "Mengakses berbagai karya tulis akademik yang tersimpan secara terpusat." },
+        { title: "Notifikasi Real-Time", desc: "Mendapatkan informasi terbaru terkait aktivitas dan status dokumen secara langsung." },
+        { title: "Terintegrasi Web dan Mobile", desc: "Akses repository kapan saja dan di mana saja melalui website maupun aplikasi mobile." },
+      ],
+      closing: "Dengan SIPORA v1.2, proses pengelolaan repository tidak lagi sekadar menyimpan dokumen, tetapi juga menghadirkan pengalaman yang lebih cerdas, efisien, dan modern melalui pemanfaatan teknologi digital dan kecerdasan buatan. Lebih mudah mengelola dokumen. Lebih cepat menemukan informasi. Lebih cerdas dengan teknologi AI. SIPORA v1.2: Smart Repository for Smart Academic Access.",
+      gallery: [
+        { src: "/project/sipora-ai/upload-ai-screening.jpg", title: "Upload dan Screening Dokumen", desc: "Unggah dokumen dengan screening otomatis, skor kelayakan, dan detail validasi." },
+        { src: "/project/sipora-ai/repository-dokumen.jpg", title: "Jelajahi Dokumen", desc: "Telusuri karya tulis dengan pencarian cerdas dan filter jurusan, prodi, tema, serta jenis." },
+        { src: "/project/sipora-ai/sipora-ai-assistant.jpg", title: "Chatbot AI", desc: "SIPORA AI Assistant membantu pengguna menemukan informasi dan dokumen akademik." },
+        { src: "/project/sipora-ai/dashboard-admin.jpg", title: "Dashboard Interaktif", desc: "Statistik jurusan, prodi, tema, user, dan status dokumen dalam satu tampilan." },
+      ],
+    },
+  },
   { title: "Absensi Arduino Nano", desc: "Sistem pencatatan absensi berbasis sistem tertanam menggunakan Arduino Nano untuk presensi otomatis.", tags: ["Arduino Nano", "Embedded", "Absensi"], cat: "IoT", year: "2024", status: "Demo" },
   { title: "SI Pemilahan Sampah Computer Vision", desc: "Sistem informasi pemilahan sampah menggunakan computer vision untuk daur ulang sampah organik dan non organik.", tags: ["Computer Vision", "Python", "AI"], cat: "AI", year: "2025", status: "Demo" },
   { title: "SI Data Bendahara SMA Unggulan BPPT", desc: "Sistem informasi pencatatan data bendahara SMA Unggulan BPPT Darus Sholah Jember: kas, iuran, dan laporan keuangan.", tags: ["Web", "MySQL", "Keuangan"], cat: "Web", year: "2025", status: "Live" },
@@ -350,11 +534,11 @@ const VIEW_META = {
   },
   achievement: {
     title: "Achievement",
-    desc: "Penghargaan, pendanaan, dan kompetisi — halaman sedang disiapkan. Segera hadir.",
+    desc: "Penghargaan, pendanaan, dan kompetisi. Halaman sedang disiapkan, segera hadir.",
   },
   certification: {
     title: "Certification",
-    desc: "Kepanitiaan, organisasi, dan penghargaan sesuai CV — halaman sedang disiapkan. Segera hadir.",
+    desc: "Kepanitiaan, organisasi, dan penghargaan sesuai CV. Halaman sedang disiapkan, segera hadir.",
   },
 };
 
@@ -718,6 +902,8 @@ const PROFILE_CSS = `
         .project-grid .project-card:not(.project-card-wide) .p-exp-desc {
           order: 3; min-height: 0; margin: 0 0 12px; font-size: 11px; line-height: 1.55; -webkit-line-clamp: 3;
         }
+        .project-grid .p-exp-desc,
+        .p-ct-grid.ct-wide .certificate-preview-desc { text-align: justify; }
         .project-grid .p-tags { gap: 5px; margin-bottom: 11px; }
         .project-grid .project-card:not(.project-card-wide) .p-tags { order: 1; margin: 0 0 10px; }
         .project-grid .p-tags span { padding: 4px 7px; border-radius: 5px; font-size: 9px; }
@@ -731,7 +917,7 @@ const PROFILE_CSS = `
         .project-grid .project-card-wide { display: flex; grid-column: span 2; }
         .project-grid .project-card-wide .p-exp-body {
           position: relative; display: grid; flex: 1; grid-template-columns: 1.6fr 1fr;
-          grid-template-rows: auto auto auto 1fr; align-content: start;
+          grid-template-rows: 1fr auto auto auto 1fr auto; align-content: stretch;
           gap: 0 16px; min-height: 350px; padding: 18px;
         }
         .project-grid .project-card-wide .project-visual {
@@ -751,17 +937,17 @@ const PROFILE_CSS = `
         .project-grid .project-card-wide .p-exp-desc,
         .project-grid .project-card-wide .p-tags,
         .project-grid .project-card-wide .p-exp-foot { grid-column: 2; position: relative; }
-        .project-grid .project-card-wide .p-exp-title { grid-row: 1; }
+        .project-grid .project-card-wide .p-exp-title { grid-row: 2; }
         .project-grid .project-card-wide .p-exp-title {
           min-height: 0; margin: 0 0 8px; font-size: 16px; line-height: 1.35;
         }
         .project-grid .project-card-wide .p-exp-sub { display: none; }
         .project-grid .project-card-wide .p-exp-desc {
-          grid-row: 2; min-height: 0; margin: 0 0 12px; -webkit-line-clamp: 3;
+          grid-row: 3; min-height: 0; margin: 0 0 12px; -webkit-line-clamp: 3;
           font-size: 11px; line-height: 1.55;
         }
-        .project-grid .project-card-wide .p-tags { grid-row: 3; margin-bottom: 0; }
-        .project-grid .project-card-wide .p-exp-foot { grid-row: 4; }
+        .project-grid .project-card-wide .p-tags { grid-row: 4; margin-bottom: 0; }
+        .project-grid .project-card-wide .p-exp-foot { grid-row: 6; }
         .project-grid .project-card-wide .p-tags span { padding: 4px 7px; font-size: 9px; }
         .project-grid .project-card-wide .p-exp-foot { align-self: end; }
         .project-grid .project-card-wide .p-btn { padding: 8px 13px; font-size: 10px; }
@@ -811,6 +997,7 @@ const PROFILE_CSS = `
         .project-detail-meta span { padding: 4px 8px; border: 1px solid #292929; border-radius: 999px; background: #111; }
         .project-detail-content h1 { font: 700 clamp(20px, 3vw, 28px)/1.2 'Space Grotesk', sans-serif; letter-spacing: -.5px; margin: 0 0 12px; }
         .project-detail-description { color: #aaa; font-size: 10px; line-height: 1.9; margin: 0; }
+        .project-detail-description, .certificate-detail-copy { text-align: justify; }
         .project-detail-tech { border-top: 1px solid #222; margin-top: 18px; padding-top: 14px; }
         .project-detail-tech-label { margin: 0 0 9px; color: #777; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; }
         .project-detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -886,7 +1073,7 @@ const PROFILE_CSS = `
         .project-docs-intro { color: #aaa; font-size: 10.5px; line-height: 1.9; margin: 0; }
         .project-docs-block { margin-top: 22px; }
         .project-docs-block h3 { color: #eee; font: 700 13px 'Space Grotesk', sans-serif; margin: 0 0 11px; }
-        .project-docs-highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .project-docs-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
         .project-docs-highlight { overflow: hidden; padding: 16px 14px 14px; border: 1px solid #242424; border-radius: 12px; background: linear-gradient(160deg, #111, #090909 70%); }
         .project-docs-number { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-bottom: 10px; border: 1px solid #333; border-radius: 8px; color: #bbb; font: 700 9px 'Space Grotesk', sans-serif; }
         .project-docs-highlight h4 { color: #eee; font: 600 11px/1.5 'Space Grotesk', sans-serif; margin: 0 0 7px; }
@@ -938,20 +1125,26 @@ const PROFILE_CSS = `
         }
         .profile-card.cert-wide { width: min(98vw, 1400px); }
         .p-ct-grid.ct-wide { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-        .p-ct-grid.ct-wide .p-exp { min-height: 450px; padding: 14px; align-items: stretch; }
-        .p-ct-grid.ct-wide .p-exp-body { display: flex; flex-direction: column; min-width: 0; }
+        .p-ct-grid.ct-wide .p-exp { min-height: 0; padding: 14px; align-items: stretch; }
+        .p-ct-grid.ct-wide .p-exp-body { display: flex; flex: 1; flex-direction: column; min-width: 0; }
         .p-ct-grid.ct-wide .p-ct-img {
           height: 190px; object-fit: contain; border-radius: 10px;
           border: 1px solid rgba(255,255,255,.1); background: #f4f4f4;
-          margin: 0 0 14px;
+          margin: 0 0 10px;
         }
-        .p-ct-grid.ct-wide .p-exp-title { line-height: 1.45; }
-        .p-ct-grid.ct-wide .p-exp-sub { line-height: 1.5; }
+        .p-ct-grid.ct-wide .p-exp-title {
+          display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+          min-height: 2.9em; margin: 0 0 5px; line-height: 1.45;
+        }
+        .p-ct-grid.ct-wide .p-exp-sub {
+          display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+          min-height: 3em; margin: 0 0 7px; line-height: 1.5;
+        }
         .p-ct-grid.ct-wide .certificate-preview-desc {
           display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
-          color: #aaa; font-size: 10px; line-height: 1.6; margin: 0 0 10px;
+          min-height: 4.8em; color: #aaa; font-size: 10px; line-height: 1.6; margin: 0 0 8px;
         }
-        .p-ct-grid.ct-wide .p-exp-foot { margin-top: auto; padding-top: 10px; }
+        .p-ct-grid.ct-wide .p-exp-foot { margin-top: auto; padding-top: 8px; }
         @media (max-width: 1024px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
         @media (max-width: 768px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 640px) {
@@ -1085,7 +1278,7 @@ function ProfileView({ data, active = "about", onNavigate = () => {} }) {
           <h1 className="p-name">{profile.name}</h1>
           <p className="p-title-line">{profile.title}</p>
           <p className="p-exp-sub" style={{ textAlign: "center", marginBottom: "16px" }}>
-            {profile.phone} • {profile.email}
+            {profile.phone}, {profile.email}
           </p>
 
           <p className="p-bio">{profile.bio}</p>
@@ -1375,13 +1568,13 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
   const bidangOf = (c) => c.bidang || c.cat || "Lainnya";
   const BIDANG_ORDER = [
     "Cyber Security",
-    "Data, AI & Cloud",
-    "Mobile & Web Development",
-    "Sains & Inovasi",
-    "Kompetisi & Prestasi",
-    "Kewirausahaan & Bisnis",
-    "Organisasi & Kampus",
-    "Pengembangan Diri & Bahasa",
+    "Data, AI, dan Cloud",
+    "Mobile dan Web Development",
+    "Sains dan Inovasi",
+    "Kompetisi dan Prestasi",
+    "Kewirausahaan dan Bisnis",
+    "Organisasi dan Kampus",
+    "Pengembangan Diri dan Bahasa",
   ];
   const cats = useMemo(() => {
     const ada = new Set(certs.map(bidangOf));
@@ -1405,10 +1598,10 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
           <span className="pcorner br" />
 
           <h1 className="p-name">Certification</h1>
-          <p className="p-title-line">Kepanitiaan • Organisasi • Penghargaan</p>
+          <p className="p-title-line">Kepanitiaan, Organisasi, dan Penghargaan</p>
 
           <p className="p-bio">
-            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal — dikelompokkan per bidang ({certs.length} sertifikat).
+            Kepanitiaan, organisasi, dan penghargaan Saiful Rizal, dikelompokkan per bidang ({certs.length} sertifikat).
           </p>
 
           <div className="p-tabs">
@@ -1427,33 +1620,29 @@ function CertificationView({ certs, active = "certification", onNavigate = () =>
             <p className="p-bio">Belum ada data sertifikasi.</p>
           ) : (
             <div className="p-ct-grid ct-wide">
-              {shown.map((c) => (
-                <div key={c.id} className="p-exp">
-                  <div className="p-exp-body">
-                    {c.image ? (
-                      <img className="p-ct-img" src={c.image} alt={c.title} />
-                    ) : null}
-                    <h3 className="p-exp-title">{c.title}</h3>
-                    <p className="p-exp-sub">
-                      {c.issuer}{c.dateLabel ? ` • ${c.dateLabel}` : c.year ? ` • ${c.year}` : ""}
-                    </p>
-                    {c.desc ? <p className="certificate-preview-desc">{c.desc}</p> : null}
-                    {c.code ? <p className="p-exp-desc">ID: {c.code}</p> : null}
-                    {c.pdf || c.image ? (
-                      <div style={{ display: "flex", gap: "6px", marginTop: "6px" }}>
-                        {c.pdf ? <span className="p-badge">PDF</span> : null}
-                        {c.image ? <span className="p-badge">Gambar</span> : null}
+              {shown.map((c) => {
+                return (
+                  <div key={c.id} className="p-exp">
+                    <div className="p-exp-body">
+                      {c.image ? (
+                        <img className="p-ct-img" src={c.image} alt={c.title} />
+                      ) : null}
+                      <h3 className="p-exp-title">{c.title}</h3>
+                      <p className="p-exp-sub">
+                        {c.issuer}{c.dateLabel ? `, ${c.dateLabel}` : c.year ? `, ${c.year}` : ""}
+                      </p>
+                      {c.desc ? <p className="certificate-preview-desc">{c.desc}</p> : null}
+                      {c.code ? <p className="p-exp-desc">ID: {c.code}</p> : null}
+                      <div className="p-exp-foot">
+                        <span className="p-badge">{c.bidang || c.cat || "Lainnya"}</span>
+                        <button className="p-btn" onClick={() => onNavigate(`certification/${c.id}`)}>
+                          Lihat
+                        </button>
                       </div>
-                    ) : null}
-                    <div className="p-exp-foot">
-                      <span className="p-badge">{c.bidang || c.cat || "Lainnya"}</span>
-                      <button className="p-btn" onClick={() => onNavigate(`certification/${c.id}`)}>
-                        Lihat
-                      </button>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
@@ -1477,7 +1666,7 @@ function CertificationDetailView({ certs, index = 0, onNavigate = () => {} }) {
   const issuerDate = [
     certificate.issuer,
     certificate.dateLabel || certificate.year,
-  ].filter(Boolean).join(" • ");
+  ].filter(Boolean).join(", ");
 
   return (
     <>
@@ -1554,7 +1743,7 @@ function CertificationDetailView({ certs, index = 0, onNavigate = () => {} }) {
                     {item.image ? <img src={item.image} alt={`Sertifikat ${item.title}`} loading="lazy" /> : <span>PDF</span>}
                   </div>
                   <div className="certificate-related-body">
-                    <p className="certificate-related-meta">{item.bidang || item.cat || "Lainnya"}{item.year ? ` · ${item.year}` : ""}</p>
+                    <p className="certificate-related-meta">{item.bidang || item.cat || "Lainnya"}{item.year ? `, ${item.year}` : ""}</p>
                     <h3>{item.title}</h3>
                     <p>{item.desc || item.issuer}</p>
                     <button className="p-btn" onClick={() => onNavigate(`certification/${item.id}`)}>
@@ -1720,10 +1909,10 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
                           <option>Kepanitiaan</option>
                           <option>Organisasi</option>
                           <option>Penghargaan</option>
-                          <option>Kampus & Organisasi</option>
-                          <option>Prestasi & Lomba</option>
-                          <option>Webinar & Workshop</option>
-                          <option>Dicoding & Komunitas</option>
+                          <option>Kampus dan Organisasi</option>
+                          <option>Prestasi dan Lomba</option>
+                          <option>Webinar dan Workshop</option>
+                          <option>Dicoding dan Komunitas</option>
                           <option>IBM SkillsBuild</option>
                           <option>Bahasa</option>
                           <option>Lainnya</option>
@@ -1737,13 +1926,13 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
                           onChange={(e) => updateCert(c.id, { bidang: e.target.value })}
                         >
                           <option>Cyber Security</option>
-                          <option>Data, AI & Cloud</option>
-                          <option>Mobile & Web Development</option>
-                          <option>Sains & Inovasi</option>
-                          <option>Kompetisi & Prestasi</option>
-                          <option>Kewirausahaan & Bisnis</option>
-                          <option>Organisasi & Kampus</option>
-                          <option>Pengembangan Diri & Bahasa</option>
+                          <option>Data, AI, dan Cloud</option>
+                          <option>Mobile dan Web Development</option>
+                          <option>Sains dan Inovasi</option>
+                          <option>Kompetisi dan Prestasi</option>
+                          <option>Kewirausahaan dan Bisnis</option>
+                          <option>Organisasi dan Kampus</option>
+                          <option>Pengembangan Diri dan Bahasa</option>
                           <option>Lainnya</option>
                         </select>
                       </div>
@@ -1794,7 +1983,7 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
               </div>
               <div className="p-btn-row" style={{ justifyContent: "center", marginTop: "16px" }}>
                 <button className="p-btn solid" onClick={addCert}>
-                  + Tambah Sertifikasi
+                  Tambah Sertifikasi
                 </button>
               </div>
             </>
@@ -1935,10 +2124,10 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
           <span className="pcorner br" />
 
           <h1 className="p-name">Project</h1>
-          <p className="p-title-line">Web • Mobile • AI</p>
+          <p className="p-title-line">Web, Mobile, dan AI</p>
 
           <p className="p-bio">
-            Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat untuk detail + live preview, atau buka langsung demo onlinenya.
+            Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat untuk detail dan live preview, atau buka langsung demo onlinenya.
           </p>
 
           <div className="p-ct-grid project-grid">
@@ -1971,13 +2160,13 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
                     ) : null}
                   </div>
                   <h3 className="p-exp-title">{pr.title}</h3>
-                  <p className="p-exp-sub">{pr.cat} • {pr.year}</p>
+                  <p className="p-exp-sub">{pr.cat}, {pr.year}</p>
                   {pr.desc ? <p className="p-exp-desc">{pr.desc}</p> : null}
                   <div className="p-tags">
                     {(index === 0 ? pr.tags : pr.tags.slice(0, 3)).map((t) => (
                       <span key={t}>{t}</span>
                     ))}
-                    {index !== 0 && pr.tags.length > 3 ? <span>+{pr.tags.length - 3}</span> : null}
+                    {index !== 0 && pr.tags.length > 3 ? <span>{pr.tags.length - 3} lagi</span> : null}
                   </div>
                   <div className="p-exp-foot">
                     <span className="p-badge">{index === 0 ? pr.status : `${pr.tags.length} teknologi`}</span>
@@ -2065,7 +2254,7 @@ function ProjectDetailView({ index = 0, onNavigate = () => {} }) {
                 <div className="project-detail-tech">
                   <p className="project-detail-tech-label">Teknologi yang digunakan</p>
                   <div className="project-detail-tags">
-                    {project.tags.map((tag) => <span key={tag}>• {tag}</span>)}
+                    {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
                 </div>
                 <div className="project-detail-actions">
@@ -2093,7 +2282,7 @@ function ProjectDetailView({ index = 0, onNavigate = () => {} }) {
                     </span>
                     <span className="project-detail-list-copy">
                       <strong>{item.title}</strong>
-                      <small>Tahun {item.year} · {item.tags.length} teknologi</small>
+                      <small>Tahun {item.year}, {item.tags.length} teknologi</small>
                     </span>
                   </button>
                 ))}
@@ -2111,7 +2300,7 @@ function ProjectDetailView({ index = 0, onNavigate = () => {} }) {
 
               {project.documentation.highlights ? (
                 <div className="project-docs-block">
-                  <h3>3 Fitur Unggulan</h3>
+                  <h3>{project.documentation.highlights.length} Fitur Unggulan</h3>
                   <div className="project-docs-highlights">
                     {project.documentation.highlights.map((item, highlightIndex) => (
                       <article className="project-docs-highlight" key={item.title}>
@@ -2180,7 +2369,7 @@ function ProjectDetailView({ index = 0, onNavigate = () => {} }) {
                   <div className="project-docs-gallery">
                     {project.documentation.gallery.map((shot) => (
                       <figure key={shot.src}>
-                        <img src={shot.src} alt={`${project.title} — ${shot.title}`} />
+                        <img src={shot.src} alt={`${project.title}: ${shot.title}`} />
                         <figcaption>
                           <strong>{shot.title}</strong>
                           <span>{shot.desc}</span>
@@ -2246,7 +2435,7 @@ function AchievementView({ active = "achievement", onNavigate = () => {} }) {
           <span className="pcorner br" />
 
           <h1 className="p-name">Achievement</h1>
-          <p className="p-title-line">Penghargaan • Pendanaan • Kompetisi</p>
+          <p className="p-title-line">Penghargaan, Pendanaan, dan Kompetisi</p>
 
           <p className="p-bio">
             Penghargaan, pendanaan, dan kompetisi yang memvalidasi kualitas kerja.
@@ -2258,7 +2447,7 @@ function AchievementView({ active = "achievement", onNavigate = () => {} }) {
               <div key={a.title} className="p-exp">
                 <div className="p-exp-body">
                   <h3 className="p-exp-title">{a.title}</h3>
-                  <p className="p-exp-sub">{a.org} • {a.year}</p>
+                  <p className="p-exp-sub">{a.org}, {a.year}</p>
                   <p className="p-exp-desc">{a.desc}</p>
                   <div className="p-exp-foot">
                     <span className="p-badge">{a.tag}</span>
@@ -2267,7 +2456,7 @@ function AchievementView({ active = "achievement", onNavigate = () => {} }) {
                       onClick={() =>
                         setSelected({
                           title: a.title,
-                          sub: `${a.org} • ${a.year}`,
+                          sub: `${a.org}, ${a.year}`,
                           desc: a.desc,
                           tags: [a.tag],
                           image: "",
@@ -4092,7 +4281,7 @@ export default function App() {
         </div>
 
         <div className="top-right">
-          BUILD · LEARN · GROW
+          BUILD, LEARN, GROW
         </div>
 
 

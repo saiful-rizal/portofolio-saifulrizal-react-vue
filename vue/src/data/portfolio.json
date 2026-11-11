@@ -2,7 +2,7 @@
   "profile": {
     "name": "Saiful Rizal",
     "shortName": "SAIFUL RIZAL",
-    "role": "Junior Web & Mobile Developer",
+    "role": "Junior Web dan Mobile Developer",
     "title": "JUNIOR DEVELOPER",
     "hello": "HELLO",
     "bio": "Mahasiswa semester 5 D4 Teknik Informatika Politeknik Negeri Jember yang memiliki minat pada pengembangan teknologi dan konstruksi perangkat lunak. Menguasai Framework Laravel, React.js, dan Flutter untuk pengembangan aplikasi web dan mobile, serta memiliki kemampuan dalam PHP, JavaScript, Dart, Java, HTML, dan CSS. Terbiasa menggunakan Visual Studio Code, Android Studio, Figma, Git, dan GitHub dalam membangun aplikasi yang interaktif, responsif, dan mudah digunakan. Memiliki integritas yang tinggi, teliti, disiplin, bertanggung jawab, serta mampu menjelaskan konsep pemrograman secara sederhana dan mudah dipahami. Berpengalaman membimbing peserta didik dalam memahami pemrograman.",
@@ -121,8 +121,8 @@
   ],
   "projects": [
     {
-      "title": "SI Kasir Pintar Sniper Seblak Nurins Prasmanan",
-      "desc": "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.",
+      "title": "SIAPKAN SNIPER (Seblak Nurins Prasmanan)",
+      "desc": "Aplikasi kasir berbasis desktop untuk mempermudah transaksi dan pengelolaan stok barang di Seblak Nurins Prasmanan, dengan laporan akurat, stok efisien, pengguna aman, dan informasi real-time.",
       "tags": ["Point of Sales", "Desktop", "Database"],
       "cat": "Desktop",
       "year": "2025",
@@ -151,9 +151,9 @@
       "icon": "M9 2h6v20H9z M12 18h.01"
     },
     {
-      "title": "SIPORA Versi 1.2 + AI Screening",
-      "desc": "Pengembangan SIPORA terintegrasi AI Screening versi 1.2: pendataan aset website dan mobile dengan seleksi cerdas.",
-      "tags": ["Laravel", "Flutter", "AI Screening"],
+      "title": "SIPORA Versi 1.2 AI Screening",
+      "desc": "Platform repository digital terpusat untuk menyimpan, mengelola, dan mengakses karya tulis akademik melalui website dan aplikasi mobile, dengan dashboard interaktif, screening dokumen YOLO v8, chatbot AI, dan pencarian cerdas.",
+      "tags": ["Laravel", "Flutter", "AI Screening", "YOLO v8"],
       "cat": "Web",
       "year": "2025",
       "status": "Live",
@@ -452,7 +452,7 @@
     },
     {
       "init": "GC",
-      "title": "Google Cloud Arcade Fasilitator 2025 : Program Overview & Deep Dive",
+      "title": "Google Cloud Arcade Fasilitator 2025 : Program Overview dan Deep Dive",
       "issuer": "Dicoding Event",
       "year": "2025",
       "id": "GCA-2025",
