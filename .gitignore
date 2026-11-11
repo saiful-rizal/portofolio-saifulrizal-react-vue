@@ -47,3 +47,6 @@ playwright-report/
 
 # Standalone cafe project (deploys to saraso-koffiehaus.vercel.app separately)
 saraso-koffiehaus/
+
+.vercel
+.env*

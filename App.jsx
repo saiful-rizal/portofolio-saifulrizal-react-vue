@@ -186,6 +186,13 @@ function hashToView() {
   if (h === "" || h === "#home" || h === "#/home") return "home";
   if (h === "#" || h === "#/" || h === "#dashboard" || h === "#/dashboard") return "dashboard";
   const v = h.replace(/^#\/?/, "");
+  if (/^project\/[a-z0-9-]+$/i.test(v)) {
+    const key = v.split("/")[1].toLowerCase();
+    const index = /^\d+$/.test(key)
+      ? Number(key)
+      : DEFAULT_PROJECTS.findIndex((project) => project.slug === key);
+    return index >= 0 && index < DEFAULT_PROJECTS.length ? "project-detail" : "project";
+  }
   return HASH_VIEWS.includes(v) ? v : "home";
 }
 
@@ -223,11 +230,102 @@ function ProfileNav({ active = "", onNavigate = () => {} }) {
 }
 
 const DEFAULT_PROJECTS = [
-  { title: "Bimbel Bina Learning Prestasi", desc: "", tags: ["React", "TypeScript", "Vite", "Tailwind CSS"], cat: "Web", year: "2025", status: "Live", liveUrl: "https://bimbel-learning-prestasi.vercel.app", image: "/bimbel-learning-prestasi-preview.jpg" },
-  { title: "Saraso Koffiehaus", desc: "", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
+  { title: "Bimbel Bina Learning Prestasi", desc: "Website profil lembaga bimbingan belajar untuk memperkenalkan program belajar, informasi layanan, dan identitas Bina Learning Prestasi kepada calon siswa dan orang tua.", tags: ["React", "TypeScript", "Vite", "Tailwind CSS"], cat: "Web", year: "2025", status: "Live", liveUrl: "https://bimbel-learning-prestasi.vercel.app", image: "/bimbel-learning-prestasi-preview.jpg" },
+  { title: "Saraso Koffiehaus", desc: "Website profil kedai kopi yang menampilkan identitas Saraso Koffiehaus dan informasi untuk membantu pengunjung mengenal tempat serta pengalaman yang ditawarkan.", tags: ["React", "Vite", "CSS"], cat: "Web", year: "2026", status: "Live", liveUrl: "https://saraso-koffiehaus.vercel.app", image: "/project/cafe-saraso.png" },
   { title: "SI Kasir Pintar Sniper Seblak Nurins Prasmanan", desc: "Sistem informasi kasir pintar untuk usaha seblak prasmanan: kelola menu, transaksi cepat, dan laporan penjualan harian.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
-  { title: "SI Kasir Cerdas Allestic", desc: "Sistem informasi kasir cerdas: transaksi, kelola stok barang, dan rekap penjualan otomatis.", tags: ["Point of Sales", "Desktop", "Database"], cat: "Desktop", year: "2025", status: "Live" },
-  { title: "SIPORA Versi 1.0", desc: "Pengembangan Sistem Informasi Polije Repository Assets versi 1.0 berbasis website dan mobile untuk pendataan aset.", tags: ["Laravel", "Flutter", "MySQL"], cat: "Web", year: "2024", status: "Live" },
+  {
+    title: "ALLESTIC (Alle Store Intelligent Cashier)",
+    slug: "allestic",
+    desc: "Aplikasi kasir berbasis desktop untuk mempermudah operasional toko secara cepat, efisien, dan terintegrasi: login RFID, scan barcode, cetak struk otomatis, laporan keuangan, stok, hingga presensi karyawan.",
+    tags: ["Point of Sales", "Desktop", "Database"],
+    cat: "Desktop",
+    year: "2025",
+    status: "Live",
+    image: "/project/allestic/dashboard-admin.jpg",
+    documentation: {
+      about: "ALLESTIC (Alle Store Intelligent Cashier) adalah aplikasi kasir berbasis desktop yang kami kembangkan untuk mempermudah operasional toko secara cepat, efisien, dan terintegrasi. Fitur utamanya? Yuk simak!",
+      highlights: [
+        { title: "Login dengan scan kartu RFID", desc: "Autentikasi kasir cukup dengan menempelkan kartu RFID, sehingga sesi kerja dimulai lebih cepat dan aman." },
+        { title: "Scan barcode produk", desc: "Produk masuk ke transaksi hanya dengan sekali scan barcode, mempercepat proses belanja dan mengurangi salah input." },
+        { title: "Cetak struk otomatis", desc: "Struk transaksi tercetak otomatis setelah pembayaran, lengkap dengan rincian item dan total." },
+      ],
+      features: [
+        "Transaksi penjualan",
+        "Laporan keuangan + grafik visual",
+        "Manajemen stok barang",
+        "Presensi & penggajian karyawan",
+        "Data real-time & akurat",
+      ],
+      gallery: [
+        { src: "/project/allestic/login-rfid.jpg", title: "Login RFID", desc: "Halaman login dengan opsi autentikasi scan kartu RFID." },
+        { src: "/project/allestic/dashboard-admin.jpg", title: "Dashboard Admin", desc: "Ringkasan pendapatan, penjualan, laba, stok menipis, dan barang terlaris." },
+        { src: "/project/allestic/form-barang-barcode.jpg", title: "Manajemen Barang", desc: "Input data barang, cetak barcode, dan pemantauan stok." },
+        { src: "/project/allestic/transaksi-cetak-nota.jpg", title: "Transaksi & Cetak Nota", desc: "Proses transaksi penjualan dengan preview struk sebelum dicetak." },
+      ],
+    },
+  },
+  {
+    title: "SIPORA Versi 1.0",
+    slug: "sipora",
+    desc: "Pengembangan SIPORA agar sistem repository menjadi lebih praktis, informatif, dan mudah diakses melalui pembaruan antarmuka, penyederhanaan navigasi, serta dukungan akses web dan mobile.",
+    tags: ["Laravel", "Flutter", "MySQL"],
+    cat: "Web",
+    year: "2024",
+    status: "Live",
+    image: "/project/sipora/admin-dashboard.jpg",
+    documentation: {
+      about: "Bagaimana jika proses unggah tugas akhir dapat dilakukan dengan alur yang lebih jelas? Dan bagaimana jika pencarian dokumen dapat memberikan hasil yang lebih relevan dan mudah ditemukan? Berangkat dari kebutuhan tersebut, kami mengembangkan SIPORA agar sistem repository menjadi lebih praktis, informatif, dan mudah diakses. Pengembangan dilakukan melalui pembaruan antarmuka, penyederhanaan navigasi, serta dukungan akses melalui perangkat mobile.",
+      sections: [
+        {
+          title: "Website Admin",
+          items: [
+            "Dashboard ringkasan data",
+            "Manajemen Admin",
+            "Statistik dokumen",
+            "Review dan verifikasi dokumen dan data mahasiswa",
+            "Profil",
+            "Laporan",
+            "Mode gelap",
+          ],
+        },
+        {
+          title: "Website Mahasiswa",
+          items: [
+            "Dashboard informatif",
+            "Upload dokumen dengan tahapan lebih terarah",
+            "Pencarian berdasarkan kata kunci dan kata kunci trending",
+            "Filter dokumen berdasarkan kategori",
+            "Notifikasi melalui aplikasi website dan email",
+            "Profil",
+          ],
+        },
+        {
+          title: "Aplikasi Mobile Mahasiswa",
+          items: [
+            "Tampilan dashboard ringkas dan responsif",
+            "Unggah dokumen melalui perangkat mobile",
+            "Filter dokumen berdasarkan kategori",
+            "Pencarian dan penelusuran dokumen",
+            "Download dan penyimpanan file",
+            "Notifikasi real-time",
+            "Pengelolaan profil pengguna",
+          ],
+        },
+      ],
+      advantages: [
+        "Akses lintas perangkat (web dan mobile)",
+        "Interaksi pengguna lebih mudah dan intuitif",
+        "Proses unggah yang lebih terarah",
+        "Pencarian dokumen yang lebih relevan",
+        "Notifikasi otomatis yang membantu mahasiswa tetap mengikuti alur proses",
+      ],
+      closing: "SIPORA dikembangkan sebagai langkah menuju repository yang lebih mudah, terarah, dan relevan bagi penggunanya.",
+      gallery: [
+        { src: "/project/sipora/landing-page.jpg", title: "Landing Page SIPORA", desc: "Halaman utama untuk menjelajahi dan menemukan koleksi repository." },
+        { src: "/project/sipora/admin-dashboard.jpg", title: "Dashboard Admin", desc: "Ringkasan total dokumen, tema, aktivitas dokumen, dan total user." },
+      ],
+    },
+  },
   { title: "SIPORA Versi 1.2 + AI Screening", desc: "Pengembangan SIPORA terintegrasi AI Screening versi 1.2: pendataan aset website dan mobile dengan seleksi cerdas.", tags: ["Laravel", "Flutter", "AI Screening"], cat: "Web", year: "2025", status: "Live" },
   { title: "Absensi Arduino Nano", desc: "Sistem pencatatan absensi berbasis sistem tertanam menggunakan Arduino Nano untuk presensi otomatis.", tags: ["Arduino Nano", "Embedded", "Absensi"], cat: "IoT", year: "2024", status: "Demo" },
   { title: "SI Pemilahan Sampah Computer Vision", desc: "Sistem informasi pemilahan sampah menggunakan computer vision untuk daur ulang sampah organik dan non organik.", tags: ["Computer Vision", "Python", "AI"], cat: "AI", year: "2025", status: "Demo" },
@@ -562,6 +660,191 @@ const PROFILE_CSS = `
         @media (max-width: 1024px) { .p-ct-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .p-ct-grid { grid-template-columns: 1fr; } }
         .p-ct-img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #181818; margin-bottom: 12px; display: block; }
+        .p-ct-grid.project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        .project-grid .project-card {
+          display: block; min-width: 0; overflow: hidden; padding: 0;
+          background: #090909; border: 1px solid rgba(255,255,255,.1);
+          border-radius: 16px; border-left: 1px solid rgba(255,255,255,.1);
+          transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+        }
+        .project-grid .project-card:hover {
+          border-color: rgba(255,255,255,.24);
+          box-shadow: 0 12px 30px rgba(0,0,0,.35);
+          transform: translateY(-3px);
+        }
+        .project-visual {
+          position: relative; height: 158px; overflow: hidden;
+          background: radial-gradient(ellipse at 70% 20%, #282828, transparent 55%), #111;
+        }
+        .project-visual::after {
+          content: ""; position: absolute; inset: 25% 0 0; pointer-events: none;
+          background: linear-gradient(180deg, transparent 5%, rgba(9,9,9,.92) 100%);
+        }
+        .project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease; }
+        .project-card:hover .project-visual img { transform: scale(1.04); }
+        .project-visual.is-placeholder {
+          display: grid; place-items: center;
+          background: radial-gradient(ellipse at 75% 15%, #353535 0, transparent 42%), linear-gradient(135deg, #1d1d1d, #090909 75%);
+        }
+        .project-visual-mark { color: rgba(255,255,255,.7); font: 700 42px 'Space Grotesk', sans-serif; letter-spacing: -3px; }
+        .project-year, .project-open {
+          position: absolute; z-index: 1; top: 10px;
+          border: 1px solid rgba(255,255,255,.16); background: rgba(12,12,12,.76);
+          color: #eee; backdrop-filter: blur(8px);
+        }
+        .project-year { left: 10px; border-radius: 999px; padding: 4px 8px; font-size: 8px; }
+        .project-open {
+          right: 10px; width: 27px; height: 27px; display: grid; place-items: center;
+          border-radius: 50%; text-decoration: none; font-size: 13px;
+        }
+        .project-grid .project-card .p-exp-body { display: flex; flex-direction: column; min-height: 205px; padding: 14px 15px 13px; }
+        .project-grid .p-ct-img { height: 100%; margin: 0; border: 0; border-radius: 0; }
+        .project-grid .p-exp-title { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; min-height: 40px; font-size: 14px; line-height: 1.45; }
+        .project-grid .p-exp-sub { margin-bottom: 8px; color: #777; font-size: 9px; }
+        .project-grid .p-exp-desc { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; min-height: 45px; margin-bottom: 10px; color: #aaa; font-size: 9px; line-height: 1.65; }
+        .project-grid .p-tags { gap: 5px; margin-bottom: 11px; }
+        .project-grid .p-tags span { padding: 3px 7px; border-radius: 5px; font-size: 8px; }
+        .project-grid .p-exp-foot { margin-top: auto; padding-top: 9px; border-top: 1px solid rgba(255,255,255,.08); }
+        .project-grid .p-badge { border: 0; background: none; color: #666; padding: 0; font-size: 8px; }
+        .project-grid .p-btn { padding: 7px 11px; font-size: 9px; }
+        .project-grid .p-exp-foot > div { gap: 6px !important; }
+        .project-grid .project-card-wide { grid-column: span 2; }
+        .project-grid .project-card-wide .p-exp-body {
+          position: relative; display: grid; grid-template-columns: 1fr 1fr;
+          align-content: center; gap: 0 18px; min-height: 252px; padding: 20px;
+        }
+        .project-grid .project-card-wide .project-visual {
+          position: absolute; inset: 0 auto 0 0; width: 58%; height: 100%;
+        }
+        .project-grid .project-card-wide .project-visual::after {
+          inset: 0; background: linear-gradient(90deg, transparent 38%, rgba(9,9,9,.72) 70%, #090909 100%);
+        }
+        .project-grid .project-card-wide .project-visual.is-placeholder {
+          background: radial-gradient(ellipse at 30% 45%, #414141 0, transparent 48%), linear-gradient(120deg, #252525, #101010 75%);
+        }
+        .project-grid .project-card-wide .p-exp-title,
+        .project-grid .project-card-wide .p-exp-sub,
+        .project-grid .project-card-wide .p-exp-desc,
+        .project-grid .project-card-wide .p-tags,
+        .project-grid .project-card-wide .p-exp-foot { grid-column: 2; position: relative; }
+        .project-grid .project-card-wide .p-exp-title { min-height: 0; margin-bottom: 5px; }
+        .project-grid .project-card-wide .p-exp-sub { margin-bottom: 8px; }
+        .project-grid .project-card-wide .p-exp-desc { min-height: 0; margin-bottom: 10px; }
+        .project-grid .project-card-wide .p-tags { margin-bottom: 11px; }
+        .project-grid .project-card-wide .p-exp-foot { align-self: end; }
+        @media (max-width: 1024px) { .p-ct-grid.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 640px) {
+          .p-ct-grid.project-grid { grid-template-columns: 1fr; }
+          .project-visual { height: 190px; }
+          .project-grid .project-card-wide { grid-column: auto; }
+          .project-grid .project-card-wide .p-exp-body { display: flex; min-height: 205px; padding: 14px 15px 13px; }
+          .project-grid .project-card-wide .project-visual { position: relative; inset: auto; width: calc(100% + 30px); height: 190px; margin: -14px -15px 14px; }
+          .project-grid .project-card-wide .project-visual::after { inset: 25% 0 0; background: linear-gradient(180deg, transparent 5%, rgba(9,9,9,.92) 100%); }
+          .project-grid .project-card-wide .p-exp-title,
+          .project-grid .project-card-wide .p-exp-sub,
+          .project-grid .project-card-wide .p-exp-desc,
+          .project-grid .project-card-wide .p-tags,
+          .project-grid .project-card-wide .p-exp-foot { grid-column: auto; }
+        }
+        .project-detail-page { width: min(96vw, 1060px); margin: 0 auto; color: #e7e7e7; text-align: left; }
+        .project-detail-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+        .project-back, .project-step {
+          display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+          min-height: 32px; padding: 0 12px; border: 1px solid #252525; border-radius: 999px;
+          color: #aaa; background: #0b0b0b; font-family: inherit; font-size: 9px; text-decoration: none; cursor: pointer;
+        }
+        .project-back:hover, .project-step:hover { color: #fff; border-color: #555; }
+        .project-step-controls { display: flex; align-items: center; gap: 8px; color: #777; font-size: 9px; }
+        .project-step { width: 30px; min-height: 30px; padding: 0; font-size: 12px; }
+        .project-detail-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(220px, .8fr); gap: 18px; align-items: start; }
+        .project-detail-card { overflow: hidden; border: 1px solid #242424; border-radius: 15px; background: #090909; }
+        .project-detail-visual { position: relative; height: clamp(210px, 30vw, 340px); overflow: hidden; background: radial-gradient(ellipse at 70% 20%, #343434, transparent 55%), #111; }
+        .project-detail-visual::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(180deg, transparent, #090909); pointer-events: none; }
+        .project-detail-visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .project-detail-visual.is-placeholder { display: grid; place-items: center; }
+        .project-detail-visual.is-placeholder::before { content: ""; position: absolute; width: 60%; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; box-shadow: 0 0 0 28px rgba(255,255,255,.02), 0 0 0 56px rgba(255,255,255,.015); }
+        .project-detail-visual .project-visual-mark { font-size: clamp(54px, 9vw, 100px); }
+        .project-detail-content { padding: 0 20px 20px; }
+        .project-detail-meta { display: flex; align-items: center; gap: 8px; margin: -2px 0 12px; color: #aaa; font-size: 9px; }
+        .project-detail-meta span { padding: 4px 8px; border: 1px solid #292929; border-radius: 999px; background: #111; }
+        .project-detail-content h1 { font: 700 clamp(20px, 3vw, 28px)/1.2 'Space Grotesk', sans-serif; letter-spacing: -.5px; margin: 0 0 12px; }
+        .project-detail-description { color: #aaa; font-size: 10px; line-height: 1.9; margin: 0; }
+        .project-detail-tech { border-top: 1px solid #222; margin-top: 18px; padding-top: 14px; }
+        .project-detail-tech-label { margin: 0 0 9px; color: #777; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; }
+        .project-detail-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .project-detail-tags span { border: 1px solid #292929; border-radius: 7px; padding: 5px 8px; color: #c3c3c3; font-size: 8px; }
+        .project-detail-actions { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid #222; margin-top: 16px; padding-top: 14px; }
+        .project-detail-actions .p-btn { padding: 8px 12px; font-size: 9px; }
+        .project-detail-sidebar h2, .project-related h2 { color: #eee; font: 700 14px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
+        .project-detail-list { display: flex; flex-direction: column; gap: 7px; }
+        .project-detail-list button {
+          display: grid; grid-template-columns: 55px minmax(0, 1fr); align-items: center; gap: 9px;
+          width: 100%; min-width: 0; padding: 7px; border: 1px solid #242424; border-radius: 10px;
+          background: #090909; color: #ddd; text-align: left; cursor: pointer;
+        }
+        .project-detail-list button:hover, .project-detail-list button[aria-current="page"] { border-color: #555; background: #111; }
+        .project-detail-thumb { position: relative; display: grid; place-items: center; height: 40px; overflow: hidden; border-radius: 6px; background: #1b1b1b; }
+        .project-detail-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .project-detail-thumb span { color: #aaa; font: 700 13px 'Space Grotesk', sans-serif; }
+        .project-detail-list-copy { min-width: 0; }
+        .project-detail-list-copy strong { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: #ddd; font: 600 9px/1.45 'Space Grotesk', sans-serif; }
+        .project-detail-list-copy small { display: block; color: #777; font-size: 7px; margin-top: 4px; }
+        .project-docs { border-top: 1px solid #202020; margin-top: 28px; padding-top: 22px; }
+        .project-docs-head { max-width: 800px; margin-bottom: 20px; }
+        .project-docs-eyebrow { margin: 0 0 7px; color: #777; font-size: 8px; letter-spacing: 1.4px; text-transform: uppercase; }
+        .project-docs-head h2 { color: #f0f0f0; font: 700 clamp(18px, 2.5vw, 24px)/1.25 'Space Grotesk', sans-serif; letter-spacing: -.4px; margin: 0 0 10px; }
+        .project-docs-intro { color: #aaa; font-size: 10.5px; line-height: 1.9; margin: 0; }
+        .project-docs-block { margin-top: 22px; }
+        .project-docs-block h3 { color: #eee; font: 700 13px 'Space Grotesk', sans-serif; margin: 0 0 11px; }
+        .project-docs-highlights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .project-docs-highlight { overflow: hidden; padding: 16px 14px 14px; border: 1px solid #242424; border-radius: 12px; background: linear-gradient(160deg, #111, #090909 70%); }
+        .project-docs-number { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-bottom: 10px; border: 1px solid #333; border-radius: 8px; color: #bbb; font: 700 9px 'Space Grotesk', sans-serif; }
+        .project-docs-highlight h4 { color: #eee; font: 600 11px/1.5 'Space Grotesk', sans-serif; margin: 0 0 7px; }
+        .project-docs-highlight p { color: #888; font-size: 9px; line-height: 1.7; margin: 0; }
+        .project-docs-sections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
+        .project-docs-section { padding: 14px; border: 1px solid #242424; border-radius: 12px; background: #0b0b0b; }
+        .project-docs-section h3 { margin: 0 0 10px; color: #eee; font: 700 11.5px 'Space Grotesk', sans-serif; }
+        .project-docs-section ul { display: flex; flex-direction: column; gap: 7px; list-style: none; margin: 0; padding: 0; }
+        .project-docs-section li { display: flex; gap: 8px; color: #aaa; font-size: 9px; line-height: 1.65; }
+        .project-docs-section li span { flex: 0 0 auto; color: #9ad6a6; font-size: 8px; margin-top: 2px; }
+        .project-docs-closing { margin: 18px 0 0; padding: 13px 15px; border: 1px solid #2a2a2a; border-left: 2px solid #9ad6a6; border-radius: 10px; background: #0b0b0b; color: #b8b8b8; font-size: 10px; line-height: 1.8; }
+        .project-docs-features ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; list-style: none; margin: 0; padding: 0; }
+        .project-docs-features li { display: flex; align-items: center; gap: 9px; padding: 10px 12px; border: 1px solid #242424; border-radius: 9px; background: #0b0b0b; color: #c3c3c3; font-size: 9.5px; }
+        .project-docs-features li span { display: grid; place-items: center; width: 16px; height: 16px; flex: 0 0 auto; border-radius: 50%; background: #1c1c1c; color: #9ad6a6; font-size: 8px; }
+        .project-docs-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+        .project-docs-gallery figure { overflow: hidden; margin: 0; border: 1px solid #242424; border-radius: 11px; background: #0b0b0b; }
+        .project-docs-gallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #111; }
+        .project-docs-gallery figcaption { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px 12px; }
+        .project-docs-gallery strong { color: #ddd; font: 600 10px 'Space Grotesk', sans-serif; }
+        .project-docs-gallery span { color: #777; font-size: 8.5px; line-height: 1.6; }
+        .project-related { border-top: 1px solid #202020; margin-top: 28px; padding-top: 17px; }
+        .project-related-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 11px; }
+        .project-related-head p { color: #777; font-size: 8px; margin: 4px 0 0; }
+        .project-related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .project-related-item { overflow: hidden; padding: 0; border: 1px solid #252525; border-radius: 10px; background: #0b0b0b; color: #ddd; text-align: left; cursor: pointer; }
+        .project-related-item:hover { border-color: #555; }
+        .project-related-image { position: relative; display: grid; place-items: center; height: 100px; overflow: hidden; background: #191919; }
+        .project-related-image::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #0b0b0b); }
+        .project-related-image img { width: 100%; height: 100%; object-fit: cover; }
+        .project-related-image span { color: #aaa; font: 700 28px 'Space Grotesk', sans-serif; }
+        .project-related-item strong { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; padding: 8px; font: 600 9px/1.5 'Space Grotesk', sans-serif; }
+        @media (max-width: 720px) {
+          .project-detail-page { width: min(100%, 560px); }
+          .project-detail-layout { grid-template-columns: 1fr; }
+          .project-detail-sidebar { order: 2; }
+          .project-detail-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .project-detail-content { padding: 0 15px 16px; }
+          .project-docs-highlights { grid-template-columns: 1fr; }
+          .project-docs-sections { grid-template-columns: 1fr; }
+          .project-docs-features ul { grid-template-columns: 1fr; }
+          .project-docs-gallery { grid-template-columns: 1fr; }
+          .project-related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 420px) {
+          .project-detail-list { grid-template-columns: 1fr; }
+          .project-related-grid { grid-template-columns: 1fr; }
+          .project-detail-top { align-items: flex-start; }
+        }
         .profile-card.cert-wide { width: min(98vw, 1400px); }
         .p-ct-grid.ct-wide { grid-template-columns: repeat(5, 1fr); gap: 16px; }
         .p-ct-grid.ct-wide .p-ct-img { height: 170px; }
@@ -1407,8 +1690,6 @@ function DashboardView({ store, setStore, onNavigate = () => {} }) {
 ===================================================== */
 
 function ProjectView({ active = "project", onNavigate = () => {} }) {
-  const [selected, setSelected] = useState(null);
-
   return (
     <>
       <style>{PROFILE_CSS}</style>
@@ -1427,19 +1708,35 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
             Koleksi project desktop, web, mobile, IoT, dan AI. Klik Lihat untuk detail + live preview, atau buka langsung demo onlinenya.
           </p>
 
-          <div className="p-ct-grid">
-            {DEFAULT_PROJECTS.map((pr) => (
-              <div key={pr.title} className="p-exp">
+          <div className="p-ct-grid project-grid">
+            {DEFAULT_PROJECTS.map((pr, index) => (
+              <div key={pr.title} className={`p-exp project-card${(index + 1) % 5 === 0 ? " project-card-wide" : ""}`}>
                 <div className="p-exp-body">
-                  {pr.image ? (
-                    <img
-                      className="p-ct-img"
-                      src={pr.image}
-                      alt={pr.title}
-                      loading="lazy"
-                      onError={(e) => { e.currentTarget.style.display = "none"; }}
-                    />
-                  ) : null}
+                  <div className={`project-visual${pr.image ? "" : " is-placeholder"}`}>
+                    {pr.image ? (
+                      <img
+                        className="p-ct-img"
+                        src={pr.image}
+                        alt={pr.title}
+                        loading="lazy"
+                        onError={(e) => { e.currentTarget.style.display = "none"; }}
+                      />
+                    ) : (
+                      <span className="project-visual-mark" aria-hidden="true">{pr.cat.slice(0, 2).toUpperCase()}</span>
+                    )}
+                    <span className="project-year">{pr.year}</span>
+                    {pr.liveUrl ? (
+                      <a
+                        className="project-open"
+                        href={pr.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Buka ${pr.title} di tab baru`}
+                      >
+                        ↗
+                      </a>
+                    ) : null}
+                  </div>
                   <h3 className="p-exp-title">{pr.title}</h3>
                   <p className="p-exp-sub">{pr.cat} • {pr.year}</p>
                   {pr.desc ? <p className="p-exp-desc">{pr.desc}</p> : null}
@@ -1453,18 +1750,9 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
                     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                       <button
                         className="p-btn"
-                        onClick={() =>
-                          setSelected({
-                            title: pr.title,
-                            sub: `${pr.cat} • ${pr.year} • ${pr.status}`,
-                            desc: pr.desc,
-                            tags: pr.tags,
-                            image: pr.image || "",
-                            liveUrl: pr.liveUrl || "",
-                          })
-                        }
+                        onClick={() => onNavigate(`project/${index}`)}
                       >
-                        {pr.liveUrl ? "Preview" : "Lihat"}
+                        Lihat detail
                       </button>
                       {pr.liveUrl ? (
                         <a
@@ -1489,7 +1777,218 @@ function ProjectView({ active = "project", onNavigate = () => {} }) {
 
         <ProfileNav active={active} onNavigate={onNavigate} />
       </div>
-      <DetailModal item={selected} onClose={() => setSelected(null)} />
+    </>
+  );
+}
+
+function ProjectDetailView({ index = 0, onNavigate = () => {} }) {
+  const projectIndex = index >= 0 && index < DEFAULT_PROJECTS.length ? index : 0;
+  const project = DEFAULT_PROJECTS[projectIndex];
+  const relatedProjects = DEFAULT_PROJECTS
+    .map((_, offset) => {
+      const relatedIndex = (projectIndex + offset + 1) % DEFAULT_PROJECTS.length;
+      return { item: DEFAULT_PROJECTS[relatedIndex], index: relatedIndex };
+    })
+    .slice(0, 4);
+  const featuredProjects = relatedProjects.slice(0, 3);
+  const previousIndex = (projectIndex - 1 + DEFAULT_PROJECTS.length) % DEFAULT_PROJECTS.length;
+  const nextIndex = (projectIndex + 1) % DEFAULT_PROJECTS.length;
+
+  return (
+    <>
+      <style>{PROFILE_CSS}</style>
+      <div className="profile-page">
+        <main className="project-detail-page">
+          <div className="project-detail-top">
+            <button className="project-back" onClick={() => onNavigate("project")}>
+              ← Kembali ke Proyek
+            </button>
+            <div className="project-step-controls" aria-label="Navigasi proyek">
+              <button className="project-step" onClick={() => onNavigate(`project/${previousIndex}`)} aria-label="Proyek sebelumnya">←</button>
+              <span>{String(projectIndex + 1).padStart(2, "0")} / {String(DEFAULT_PROJECTS.length).padStart(2, "0")}</span>
+              <button className="project-step" onClick={() => onNavigate(`project/${nextIndex}`)} aria-label="Proyek berikutnya">→</button>
+            </div>
+          </div>
+
+          <div className="project-detail-layout">
+            <article className="project-detail-card">
+              <div className={`project-detail-visual${project.image ? "" : " is-placeholder"}`}>
+                {project.image ? (
+                  <img src={project.image} alt={`Tampilan ${project.title}`} />
+                ) : (
+                  <span className="project-visual-mark" aria-hidden="true">{project.cat.slice(0, 2).toUpperCase()}</span>
+                )}
+                <span className="project-year">{project.year}</span>
+              </div>
+              <div className="project-detail-content">
+                <div className="project-detail-meta">
+                  <span>{project.cat}</span>
+                  <span>{project.status}</span>
+                  <span>{project.year}</span>
+                </div>
+                <h1>{project.title}</h1>
+                <p className="project-detail-description">{project.desc}</p>
+                <div className="project-detail-tech">
+                  <p className="project-detail-tech-label">Teknologi yang digunakan</p>
+                  <div className="project-detail-tags">
+                    {project.tags.map((tag) => <span key={tag}>• {tag}</span>)}
+                  </div>
+                </div>
+                <div className="project-detail-actions">
+                  {project.liveUrl ? (
+                    <a className="p-btn solid" href={project.liveUrl} target="_blank" rel="noreferrer">
+                      Buka Live Demo ↗
+                    </a>
+                  ) : null}
+                  <button className="p-btn" onClick={() => onNavigate("project")}>← Semua Proyek</button>
+                </div>
+              </div>
+            </article>
+
+            <aside className="project-detail-sidebar">
+              <h2>Proyek Lainnya</h2>
+              <div className="project-detail-list">
+                {relatedProjects.map(({ item, index: relatedIndex }) => (
+                  <button
+                    key={item.title}
+                    onClick={() => onNavigate(`project/${relatedIndex}`)}
+                    aria-current={relatedIndex === projectIndex ? "page" : undefined}
+                  >
+                    <span className="project-detail-thumb">
+                      {item.image ? <img src={item.image} alt="" /> : <span>{item.cat.slice(0, 2).toUpperCase()}</span>}
+                    </span>
+                    <span className="project-detail-list-copy">
+                      <strong>{item.title}</strong>
+                      <small>Tahun {item.year} · {item.tags.length} teknologi</small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </aside>
+          </div>
+
+          {project.documentation ? (
+            <section className="project-docs" aria-labelledby="project-docs-title">
+              <div className="project-docs-head">
+                <p className="project-docs-eyebrow">Dokumentasi</p>
+                <h2 id="project-docs-title">{project.title}</h2>
+                <p className="project-docs-intro">{project.documentation.about}</p>
+              </div>
+
+              {project.documentation.highlights ? (
+                <div className="project-docs-block">
+                  <h3>3 Fitur Unggulan</h3>
+                  <div className="project-docs-highlights">
+                    {project.documentation.highlights.map((item, highlightIndex) => (
+                      <article className="project-docs-highlight" key={item.title}>
+                        <span className="project-docs-number">0{highlightIndex + 1}</span>
+                        <h4>{item.title}</h4>
+                        <p>{item.desc}</p>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {project.documentation.features ? (
+                <div className="project-docs-block project-docs-features">
+                  <h3>Fitur Lengkap</h3>
+                  <ul>
+                    {project.documentation.features.map((feature) => (
+                      <li key={feature}>
+                        <span aria-hidden="true">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {project.documentation.sections ? (
+                <div className="project-docs-sections">
+                  {project.documentation.sections.map((section) => (
+                    <article className="project-docs-section" key={section.title}>
+                      <h3>{section.title}</h3>
+                      <ul>
+                        {section.items.map((item) => (
+                          <li key={item}>
+                            <span aria-hidden="true">✓</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+
+              {project.documentation.advantages ? (
+                <div className="project-docs-block project-docs-features">
+                  <h3>Keunggulan</h3>
+                  <ul>
+                    {project.documentation.advantages.map((advantage) => (
+                      <li key={advantage}>
+                        <span aria-hidden="true">✓</span>
+                        {advantage}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {project.documentation.closing ? (
+                <p className="project-docs-closing">{project.documentation.closing}</p>
+              ) : null}
+
+              {project.documentation.gallery ? (
+                <div className="project-docs-block">
+                  <h3>Tangkapan Layar</h3>
+                  <div className="project-docs-gallery">
+                    {project.documentation.gallery.map((shot) => (
+                      <figure key={shot.src}>
+                        <img src={shot.src} alt={`${project.title} — ${shot.title}`} />
+                        <figcaption>
+                          <strong>{shot.title}</strong>
+                          <span>{shot.desc}</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </section>
+          ) : null}
+
+          <section className="project-related">
+            <div className="project-related-head">
+              <div>
+                <h2>Eksplorasi Proyek Lainnya</h2>
+                <p>Karya web, mobile, dan sistem informasi pilihan dari portofolio.</p>
+              </div>
+              <div className="project-step-controls">
+                <button className="project-step" onClick={() => onNavigate(`project/${previousIndex}`)} aria-label="Proyek sebelumnya">←</button>
+                <button className="project-step" onClick={() => onNavigate(`project/${nextIndex}`)} aria-label="Proyek berikutnya">→</button>
+              </div>
+            </div>
+            <div className="project-related-grid">
+              {featuredProjects.map(({ item, index: relatedIndex }) => (
+                <button
+                  type="button"
+                  className="project-related-item"
+                  key={item.title}
+                  onClick={() => onNavigate(`project/${relatedIndex}`)}
+                >
+                  <span className="project-related-image">
+                    {item.image ? <img src={item.image} alt="" /> : <span>{item.cat.slice(0, 2).toUpperCase()}</span>}
+                  </span>
+                  <strong>{item.title}</strong>
+                </button>
+              ))}
+            </div>
+          </section>
+          <p className="p-copy">© 2026 SAIFUL RIZAL</p>
+        </main>
+      </div>
     </>
   );
 }
@@ -1599,7 +2098,7 @@ export default function App() {
   const navTo = (v) => {
     const h = v === "home" ? "" : v === "dashboard" ? "#" : "#" + v;
     if ((window.location.hash || "") === h) {
-      setView(v);
+      setView(hashToView());
     } else {
       window.location.hash = h;
     }
@@ -1630,6 +2129,10 @@ export default function App() {
   const seconds = String(time.getSeconds()).padStart(2, "0");
 
   const viewMeta = VIEW_META[view] || VIEW_META.project;
+  const projectDetailKey = ((window.location.hash || "").match(/^#\/?project\/([a-z0-9-]+)$/i) || [])[1] || "";
+  const projectDetailIndex = /^\d+$/.test(projectDetailKey)
+    ? Number(projectDetailKey)
+    : Math.max(0, DEFAULT_PROJECTS.findIndex((project) => project.slug === projectDetailKey.toLowerCase()));
 
   if (view === "dashboard") {
     return (
@@ -1650,6 +2153,8 @@ export default function App() {
           <CertificationView certs={store.certifications} active={view} onNavigate={navTo} />
         ) : view === "project" ? (
           <ProjectView active={view} onNavigate={navTo} />
+        ) : view === "project-detail" ? (
+          <ProjectDetailView index={projectDetailIndex} onNavigate={navTo} />
         ) : view === "achievement" ? (
           <AchievementView active={view} onNavigate={navTo} />
         ) : (

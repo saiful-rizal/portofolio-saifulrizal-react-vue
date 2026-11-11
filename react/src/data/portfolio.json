@@ -131,8 +131,8 @@
       "icon": "M4 5h16v14H4z M4 9h16"
     },
     {
-      "title": "SI Kasir Cerdas Allestic",
-      "desc": "Sistem informasi kasir cerdas: transaksi, kelola stok barang, dan rekap penjualan otomatis.",
+      "title": "ALLESTIC (Alle Store Intelligent Cashier)",
+      "desc": "Aplikasi kasir berbasis desktop untuk mempermudah operasional toko secara cepat, efisien, dan terintegrasi: login RFID, scan barcode, cetak struk otomatis, laporan keuangan, stok, hingga presensi karyawan.",
       "tags": ["Point of Sales", "Desktop", "Database"],
       "cat": "Desktop",
       "year": "2025",
@@ -142,7 +142,7 @@
     },
     {
       "title": "SIPORA Versi 1.0",
-      "desc": "Pengembangan Sistem Informasi Polije Repository Assets versi 1.0 berbasis website dan mobile untuk pendataan aset.",
+      "desc": "Pengembangan SIPORA agar sistem repository menjadi lebih praktis, informatif, dan mudah diakses melalui pembaruan antarmuka, penyederhanaan navigasi, serta dukungan akses web dan mobile.",
       "tags": ["Laravel", "Flutter", "MySQL"],
       "cat": "Web",
       "year": "2024",
