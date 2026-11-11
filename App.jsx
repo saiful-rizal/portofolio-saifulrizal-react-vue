@@ -834,7 +834,15 @@ const PROFILE_CSS = `
         }
         .certificate-detail-copy { color: #aaa; font-size: 11px; line-height: 1.8; margin: 0; }
         .certificate-detail-code { margin: 12px 0 0; color: #777; font-size: 10px; }
-        .certificate-detail-list { max-height: 68vh; overflow-y: auto; }
+        .certificate-detail-sidebar h2 { font-size: 16px; }
+        .certificate-detail-list {
+          max-height: 68vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
+        }
+        .certificate-detail-list::-webkit-scrollbar { display: none; }
+        .certificate-detail-list button { grid-template-columns: 64px minmax(0, 1fr); gap: 11px; padding: 9px; }
+        .certificate-detail-list .project-detail-thumb { height: 48px; }
+        .certificate-detail-list .project-detail-list-copy strong { font-size: 11px; line-height: 1.4; }
+        .certificate-detail-list .project-detail-list-copy small { font-size: 9px; margin-top: 5px; }
         .project-detail-sidebar h2, .project-related h2 { color: #eee; font: 700 14px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
         .project-detail-list { display: flex; flex-direction: column; gap: 7px; }
         .project-detail-list button {
