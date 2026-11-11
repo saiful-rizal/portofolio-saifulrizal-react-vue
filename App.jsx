@@ -906,7 +906,7 @@ const PROFILE_CSS = `
           .project-detail-top { align-items: flex-start; }
         }
         .profile-card.cert-wide { width: min(98vw, 1400px); }
-        .p-ct-grid.ct-wide { grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .p-ct-grid.ct-wide { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
         .p-ct-grid.ct-wide .p-exp { min-height: 450px; padding: 14px; align-items: stretch; }
         .p-ct-grid.ct-wide .p-exp-body { display: flex; flex-direction: column; min-width: 0; }
         .p-ct-grid.ct-wide .p-ct-img {
@@ -921,8 +921,8 @@ const PROFILE_CSS = `
           color: #aaa; font-size: 10px; line-height: 1.6; margin: 0 0 10px;
         }
         .p-ct-grid.ct-wide .p-exp-foot { margin-top: auto; padding-top: 10px; }
-        @media (max-width: 1280px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 1024px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1024px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        @media (max-width: 768px) { .p-ct-grid.ct-wide { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 640px) {
           .p-ct-grid.ct-wide { grid-template-columns: 1fr; }
           .p-ct-grid.ct-wide .p-exp { min-height: 0; }
