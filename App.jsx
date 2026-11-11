@@ -974,6 +974,36 @@ const PROFILE_CSS = `
           .p-nav-item.wide { padding: 8px 10px; }
         }
 
+        .profile-page .p-name { font-size: clamp(18px, 2vw, 24px); }
+        .profile-page .p-title-line { font-size: 12px; }
+        .profile-page .p-bio { font-size: 12.5px; }
+        .profile-page .p-sec { font-size: 13px; }
+        .profile-page .p-exp-title { font-size: 15px; }
+        .profile-page .p-exp-sub,
+        .profile-page .p-exp-desc,
+        .profile-page .p-exp-list { font-size: 11.5px; }
+        .profile-page .p-tags span { font-size: 10px; }
+        .profile-page .p-badge { font-size: 10px; }
+        .profile-page .p-btn { font-size: 12px; }
+        .profile-page .p-tab { font-size: 11.5px; }
+        .profile-page .p-nav-item { font-size: 12px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-title,
+        .project-grid .project-card-wide .p-exp-title { font-size: 17px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-desc,
+        .project-grid .project-card-wide .p-exp-desc { font-size: 12px; }
+        .project-grid .p-tags span,
+        .project-grid .project-card-wide .p-tags span { font-size: 10px; }
+        .project-grid .p-btn,
+        .project-grid .project-card-wide .p-btn { font-size: 11px; }
+        .project-detail-page .project-detail-description,
+        .project-detail-page .certificate-detail-copy { font-size: 12px; }
+        .project-detail-page .project-detail-meta,
+        .project-detail-page .certificate-detail-meta span,
+        .project-detail-page .project-detail-actions .p-btn { font-size: 10px; }
+        .p-ct-grid.ct-wide .p-exp-title { font-size: 15px; }
+        .p-ct-grid.ct-wide .p-exp-sub { font-size: 11.5px; }
+        .p-ct-grid.ct-wide .certificate-preview-desc { font-size: 11px; }
+
         @media (prefers-reduced-motion: reduce) {
           .profile-card, .p-exp { animation: none; }
           .p-photo-ring, .p-photo-ring::after { animation: none; }
@@ -3985,6 +4015,13 @@ export default function App() {
 
         }
 
+        .top-left, .top-right { font-size: clamp(7px, 0.6vw, 10px); }
+        .hello { font-size: clamp(15px, 1.3vw, 21px); }
+        .category { font-size: clamp(11px, 1vw, 16px); }
+        .title { font-size: clamp(46px, 6.7vw, 94px); }
+        .button { font-size: clamp(8px, 0.72vw, 11px); }
+        .nav-label { font-size: 11px; }
+        .nav-item.active .nav-label { font-size: 10px; }
 
         /* =====================================================
            REDUCE MOTION
