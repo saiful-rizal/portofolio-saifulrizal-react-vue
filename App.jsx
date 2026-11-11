@@ -834,15 +834,37 @@ const PROFILE_CSS = `
         }
         .certificate-detail-copy { color: #aaa; font-size: 11px; line-height: 1.8; margin: 0; }
         .certificate-detail-code { margin: 12px 0 0; color: #777; font-size: 10px; }
-        .certificate-detail-sidebar h2 { font-size: 16px; }
+        .certificate-detail-sidebar h2 { font-size: 18px; }
         .certificate-detail-list {
-          max-height: 68vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none;
+          max-height: none; overflow: visible;
         }
-        .certificate-detail-list::-webkit-scrollbar { display: none; }
-        .certificate-detail-list button { grid-template-columns: 64px minmax(0, 1fr); gap: 11px; padding: 9px; }
-        .certificate-detail-list .project-detail-thumb { height: 48px; }
-        .certificate-detail-list .project-detail-list-copy strong { font-size: 11px; line-height: 1.4; }
-        .certificate-detail-list .project-detail-list-copy small { font-size: 9px; margin-top: 5px; }
+        .certificate-detail-list button { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; padding: 11px; }
+        .certificate-detail-list .project-detail-thumb { height: 58px; }
+        .certificate-detail-list .project-detail-list-copy strong { font-size: 13px; line-height: 1.4; }
+        .certificate-detail-list .project-detail-list-copy small { font-size: 10px; margin-top: 6px; }
+        .certificate-detail-layout { grid-template-columns: minmax(0, 1fr); }
+        .certificate-related { margin-top: 28px; }
+        .certificate-related > h2 {
+          margin: 0 0 14px; color: #eee; font: 700 18px 'Space Grotesk', sans-serif;
+        }
+        .certificate-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+        .certificate-related-card {
+          display: grid; grid-template-columns: minmax(140px, .8fr) minmax(0, 1fr);
+          min-width: 0; overflow: hidden; border: 1px solid #242424; border-radius: 14px;
+          background: #090909; transition: border-color .2s ease, transform .2s ease;
+        }
+        .certificate-related-card:hover { border-color: #555; transform: translateY(-2px); }
+        .certificate-related-image { display: grid; place-items: center; min-height: 190px; padding: 10px; background: #111; }
+        .certificate-related-image img { display: block; width: 100%; max-height: 210px; object-fit: contain; border-radius: 7px; background: #f4f4f4; }
+        .certificate-related-image span { color: #aaa; font: 700 32px 'Space Grotesk', sans-serif; }
+        .certificate-related-body { display: flex; flex-direction: column; min-width: 0; padding: 14px; }
+        .certificate-related-meta { margin: 0 0 8px; color: #888; font-size: 10px; }
+        .certificate-related-body h3 {
+          display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+          margin: 0 0 8px; color: #eee; font: 700 15px/1.35 'Space Grotesk', sans-serif;
+        }
+        .certificate-related-body p { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; margin: 0 0 12px; color: #aaa; font-size: 11px; line-height: 1.6; }
+        .certificate-related-body .p-btn { align-self: flex-start; margin-top: auto; }
         .project-detail-sidebar h2, .project-related h2 { color: #eee; font: 700 14px 'Space Grotesk', sans-serif; margin: 0 0 10px; }
         .project-detail-list { display: flex; flex-direction: column; gap: 7px; }
         .project-detail-list button {
@@ -901,6 +923,7 @@ const PROFILE_CSS = `
           .project-detail-layout { grid-template-columns: 1fr; }
           .project-detail-sidebar { order: 2; }
           .project-detail-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .certificate-related-grid { grid-template-columns: 1fr; }
           .project-detail-content { padding: 0 15px 16px; }
           .project-docs-highlights { grid-template-columns: 1fr; }
           .project-docs-sections { grid-template-columns: 1fr; }
@@ -937,7 +960,6 @@ const PROFILE_CSS = `
           .p-ct-grid.ct-wide .p-ct-img { height: clamp(190px, 55vw, 280px); }
           .certificate-detail-visual { min-height: 180px; padding: 10px; }
           .certificate-detail-visual img { max-height: 55vh; }
-          .certificate-detail-list { max-height: none; }
         }
         .p-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; text-align: left; }
         .p-field > span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #8a8f9e; }
@@ -1485,7 +1507,7 @@ function CertificationDetailView({ certs, index = 0, onNavigate = () => {} }) {
             </div>
           </div>
 
-          <div className="project-detail-layout">
+          <div className="project-detail-layout certificate-detail-layout">
             <article className="project-detail-card">
               <div className="certificate-detail-visual">
                 {certificate.image ? (
@@ -1522,27 +1544,27 @@ function CertificationDetailView({ certs, index = 0, onNavigate = () => {} }) {
               </div>
             </article>
 
-            <aside className="project-detail-sidebar">
-              <h2>Sertifikat Lainnya</h2>
-              <div className="project-detail-list certificate-detail-list">
-                {certs.map((item, itemIndex) => (
-                  <button
-                    key={item.id}
-                    onClick={() => onNavigate(`certification/${item.id}`)}
-                    aria-current={itemIndex === index ? "page" : undefined}
-                  >
-                    <span className="project-detail-thumb">
-                      {item.image ? <img src={item.image} alt="" /> : <span>PDF</span>}
-                    </span>
-                    <span className="project-detail-list-copy">
-                      <strong>{item.title}</strong>
-                      <small>{item.year ? `Tahun ${item.year}` : item.issuer}</small>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </aside>
           </div>
+          <section className="certificate-related" aria-labelledby="certificate-related-title">
+            <h2 id="certificate-related-title">Sertifikat Lainnya</h2>
+            <div className="certificate-related-grid">
+              {certs.map((item, itemIndex) => itemIndex === index ? null : (
+                <article className="certificate-related-card" key={item.id}>
+                  <div className="certificate-related-image">
+                    {item.image ? <img src={item.image} alt={`Sertifikat ${item.title}`} loading="lazy" /> : <span>PDF</span>}
+                  </div>
+                  <div className="certificate-related-body">
+                    <p className="certificate-related-meta">{item.bidang || item.cat || "Lainnya"}{item.year ? ` · ${item.year}` : ""}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc || item.issuer}</p>
+                    <button className="p-btn" onClick={() => onNavigate(`certification/${item.id}`)}>
+                      Lihat Detail →
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
           <p className="p-copy">© 2026 SAIFUL RIZAL</p>
         </main>
       </div>
