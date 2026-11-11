@@ -682,6 +682,8 @@ const PROFILE_CSS = `
         }
         .project-visual img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease; }
         .project-card:hover .project-visual img { transform: scale(1.04); }
+        .project-grid .project-visual img { object-fit: contain; }
+        .project-grid .project-card:hover .project-visual img { transform: none; }
         .project-visual.is-placeholder {
           display: grid; place-items: center;
           background: radial-gradient(ellipse at 75% 15%, #353535 0, transparent 42%), linear-gradient(135deg, #1d1d1d, #090909 75%);
@@ -708,9 +710,9 @@ const PROFILE_CSS = `
         .project-grid .p-badge { border: 0; background: none; color: #666; padding: 0; font-size: 8px; }
         .project-grid .p-btn { padding: 7px 11px; font-size: 9px; }
         .project-grid .p-exp-foot > div { gap: 6px !important; }
-        .project-grid .project-card-wide { grid-column: span 2; }
+        .project-grid .project-card-wide { display: flex; grid-column: span 2; }
         .project-grid .project-card-wide .p-exp-body {
-          position: relative; display: grid; grid-template-columns: 1fr 1fr;
+          position: relative; display: grid; flex: 1; grid-template-columns: 1fr 1fr;
           align-content: center; gap: 0 18px; min-height: 252px; padding: 20px;
         }
         .project-grid .project-card-wide .project-visual {
@@ -735,11 +737,21 @@ const PROFILE_CSS = `
         @media (max-width: 1024px) { .p-ct-grid.project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
         @media (max-width: 640px) {
           .p-ct-grid.project-grid { grid-template-columns: 1fr; }
-          .project-visual { height: 190px; }
+          .project-grid .project-card .p-exp-body { min-height: 205px; padding: 0 15px 13px; }
+          .project-grid .project-card .project-visual {
+            position: relative; inset: auto; width: calc(100% + 30px); height: 190px;
+            margin: 0 -15px;
+          }
+          .project-grid .project-card .project-visual::after {
+            inset: 20% 0 0;
+            background: linear-gradient(180deg, transparent 8%, rgba(9,9,9,.48) 58%, #090909 100%);
+          }
+          .project-grid .project-card .p-exp-title {
+            position: relative; z-index: 1; min-height: 0; margin: -42px 0 4px;
+          }
+          .project-grid .project-card .p-exp-sub { margin-bottom: 6px; }
           .project-grid .project-card-wide { grid-column: auto; }
-          .project-grid .project-card-wide .p-exp-body { display: flex; min-height: 205px; padding: 14px 15px 13px; }
-          .project-grid .project-card-wide .project-visual { position: relative; inset: auto; width: calc(100% + 30px); height: 190px; margin: -14px -15px 14px; }
-          .project-grid .project-card-wide .project-visual::after { inset: 25% 0 0; background: linear-gradient(180deg, transparent 5%, rgba(9,9,9,.92) 100%); }
+          .project-grid .project-card-wide .p-exp-body { display: flex; }
           .project-grid .project-card-wide .p-exp-title,
           .project-grid .project-card-wide .p-exp-sub,
           .project-grid .project-card-wide .p-exp-desc,
