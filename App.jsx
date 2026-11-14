@@ -520,7 +520,7 @@ const DEFAULT_PROJECTS = [
     cat: "AI",
     year: "2025",
     status: "Live",
-    liveUrl: "https://smartbin-eco-qls0u8e0u-saiful-rizals-projects-0615075e.vercel.app",
+    liveUrl: "https://smartbin-eco-qls0u8e0u-saiful-rizals-projects-0615075e.vercel.app/",
     image: "/project/smartbin/hero.png",
   },
   { title: "SI Data Bendahara SMA Unggulan BPPT", desc: "Sistem informasi pencatatan data bendahara SMA Unggulan BPPT Darus Sholah Jember: kas, iuran, dan laporan keuangan.", tags: ["Web", "MySQL", "Keuangan"], cat: "Web", year: "2025", status: "Live" },
@@ -1241,6 +1241,183 @@ const PROFILE_CSS = `
           .p-photo-ring, .p-photo-ring::after { animation: none; }
           .p-cell:hover { transform: none; }
         }
+@media (min-width: 769px) {
+
+        .p-name {
+          font-size: 23.82px;
+        }
+        .p-title-line {
+          font-size: 11.92px;
+        }
+        .p-bio {
+          font-size: 12.44px;
+        }
+
+        .p-hire { font-size: 12.44px;
+        }
+        .p-git-title { font-size: 12.44px; }
+        .p-year { font-size: 11.36px;
+        }
+        .p-git-total { font-size: 11.36px; }
+        .p-git-months { font-size: 9.2px; }
+        .p-git-days { font-size: 9.2px; }
+        .p-git-legend { font-size: 9.74px; }
+
+        .p-sec { font-size: 13px;
+        }
+        .p-exp-logo {
+          font-size: 11.92px;
+        }
+        .p-exp-logo .sup { font-size: 7.58px; }
+        .p-exp-title { font-size: 15.16px; }
+        .p-exp-sub { font-size: 11.36px; }
+        .p-exp-desc { font-size: 11.36px; }
+        .p-exp-resp { font-size: 10.3px; }
+        .p-exp-list { font-size: 11.36px; }
+        .p-tags span {
+          font-size: 9.74px;
+        }
+        .p-date { font-size: 10.84px; }
+        .p-badge {
+          font-size: 10.84px;
+        }
+
+        .p-foot { font-size: 10.84px;
+        }
+        .p-copy { font-size: 10.84px; }
+        .p-nav-item { font-size: 11.92px;
+        }
+        .project-visual-mark { font: 700 50.4px 'Space Grotesk', sans-serif; }
+        .project-year { font-size: 8.66px; }
+        .project-open { font-size: 14.08px;
+        }
+        .project-grid .p-exp-title { font-size: 15.16px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-title { font-size: 17.33px;
+        }
+        .project-grid .p-exp-sub { font-size: 9.74px; }
+        .project-grid .p-exp-desc { font-size: 9.74px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-desc { font-size: 11.92px;
+        }
+        .project-grid .p-tags span { font-size: 9.74px; }
+        .project-grid .p-badge { font-size: 9.74px; }
+        .project-grid .p-btn { font-size: 10.84px; }
+        .project-grid .project-card-wide .p-exp-title { font-size: 17.33px;
+        }
+        .project-grid .project-card-wide .p-exp-desc {
+          font-size: 11.92px;
+        }
+        .project-grid .project-card-wide .p-tags span { font-size: 9.74px; }
+        .project-grid .project-card-wide .p-btn { font-size: 10.84px; }
+        .project-back, .project-step { font-size: 9.74px;
+        }
+        .project-step-controls { font-size: 9.74px; }
+        .project-step { font-size: 13px; }
+        .project-detail-visual .project-visual-mark { font-size: clamp(58.48px, 9.74vw, 108.3px); }
+        .project-detail-meta { font-size: 9.74px; }
+        .project-detail-content h1 { font: 700 clamp(24px, 3.6vw, 33.6px)/1.2 'Space Grotesk', sans-serif; }
+        .project-detail-description { font-size: 10.84px; }
+        .project-detail-tech-label { font-size: 8.66px; }
+        .project-detail-tags span { font-size: 8.66px; }
+        .project-detail-actions .p-btn { font-size: 9.74px; }
+        .certificate-detail-content h1 { font: 700 clamp(24px, 3.6vw, 33.6px)/1.25 'Space Grotesk', sans-serif; }
+        .certificate-detail-meta span { font-size: 9.74px;
+        }
+        .certificate-detail-copy { font-size: 11.92px; }
+        .certificate-detail-code { font-size: 10.84px; }
+        .certificate-detail-sidebar h2 { font-size: 19.5px; }
+        .certificate-detail-list .project-detail-list-copy strong { font-size: 14.08px; }
+        .certificate-detail-list .project-detail-list-copy small { font-size: 10.84px; }
+        .certificate-related > h2 { font: 700 21.6px 'Space Grotesk', sans-serif;
+        }
+        .certificate-related-image span { font: 700 38.4px 'Space Grotesk', sans-serif; }
+        .certificate-related-meta { font-size: 10.84px; }
+        .certificate-related-body h3 { font: 700 18px/1.35 'Space Grotesk', sans-serif;
+        }
+        .certificate-related-body p { font-size: 11.92px; }
+        .project-detail-sidebar h2, .project-related h2 { font: 700 16.8px 'Space Grotesk', sans-serif; }
+        .project-detail-thumb span { font: 700 15.6px 'Space Grotesk', sans-serif; }
+        .project-detail-list-copy strong { font: 600 10.8px/1.45 'Space Grotesk', sans-serif; }
+        .project-detail-list-copy small { font-size: 7.58px; }
+        .project-docs-eyebrow { font-size: 8.66px; }
+        .project-docs-head h2 { font: 700 clamp(21.6px, 3vw, 28.8px)/1.25 'Space Grotesk', sans-serif; }
+        .project-docs-intro { font-size: 11.36px; }
+        .project-docs-block h3 { font: 700 15.6px 'Space Grotesk', sans-serif; }
+        .project-docs-number { font: 700 10.8px 'Space Grotesk', sans-serif; }
+        .project-docs-highlight h4 { font: 600 13.2px/1.5 'Space Grotesk', sans-serif; }
+        .project-docs-highlight p { font-size: 9.74px; }
+        .project-docs-section h3 { font: 700 13.8px 'Space Grotesk', sans-serif; }
+        .project-docs-section li { font-size: 9.74px; }
+        .project-docs-section li span { font-size: 8.66px; }
+        .project-docs-closing { font-size: 10.84px; }
+        .project-docs-features li { font-size: 10.3px; }
+        .project-docs-features li span { font-size: 8.66px; }
+        .project-docs-gallery strong { font: 600 12px 'Space Grotesk', sans-serif; }
+        .project-docs-gallery span { font-size: 9.2px; }
+        .project-related-head p { font-size: 8.66px; }
+        .project-related-image span { font: 700 33.6px 'Space Grotesk', sans-serif; }
+        .project-related-item strong { font: 600 10.8px/1.5 'Space Grotesk', sans-serif; }
+        .p-ct-grid.ct-wide .certificate-preview-desc { font-size: 10.84px;
+        }
+        .p-field > span { font-size: 10.84px; }
+        .p-input, .p-textarea { font-size: 13px; }
+        .p-btn { font-size: 11.92px; }
+        .p-tab { font-size: 11.36px; }
+        .p-file { font-size: 11.92px; }
+        .p-file::file-selector-button { font-size: 11.92px; }
+
+        @media (max-width: 560px) {
+          .p-name { font-size: 18.41px; }
+        }
+
+        @media (max-width: 560px) {
+          .p-title-line { font-size: 10.84px; }
+        }
+
+        @media (max-width: 560px) {
+          .p-bio { font-size: 11.36px; }
+        }
+
+        @media (max-width: 560px) {
+          .p-exp-logo { font-size: 10.84px; }
+        }
+
+        @media (max-width: 560px) {
+          .p-nav-item { font-size: 9.74px; }
+        }
+
+        .profile-page .p-name { font-size: clamp(19.5px, 2.16vw, 25.99px); }
+        .profile-page .p-title-line { font-size: 13px; }
+        .profile-page .p-bio { font-size: 13.55px; }
+        .profile-page .p-sec { font-size: 14.08px; }
+        .profile-page .p-exp-title { font-size: 16.25px; }
+        .profile-page .p-exp-sub,
+        .profile-page .p-exp-desc,
+        .profile-page .p-exp-list { font-size: 12.44px; }
+        .profile-page .p-tags span { font-size: 10.84px; }
+        .profile-page .p-badge { font-size: 10.84px; }
+        .profile-page .p-btn { font-size: 13px; }
+        .profile-page .p-tab { font-size: 12.44px; }
+        .profile-page .p-nav-item { font-size: 13px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-title,
+        .project-grid .project-card-wide .p-exp-title { font-size: 18.41px; }
+        .project-grid .project-card:not(.project-card-wide) .p-exp-desc,
+        .project-grid .project-card-wide .p-exp-desc { font-size: 13px; }
+        .project-grid .p-tags span,
+        .project-grid .project-card-wide .p-tags span { font-size: 10.84px; }
+        .project-grid .p-btn,
+        .project-grid .project-card-wide .p-btn { font-size: 11.92px; }
+        .project-detail-page .project-detail-description,
+        .project-detail-page .certificate-detail-copy { font-size: 13px; }
+        .project-detail-page .project-detail-meta,
+        .project-detail-page .certificate-detail-meta span,
+        .project-detail-page .project-detail-actions .p-btn { font-size: 10.84px; }
+        .p-ct-grid.ct-wide .p-exp-title { font-size: 16.25px; }
+        .p-ct-grid.ct-wide .p-exp-sub { font-size: 12.44px; }
+        .p-ct-grid.ct-wide .certificate-preview-desc { font-size: 11.92px; }
+        .p-modal-box .p-exp-title {
+        font-size: 17.33px !important;
+    }
+}
 `;
 
 /* =====================================================
@@ -4267,7 +4444,287 @@ export default function App() {
 
         }
 
-      `}</style>
+
+@media (min-width: 769px) {
+
+        .timer {
+
+          font-size: clamp(
+            69.31px,
+            11.92vw,
+            194.94px
+          );
+        }
+
+        .top-left,
+        .top-right {
+
+          font-size: clamp(
+            6.5px,
+            0.59vw,
+            9.74px
+          );
+        }
+
+        .hello {
+
+          font-size: clamp(
+            15.16px,
+            1.3vw,
+            21.66px
+          );
+        }
+
+        .category {
+
+          font-size: clamp(
+            10.84px,
+            0.97vw,
+            16.25px
+          );
+        }
+
+        .title {
+
+          font-size: clamp(
+            47.65px,
+            7.03vw,
+            97.46px
+          );
+        }
+
+        .button {
+
+          font-size: clamp(
+            7.58px,
+            0.71vw,
+            10.84px
+          );
+        }
+
+        .bottom {
+
+          font-size: clamp(
+            5.41px,
+            0.54vw,
+            8.66px
+          );
+        }
+
+        .nav-label {
+
+          font-size: 10.84px;
+        }
+
+        @media (max-width: 900px) {
+
+          .timer {
+            font-size:
+              clamp(
+                64.98px,
+                15.16vw,
+                173.28px
+              );
+          }
+
+        }
+
+        @media (max-width: 900px) {
+
+          .title {
+            font-size:
+              clamp(
+                43.32px,
+                7.58vw,
+                75.8px
+              );
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .timer {
+            font-size:
+              clamp(
+                51.98px,
+                19.5vw,
+                97.46px
+              );
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .top-left,
+          .top-right {
+
+            font-size: 5.41px;
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .hello {
+
+            font-size: 11.92px;
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .category {
+
+            font-size: 8.66px;
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .title {
+            font-size:
+              clamp(
+                33.58px,
+                10.3vw,
+                49.82px
+              );
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .button {
+
+            font-size: 7.03px;
+          }
+
+        }
+
+        @media (max-width: 600px) {
+
+          .nav-item.active .nav-label {
+
+            font-size: 9.74px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .top-left,
+          .top-right {
+            font-size: 4.87px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .timer {
+            font-size: 48.73px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .hello {
+            font-size: 10.84px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .category {
+            font-size: 7.58px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .title {
+            font-size: 29.24px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .button {
+
+            font-size: 5.95px;
+          }
+
+        }
+
+        @media (max-width: 380px) {
+
+          .nav-item.active .nav-label {
+            font-size: 8.66px;
+          }
+
+        }
+
+        @media (
+          max-height: 500px
+        ) and (
+          max-width: 900px
+        ) {
+
+          .timer {
+            font-size: 108.3px;
+          }
+
+        }
+
+        @media (min-width: 1600px) {
+
+          .hello {
+            font-size: 21.66px;
+          }
+
+        }
+
+        @media (min-width: 1600px) {
+
+          .category {
+            font-size: 16.25px;
+          }
+
+        }
+
+        @media (min-width: 1600px) {
+
+          .title {
+            font-size: 95.3px;
+          }
+
+        }
+
+        @media (min-width: 1600px) {
+
+          .timer {
+            font-size: 194.94px;
+          }
+
+        }
+
+        .top-left, .top-right { font-size: clamp(7.58px, 0.65vw, 10.84px); }
+        .hello { font-size: clamp(16.25px, 1.4vw, 22.74px); }
+        .category { font-size: clamp(11.92px, 1.08vw, 17.33px); }
+        .title { font-size: clamp(49.82px, 7.26vw, 101.8px); }
+        .button { font-size: clamp(8.66px, 0.78vw, 11.92px); }
+        .nav-label { font-size: 11.92px; }
+        .nav-item.active .nav-label { font-size: 10.84px; }
+}
+`}</style>
 
 
       <main className="portfolio">
