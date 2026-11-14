@@ -171,12 +171,12 @@
       "icon": "M4 4h6v6H4z M14 4h6v6h-6z M4 14h6v6H4z M14 14h2v2h2v2h-2v2h-2z"
     },
     {
-      "title": "SI Pemilahan Sampah Computer Vision",
-      "desc": "Sistem informasi pemilahan sampah menggunakan computer vision untuk daur ulang sampah organik dan non organik.",
-      "tags": ["Computer Vision", "Python", "AI"],
+      "title": "SmartBin Eco-AI",
+      "desc": "Sistem pemilahan sampah berbasis computer vision yang mengenali jenis sampah, memantau kapasitas tong secara real-time, dan mencatat poin lokasi untuk pengelolaan sampah yang lebih terukur.",
+      "tags": ["React", "Computer Vision", "AI"],
       "cat": "AI",
       "year": "2025",
-      "status": "Demo",
+      "status": "Live",
       "grad": "linear-gradient(135deg,#2e2f2e,#1b1c1b)",
       "icon": "M12 3a7 7 0 0 1 7 7v5l-2 2H7l-2-2v-5a7 7 0 0 1 7-7z M9 12h.01 M15 12h.01 M9 16h6"
     },
