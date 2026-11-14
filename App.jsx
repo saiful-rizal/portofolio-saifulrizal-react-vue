@@ -512,7 +512,40 @@ const DEFAULT_PROJECTS = [
       ],
     },
   },
-  { title: "Absensi Arduino Nano", desc: "Sistem pencatatan absensi berbasis sistem tertanam menggunakan Arduino Nano untuk presensi otomatis.", tags: ["Arduino Nano", "Embedded", "Absensi"], cat: "IoT", year: "2024", status: "Demo" },
+  {
+    title: "Absensi RFID",
+    desc: "Sistem absensi berbasis RFID yang mencatat kehadiran secara otomatis saat kartu ditempelkan pada pembaca, dengan verifikasi identitas dan integrasi ke sistem pencatatan absensi.",
+    tags: ["RFID", "Embedded", "Absensi"],
+    cat: "IoT",
+    year: "2024",
+    status: "Demo",
+    image: "/project/absensi/hero.jpeg",
+    documentation: {
+      about: "Absensi RFID adalah sistem pencatatan kehadiran berbasis sistem tertanam yang terintegrasi dengan pembaca kartu RFID. Pengguna cukup menempelkan kartu pada pembaca, lalu sistem memverifikasi identitas dan menampilkan informasi kehadiran melalui layar LCD. Perangkat ini membantu proses absensi menjadi lebih cepat, otomatis, dan terdokumentasi.",
+      highlights: [
+        { title: "Identifikasi Kartu RFID", desc: "Pembaca RFID mendeteksi kartu yang ditempelkan untuk memverifikasi identitas pengguna." },
+        { title: "Tampilan Layar LCD", desc: "Informasi dan status absensi ditampilkan langsung pada layar LCD agar mudah dibaca." },
+        { title: "Pencatatan Otomatis", desc: "Kehadiran tercatat otomatis setelah kartu terverifikasi, sehingga mengurangi input manual." },
+        { title: "Integrasi Sistem Absensi", desc: "Data kehadiran terhubung dengan sistem pencatatan untuk memudahkan rekapitulasi." },
+      ],
+      sections: [
+        {
+          title: "Cara Kerja",
+          items: [
+            "Tempelkan kartu RFID pada pembaca",
+            "Sistem membaca dan memverifikasi identitas kartu",
+            "Status kehadiran ditampilkan pada layar LCD",
+            "Data absensi dicatat dan diintegrasikan dengan sistem",
+          ],
+        },
+      ],
+      closing: "Dengan integrasi RFID, proses absensi menjadi lebih cepat, akurat, dan mudah direkap.",
+      gallery: [
+        { src: "/project/absensi/hero.jpeg", title: "Perangkat Absensi RFID", desc: "Unit absensi dengan pembaca RFID, layar LCD, dan casing akrilik." },
+        { src: "/project/absensi/perangkat-dan-kartu.jpeg", title: "Perangkat dan Kartu RFID", desc: "Perangkat absensi bersama kartu RFID yang digunakan untuk identifikasi pengguna." },
+      ],
+    },
+  },
   {
     title: "SmartBin Eco-AI",
     desc: "Sistem pemilahan sampah berbasis computer vision yang mengenali jenis sampah, memantau kapasitas tong secara real-time, dan mencatat poin lokasi untuk pengelolaan sampah yang lebih terukur.",
